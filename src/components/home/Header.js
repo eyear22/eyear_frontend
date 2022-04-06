@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import Logo from '../../assets/logo_header.png';
 import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
+import ToggleMenu from './ToggleMenu';
 
 const Header = () => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   return (
     <Container>
       <Wrap>
@@ -16,6 +17,7 @@ const Header = () => {
           <MenuItem>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
+          <MenuItem>비디오</MenuItem>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
@@ -25,6 +27,7 @@ const Header = () => {
       <Hamburger onClick={() => setToggle(!toggle)}>
         <Menu sx={{ fontSize: 30 }} />
       </Hamburger>
+      <ToggleMenu toggle={toggle} />
     </Container>
   );
 };
@@ -34,13 +37,11 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  ${tablet({ flexDirection: 'column' })}
 `;
 
 const Wrap = styled.div`
   display: flex;
   align-items: center;
-  ${tablet({ flexDirection: 'column' })}
 `;
 
 const Image = styled.img`
@@ -51,10 +52,7 @@ const Image = styled.img`
 const Center = styled.div`
   display: flex;
   margin-left: 120px;
-  ${tablet({ marginLeft: '0px', textAlign: 'center', marginTop: '20px' })}
-  @media (max-width: 768px) {
-    display: ${(props) => (props.toggle ? 'block' : 'none')};
-  }
+  ${tablet({ display: 'none' })}
 `;
 
 const MenuItem = styled.div`
@@ -62,16 +60,12 @@ const MenuItem = styled.div`
   color: #3e3e3e;
   cursor: pointer;
   margin-right: 20px;
-  ${tablet({ padding: '16px', marginRight: '0px' })}
 `;
 
 const Right = styled.div`
   display: flex;
   align-items: center;
-  ${tablet({ flexDirection: 'column' })}
-  @media (max-width: 768px) {
-    display: ${(props) => (props.toggle ? 'block' : 'none')};
-  }
+  ${tablet({ display: 'none' })}
 `;
 
 const AuthText = styled.text`
@@ -79,7 +73,6 @@ const AuthText = styled.text`
   color: #3e3e3e;
   cursor: pointer;
   margin-right: 20px;
-  ${tablet({ padding: '16px', textAlign: 'center', marginRight: '0px' })}
 `;
 
 const Button = styled.button`
@@ -93,7 +86,6 @@ const Button = styled.button`
   &:hover {
     transform: scale(1.1);
   }
-  ${tablet({ alignItem: 'center', marginTop: '10px' })}
 `;
 
 const Hamburger = styled.div`
