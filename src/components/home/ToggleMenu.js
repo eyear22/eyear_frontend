@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ToggleMenu = ({ toggle }) => {
@@ -10,7 +11,9 @@ const ToggleMenu = ({ toggle }) => {
       <MenuItem>공지사항</MenuItem>
       <MenuItem>로그인</MenuItem>
       <MenuItem>편지쓰기</MenuItem>
-      <MenuItem>비디오</MenuItem>
+      <Link to="/video">
+        <MenuItem>비디오</MenuItem>
+      </Link>
     </Container>
   );
 };

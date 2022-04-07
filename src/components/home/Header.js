@@ -4,6 +4,7 @@ import Logo from '../../assets/logo_header.png';
 import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -17,7 +18,9 @@ const Header = () => {
           <MenuItem>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
-          <MenuItem>비디오</MenuItem>
+          <Link to="/video">
+            <MenuItem>비디오</MenuItem>
+          </Link>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
