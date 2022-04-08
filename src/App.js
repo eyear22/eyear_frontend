@@ -1,9 +1,15 @@
+import Home from './pages/Home';
+import Video from './pages/Video';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 const App = () => {
   return (
-    <div>
-      <h1>eyear</h1>
-      <h1>아이어</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/video" element={<Video />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
