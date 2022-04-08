@@ -5,21 +5,24 @@ import styled from 'styled-components';
 const Video = () => {
   const [fileArray, setFileArray] = useState([]);
 
-  const uploadFile = (files) => {
+  const handleFile = (e) => {
+    setFileArray(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
+
+  const uploadFile = () => {
     let formData = new FormData();
-    const config = {
-      header: { 'content-type': 'multipart/form-data' },
-    };
-    formData.append('file', files[0]);
+    formData.append('file', fileArray);
+    formData.append('name', 'hi');
     axios({
       method: 'post',
-      url: `http://localhost:5000/api/video/uploadfiles`,
-      headers: config,
-      data: { formData },
+      url: `http://localhost:5000/upload`,
+      headers: { 'Content-Type': 'multipart/form-data' },
+      data: formData,
     })
       .then((res) => {
         console.log(res);
-        if (res.data == 'success') {
+        if (res.data == 'ok') {
           console.log('성공');
         } else {
           alert('비디오 업로드 실패');
@@ -38,8 +41,8 @@ const Video = () => {
   return (
     <Container>
       <Title>비디오 업로드</Title>
-      <form method="post" encType="multipart/form-data">
-        <Input type="file" accept="image/*, video/*" multiple onChange={uploadFile} />
+      <form action="/upload" method="post" encType="multipart/form-data" onSubmit={onSubmit}>
+        <Input name="files" type="file" accept="image/*, video/*" multiple onChange={handleFile} />
         <button type="submit">업로드</button>
       </form>
     </Container>
