@@ -1,4 +1,4 @@
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -6,13 +6,18 @@ const Video = () => {
   const [fileArray, setFileArray] = useState([]);
 
   const handleFile = (e) => {
-    setFileArray(e.target.files[0]);
-    console.log(e.target.files[0]);
+    setFileArray(e.target.files);
+    console.log(e.target.files);
   };
 
   const uploadFile = () => {
     let formData = new FormData();
-    formData.append('file', fileArray);
+
+    // for문 말고 다른 방법 생각해보기
+    for (let i = 0; i < fileArray.length; i++) {
+      formData.append('file', fileArray[i]);
+    }
+
     formData.append('name', 'hi');
     axios({
       method: 'post',
