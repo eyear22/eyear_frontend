@@ -36,6 +36,12 @@ const Header = () => {
 };
 
 const Container = styled.div`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #fff;
+  z-index: 100;
+  width: calc(100% - 40px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,11 +64,14 @@ const Center = styled.div`
   ${tablet({ display: 'none' })}
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.text`
   font-size: 16px;
   color: #3e3e3e;
   cursor: pointer;
   margin-right: 20px;
+  &:hover {
+    color: #ba2b0c;
+  }
 `;
 
 const Right = styled.div`
@@ -76,6 +85,9 @@ const AuthText = styled.text`
   color: #3e3e3e;
   cursor: pointer;
   margin-right: 20px;
+  &:hover {
+    color: #ba2b0c;
+  }
 `;
 
 const Button = styled.button`
@@ -86,6 +98,7 @@ const Button = styled.button`
   border: none;
   color: white;
   font-size: 16px;
+  cursor: pointer;
   &:hover {
     transform: scale(1.1);
   }

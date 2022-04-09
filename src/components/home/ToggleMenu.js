@@ -37,6 +37,9 @@ const MenuItem = styled.div`
   cursor: pointer;
   text-align: center;
   padding: 16px;
+  &:hover {
+    color: #ba2b0c;
+  }
 `;
 
 export default ToggleMenu;
