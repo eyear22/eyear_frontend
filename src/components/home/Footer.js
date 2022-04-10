@@ -20,6 +20,7 @@ const Container = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   padding-bottom: 100px;
+  background-color: #f5f5f5;
 `;
 
 const Line = styled.div`
