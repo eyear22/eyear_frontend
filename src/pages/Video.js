@@ -17,11 +17,11 @@ const Video = () => {
     for (let i = 0; i < fileArray.length; i++) {
       formData.append('file', fileArray[i]);
     }
-
-    formData.append('name', 'hi');
+    // 편지 번호
+    formData.append('post_id', 2);
     axios({
       method: 'post',
-      url: `http://localhost:5000/upload`,
+      url: `http://localhost:5000/video/upload`,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: formData,
     })
