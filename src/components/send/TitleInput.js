@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-const TitleInput = () => {
+const TitleInput = ({ title }) => {
+  const onChange = (e) => {
+    title.onChange(e.target.value);
+  };
+
   return (
     <Container>
       <Title>제목</Title>
-      <Input placeholder="제목을 입력해주세요." />
+      <Input placeholder="제목을 입력해주세요." onChange={onChange} />
     </Container>
   );
 };

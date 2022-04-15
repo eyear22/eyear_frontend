@@ -2,20 +2,20 @@ import { DeleteRounded } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const FileInput = ({ fileArray, setFileArray }) => {
+const FileInput = ({ file }) => {
   const [nameList, setNameList] = useState([]); // 선택한 파일 리스트
 
   const handleFile = (e) => {
-    setFileArray(e.target.files);
+    file.onChange(e.target.files);
   };
 
   const resetFile = () => {
-    setFileArray([]);
+    file.onChange([]);
   };
 
   useEffect(() => {
-    setNameList(fileArray);
-  }, [fileArray]);
+    setNameList(file.value);
+  }, [file.value]);
 
   return (
     <Container>

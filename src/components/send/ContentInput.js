@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-const ContentInput = () => {
+const ContentInput = ({ content }) => {
+  const onChange = (e) => {
+    content.onChange(e.target.value);
+  };
+
   return (
     <Container>
       <Title>내용</Title>
-      <TextArea placeholder="내용을 입력해주세요." />
+      <TextArea placeholder="내용을 입력해주세요." onChange={onChange} />
     </Container>
   );
 };
@@ -27,6 +31,7 @@ const TextArea = styled.textarea`
   padding: 7px;
   border-radius: 5px;
   line-height: 160%;
+  resize: none;
   ::placeholder {
     color: #d9d9d9;
   }
