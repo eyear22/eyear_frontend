@@ -4,7 +4,7 @@ const ContentInput = () => {
   return (
     <Container>
       <Title>내용</Title>
-      <Input placeholder="내용을 입력해주세요." />
+      <TextArea placeholder="내용을 입력해주세요." />
     </Container>
   );
 };
@@ -20,12 +20,13 @@ const Title = styled.text`
   font-size: 20px;
 `;
 
-const Input = styled.input`
+const TextArea = styled.textarea`
   min-height: 400px;
   border: 1px solid #d9d9d9;
   margin-top: 5px;
-  padding: 5px;
+  padding: 7px;
   border-radius: 5px;
+  line-height: 160%;
   ::placeholder {
     color: #d9d9d9;
   }
