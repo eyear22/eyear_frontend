@@ -18,7 +18,7 @@ const Layout = ({ title, children }) => {
 
 const Wrap = styled.div`
   margin-top: 70px;
-  padding: 50px 30vw;
+  padding: 50px 25vw;
   ${tablet({ padding: '20px 10vw' })}
   background-color: #f5f5f5;
 `;
