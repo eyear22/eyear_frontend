@@ -1,6 +1,6 @@
-import { Autocomplete, CircularProgress, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import DropDownInput from './DropDownInput';
 
 const sleep = (delay = 0) => {
   return new Promise((resolve) => {
@@ -31,10 +31,12 @@ const usersData = [
 
 const ReceiverInput = () => {
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [options, setOptions] = useState([]);
   const [patient, setPatient] = useState(0);
   const [users, setUsers] = useState([]);
   const loading = open && options.length === 0;
+  const loading2 = false;
 
   useEffect(() => {
     let active = true;
@@ -71,9 +73,7 @@ const ReceiverInput = () => {
       await sleep(1e3);
 
       if (active) {
-        console.log(patient);
         const array = usersData.map((user) => user.pat_id === patient && user.username);
-        console.log(array);
         setUsers(array);
       }
     })();
@@ -86,59 +86,16 @@ const ReceiverInput = () => {
   return (
     <Container>
       <Title>받는 사람</Title>
-      <Input
-        open={open}
-        onOpen={() => {
-          setOpen(true);
-        }}
-        onClose={() => {
-          setOpen(false);
-        }}
-        isOptionEqualToValue={(option, value) => option.pat_id === value.pat_id}
-        getOptionLabel={(option) => option.pat_name}
-        options={patientsData}
-        loading={loading}
-        sx={{ maxWidth: 200 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label=""
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
-            }}
-          />
-        )}
-        onChange={(e, obj) => {
-          setPatient(obj.pat_id);
-        }}
-      />
-      <Input
-        isOptionEqualToValue={(option, value) => option.user_id === value.user_id}
-        getOptionLabel={(option) => option.username}
-        options={users}
-        sx={{ maxWidth: 200 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label=""
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
-            }}
-          />
-        )}
-      />
+      <Wrap>
+        <DropDownInput
+          open={open}
+          setOpen={setOpen}
+          data={options}
+          loading={loading}
+          onChange={console.log('click1')}
+        />
+        <DropDownInput open={open2} setOpen={setOpen2} data={options} loading={loading2} />
+      </Wrap>
     </Container>
   );
 };
@@ -154,18 +111,9 @@ const Title = styled.text`
   font-size: 20px;
 `;
 
-const Input = styled(Autocomplete)`
-  margin: 5px 0;
-  background-color: #fff;
-  border-color: red;
-  & .MuiOutlinedInput-root {
-    & fieldset {
-      border-color: #d9d9d9;
-    }
-  }
-  & .MuiInputBase-input {
-    height: 8px;
-  }
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export default ReceiverInput;
