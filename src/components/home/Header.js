@@ -8,10 +8,19 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
+
+  const goHome = () => {
+    window.location.href = '/';
+  };
+  // 편지 쓰기 페이지로 이동
+  const goSend = () => {
+    window.location.href = '/send';
+  };
+
   return (
     <Container>
       <Wrap>
-        <Image src={Logo} />
+        <Image src={Logo} onClick={goHome} />
         <Center toggle={toggle}>
           <MenuItem>소개</MenuItem>
           <MenuItem>받은편지</MenuItem>
@@ -25,7 +34,7 @@ const Header = () => {
       </Wrap>
       <Right toggle={toggle}>
         <AuthText>로그인</AuthText>
-        <Button>편지쓰기</Button>
+        <Button onClick={goSend}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>
         <Menu sx={{ fontSize: 30 }} />
@@ -56,6 +65,7 @@ const Wrap = styled.div`
 const Image = styled.img`
   height: 30px;
   width: 70px;
+  cursor: pointer;
 `;
 
 const Center = styled.div`
