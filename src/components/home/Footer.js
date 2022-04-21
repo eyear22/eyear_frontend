@@ -19,8 +19,8 @@ const Container = styled.div`
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-bottom: 100px;
-  background-color: #f5f5f5;
+  padding: 100px 0;
+  background-color: #fff;
 `;
 
 const Line = styled.div`
