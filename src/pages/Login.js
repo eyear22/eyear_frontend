@@ -9,20 +9,16 @@ const Login = () => {
   const tabMenu = [
     {
       title: (
-        <TitleContainer>
-          <Title key={0} onClick={() => tabClickHandler(0)}>
-            개인
-          </Title>
+        <TitleContainer key={0} active={!activeIndex} onClick={() => tabClickHandler(0)}>
+          <Title active={!activeIndex}>개인</Title>
         </TitleContainer>
       ),
       content: <div>내용1</div>,
     },
     {
       title: (
-        <TitleContainer>
-          <Title key={1} onClick={() => tabClickHandler(1)}>
-            기관
-          </Title>
+        <TitleContainer key={1} active={activeIndex} onClick={() => tabClickHandler(1)}>
+          <Title active={activeIndex}>기관</Title>
         </TitleContainer>
       ),
       content: <div>내용2</div>,
@@ -38,6 +34,7 @@ const Login = () => {
               return section.title;
             })}
           </TopBar>
+          <TopLine />
           <div>{tabMenu[activeIndex].content}</div>{' '}
         </Wrap>
       </Container>
@@ -67,12 +64,17 @@ const TitleContainer = styled.div`
   width: 200px;
   text-align: center;
   padding: 10px 0;
-  background-color: #626a61;
   ${mobile({ width: '150px' })}
+  background-color: ${(props) => (props.active ? '#626a61' : '#fff')};
 `;
 
 const Title = styled.text`
-  color: #fff;
+  color: ${(props) => (props.active ? '#fff' : '#889287')};
+`;
+
+const TopLine = styled.div`
+  height: 1px;
+  background-color: #626a61;
 `;
 
 export default Login;
