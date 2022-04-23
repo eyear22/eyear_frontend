@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import AuthLayout from '../components/common/AuthLayout';
+import Input from '../components/login/Input';
 import { mobile } from '../utils/responsive';
 
 const Login = () => {
@@ -13,7 +14,7 @@ const Login = () => {
           <Title active={!activeIndex}>개인</Title>
         </TitleContainer>
       ),
-      content: <div>내용1</div>,
+      content: <Input />,
     },
     {
       title: (
@@ -58,6 +59,7 @@ const Wrap = styled.div`
 
 const TopBar = styled.div`
   display: flex;
+  cursor: pointer;
 `;
 
 const TitleContainer = styled.div`
@@ -73,7 +75,7 @@ const Title = styled.text`
 `;
 
 const TopLine = styled.div`
-  height: 1px;
+  height: 2px;
   background-color: #626a61;
 `;
 
