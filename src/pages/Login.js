@@ -22,7 +22,7 @@ const Login = () => {
           <Title active={activeIndex}>기관</Title>
         </TitleContainer>
       ),
-      content: <div>내용2</div>,
+      content: <Input />,
     },
   ];
 
@@ -65,7 +65,7 @@ const TopBar = styled.div`
 const TitleContainer = styled.div`
   width: 200px;
   text-align: center;
-  padding: 10px 0;
+  padding: 12px 0;
   ${mobile({ width: '150px' })}
   background-color: ${(props) => (props.active ? '#626a61' : '#fff')};
 `;
