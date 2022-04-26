@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
 const SmallMenu = () => {
   return (
@@ -30,6 +31,7 @@ const Container = styled.div`
 const Text = styled.text`
   font-size: 12px;
   padding: 0 5px;
+  ${mobile({ fontSize: 10 })}
 `;
 
 const StyledLink = styled(Link)`
