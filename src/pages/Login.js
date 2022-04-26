@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <AuthLayout title="로그인">
-      <TabMenuLayout idx={activeIndex} Component1={<Input />} Component2={<Input />} />
+      <TabMenuLayout idx={activeIndex} Component1={<Input id={id} password={password} />} Component2={<Input />} />
     </AuthLayout>
   );
 };
