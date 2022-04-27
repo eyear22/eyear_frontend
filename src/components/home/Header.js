@@ -33,7 +33,9 @@ const Header = () => {
         </Center>
       </Wrap>
       <Right toggle={toggle}>
-        <AuthText>로그인</AuthText>
+        <Link to="/login">
+          <AuthText>로그인</AuthText>
+        </Link>
         <Button onClick={goSend}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>

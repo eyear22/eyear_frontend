@@ -3,6 +3,7 @@ import Video from './pages/Video';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Send from './pages/Send';
 import VideoDetail from './pages/VideoDetail';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/video" element={<Video />} />
         <Route path="/send" element={<Send />} />
         <Route path="/videoDetail" element={<VideoDetail />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
