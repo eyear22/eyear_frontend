@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Send from './pages/Send';
 import VideoDetail from './pages/VideoDetail';
 import Login from './pages/Login';
+import Join from './pages/Join';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/send" element={<Send />} />
         <Route path="/videoDetail" element={<VideoDetail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/join" element={<Join />} />
       </Routes>
     </BrowserRouter>
   );
