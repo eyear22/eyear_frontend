@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import AuthLayout from '../components/common/AuthLayout';
+import SelectBox from '../components/join/SelectBox';
 
 const Join = () => {
   return (
@@ -10,6 +11,10 @@ const Join = () => {
         </BigDesc>
         <SmallDesc>아이어에서 제공하는 다앙햔 서비스를 이용해보세요.</SmallDesc>
       </Center>
+      <Bottom>
+        <SelectBox />
+        <SelectBox />
+      </Bottom>
     </AuthLayout>
   );
 };
@@ -33,6 +38,12 @@ const BigDesc = styled.text`
 
 const SmallDesc = styled.text`
   font-size: 10px;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default Join;

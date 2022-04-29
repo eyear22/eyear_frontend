@@ -18,7 +18,7 @@ const AuthLayout = ({ title, children }) => {
 
 const Wrap = styled.div`
   margin-top: 70px;
-  padding: 50px 35vw;
+  padding: 50px 0;
   ${tablet({ padding: '20px 10vw' })}
   background-color: #fff;
 `;
