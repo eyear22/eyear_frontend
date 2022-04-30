@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import AuthLayout from '../components/common/AuthLayout';
 import SelectBox from '../components/join/SelectBox';
+import UserIcon from '../assets/icon_user.png';
+import BusinessIcon from '../assets/icon_hospital.png';
 
 const Join = () => {
   return (
@@ -12,8 +14,8 @@ const Join = () => {
         <SmallDesc>아이어에서 제공하는 다앙햔 서비스를 이용해보세요.</SmallDesc>
       </Center>
       <Bottom>
-        <SelectBox />
-        <SelectBox />
+        <SelectBox Img={UserIcon} title="개인 회원" desc="영상을 주고 받고 싶다면?" />
+        <SelectBox Img={BusinessIcon} title="기업 회원" desc="병원을 등록하고 관리하려면?" />
       </Bottom>
     </AuthLayout>
   );

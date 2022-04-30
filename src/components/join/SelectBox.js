@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-import UserIcon from '../../assets/icon_user.png';
 import { mobile } from '../../utils/responsive';
 
-const SelectBox = () => {
+const SelectBox = ({ Img, title, desc }) => {
   return (
     <Container>
       <Left>
-        <Icon src={UserIcon} alt="" />
+        <Icon src={Img} alt="" />
       </Left>
       <Right>
-        <Desc>영상을 주고 받고 싶다면?</Desc>
-        <Title>개인 회원</Title>
+        <Desc>{desc}</Desc>
+        <Title>{title}</Title>
       </Right>
     </Container>
   );
