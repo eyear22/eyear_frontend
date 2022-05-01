@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const SelectBox = ({ Img, title, desc }) => {
+const SelectBox = ({ Img, title, desc, onClick }) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Left>
         <Icon src={Img} alt="" />
       </Left>

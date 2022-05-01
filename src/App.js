@@ -5,6 +5,8 @@ import Send from './pages/Send';
 import VideoDetail from './pages/VideoDetail';
 import Login from './pages/Login';
 import Join from './pages/Join';
+import JoinUser from './pages/JoinUser';
+import JoinBusiness from './pages/JoinBusiness';
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
         <Route path="/videoDetail" element={<VideoDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
+        <Route path="/join/user" element={<JoinUser />} />
+        <Route path="/join/business" element={<JoinBusiness />} />
       </Routes>
     </BrowserRouter>
   );
