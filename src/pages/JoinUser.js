@@ -12,7 +12,7 @@ const JoinUser = () => {
         idx={activeIndex}
         title1="1. 병원/환자 정보"
         title2="2. 개인정보"
-        Component1={<FirstInput />}
+        Component1={<FirstInput activeIndex={activeIndex} />}
         Component2={<div />}
       />
     </AuthLayout>

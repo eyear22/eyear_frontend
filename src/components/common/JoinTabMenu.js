@@ -69,10 +69,10 @@ const Title = styled.text`
 `;
 
 const InputArea = styled.div`
-  margin-top: 20px;
-  background-color: red;
+  margin-top: 30px;
   border: 1px solid #889287;
   width: 500px;
+  ${mobile({ width: '300px' })}
 `;
 
 export default JoinTabMenu;
