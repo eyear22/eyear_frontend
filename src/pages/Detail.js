@@ -3,6 +3,7 @@ import Layout from '../components/common/Layout';
 import Test from '../assets/my.vtt';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
+import ItemLayout from '../components/detail/ItemLayout';
 
 const Detail = () => {
   const [videoDetail, setVideoDetail] = useState([]);
@@ -20,42 +21,35 @@ const Detail = () => {
 
   return (
     <Layout title="손자 금쪽이 걸음마 영상">
-      <Wrap>
-        <Title>보낸 사람</Title>
-        <Sender>김대식</Sender>
-      </Wrap>
-      <Wrap>
-        <Title>파일</Title>
-        <File>{'금쪽.mp4' + '\n' + '금쪽이랑_가족사진.png'}</File>
-      </Wrap>
-      <Wrap>
-        <Video controls>
-          <source src={`http://localhost:5000/${videoDetail.video}`} type="video/mp4" />
-          <track kind="subtitles" src={Test} srcLang="ko" label="Korean" />
-          없음
-        </Video>
-      </Wrap>
-      <Wrap>
-        <Title>내용</Title>
-        <Content>아아아</Content>
-      </Wrap>
+      <Container>
+        <ItemLayout title="보낸 사람" width="50%">
+          김대식
+        </ItemLayout>
+        <ItemLayout title="파일">
+          파일이름1
+          <br />
+          파일이름2
+        </ItemLayout>
+        {videoDetail.post_id && (
+          <Video controls>
+            <source src={`http://localhost:5000/${videoDetail.video}`} type="video/mp4" />
+            <track kind="subtitles" src={Test} srcLang="ko" label="Korean" />
+            없음
+          </Video>
+        )}
+        <ItemLayout title="내용">아이어</ItemLayout>
+      </Container>
     </Layout>
   );
 };
 
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
+const Container = styled.div`
+  margin-top: 40px;
 `;
 
-const Title = styled.text``;
-
-const Sender = styled.text``;
-
-const File = styled.text``;
-
-const Video = styled.video``;
-
-const Content = styled.text``;
+const Video = styled.video`
+  width: 100%;
+  margin-bottom: 20px;
+`;
 
 export default Detail;

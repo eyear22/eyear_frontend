@@ -7,16 +7,16 @@ const Layout = ({ title, children }) => {
   return (
     <>
       <Header />
-      <Wrap>
+      <Container>
         <Title>{title}</Title>
-        {children}
-      </Wrap>
+        <Wrap>{children}</Wrap>
+      </Container>
       <Footer />
     </>
   );
 };
 
-const Wrap = styled.div`
+const Container = styled.div`
   margin-top: 70px;
   padding: 50px 25vw;
   ${tablet({ padding: '20px 10vw' })}
@@ -26,6 +26,10 @@ const Wrap = styled.div`
 const Title = styled.h1`
   color: #404040;
   text-align: center;
+`;
+
+const Wrap = styled.div`
+  margin-top: 50px;
 `;
 
 export default Layout;

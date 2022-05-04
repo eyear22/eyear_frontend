@@ -29,7 +29,7 @@ const Line = styled.div`
   background-color: #363636;
 `;
 
-const Text = styled.text`
+const Text = styled.div`
   width: 80vw;
   margin-top: 5px;
   font-size: 14px;

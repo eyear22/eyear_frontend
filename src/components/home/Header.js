@@ -76,7 +76,7 @@ const Center = styled.div`
   ${tablet({ display: 'none' })}
 `;
 
-const MenuItem = styled.text`
+const MenuItem = styled.div`
   font-size: 16px;
   color: #3e3e3e;
   cursor: pointer;
@@ -92,7 +92,7 @@ const Right = styled.div`
   ${tablet({ display: 'none' })}
 `;
 
-const AuthText = styled.text`
+const AuthText = styled.div`
   font-size: 16px;
   color: #3e3e3e;
   cursor: pointer;
