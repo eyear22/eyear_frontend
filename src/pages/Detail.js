@@ -4,8 +4,21 @@ import Test from '../assets/my.vtt';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
 import ItemLayout from '../components/detail/ItemLayout';
+import ButtonArea from '../components/detail/ButtonArea';
+
+const LetterData = [
+  {
+    post_id: 2,
+    title: '손자 금쪽이 걸음마 영상',
+    content: '',
+    file: ['파일1.mp4', '파일2.png', '파일3.png'],
+    from: '',
+    to: '',
+  },
+];
 
 const Detail = () => {
+  const [data, setData] = useState(LetterData);
   const [videoDetail, setVideoDetail] = useState([]);
 
   // 비디오 불러오기
@@ -38,6 +51,7 @@ const Detail = () => {
           </Video>
         )}
         <ItemLayout title="내용">아이어</ItemLayout>
+        <ButtonArea />
       </Container>
     </Layout>
   );
