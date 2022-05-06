@@ -25,7 +25,7 @@ const ListButton = styled.button`
   padding: 8px;
   border-radius: 6px;
   width: 120px;
-  margin-right: 10px;
+  margin-right: 18px;
   cursor: pointer;
 `;
 

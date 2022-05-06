@@ -5,6 +5,7 @@ import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
 import ItemLayout from '../components/detail/ItemLayout';
 import ButtonArea from '../components/detail/ButtonArea';
+import Content from '../components/detail/Content';
 
 const LetterData = [
   {
@@ -50,7 +51,9 @@ const Detail = () => {
             없음
           </Video>
         )}
-        <ItemLayout title="내용">아이어</ItemLayout>
+        <ItemLayout title="내용">
+          <Content />
+        </ItemLayout>
         <ButtonArea />
       </Container>
     </Layout>
