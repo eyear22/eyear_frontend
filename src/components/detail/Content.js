@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import Test from '../../assets/img_home.jpg';
+import ImageSlide from './ImageSlide';
 
 const Content = () => {
   return (
     <Container>
       <Image src={Test} />
+      <ImageSlide />
       <Wrap>엄마 잘 지내고 있지?</Wrap>
     </Container>
   );
