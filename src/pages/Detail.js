@@ -12,6 +12,7 @@ const LetterData = [
     post_id: 2,
     title: '손자 금쪽이 걸음마 영상',
     content: '',
+    img: [],
     file: ['파일1.mp4', '파일2.png', '파일3.png'],
     from: '',
     to: '',
@@ -52,7 +53,7 @@ const Detail = () => {
           </Video>
         )}
         <ItemLayout title="내용">
-          <Content />
+          <Content img={LetterData.img} writing={LetterData.content} />
         </ItemLayout>
         <ButtonArea />
       </Container>

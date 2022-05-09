@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ImageSlide from './ImageSlide';
 
-const Content = () => {
+const Content = ({ img, writing }) => {
   return (
     <Container>
       <ImageSlide />

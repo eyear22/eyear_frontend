@@ -27,9 +27,6 @@ const Header = () => {
           <MenuItem>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
-          <Link to="/video">
-            <MenuItem>비디오</MenuItem>
-          </Link>
         </Center>
       </Wrap>
       <Right toggle={toggle}>

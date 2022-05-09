@@ -18,7 +18,7 @@ const Layout = ({ title, children }) => {
 
 const Container = styled.div`
   margin-top: 70px;
-  padding: 50px 25vw;
+  padding: 70px 25vw;
   ${tablet({ padding: '20px 10vw' })}
   background-color: #f5f5f5;
 `;
@@ -26,10 +26,12 @@ const Container = styled.div`
 const Title = styled.h1`
   color: #404040;
   text-align: center;
+  text-decoration: underline #889287;
+  text-underline-offset: 8px;
 `;
 
 const Wrap = styled.div`
-  margin-top: 50px;
+  margin-top: 70px;
 `;
 
 export default Layout;
