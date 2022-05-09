@@ -27,9 +27,6 @@ const Header = () => {
           <MenuItem>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
-          <Link to="/video">
-            <MenuItem>비디오</MenuItem>
-          </Link>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
@@ -76,7 +73,7 @@ const Center = styled.div`
   ${tablet({ display: 'none' })}
 `;
 
-const MenuItem = styled.text`
+const MenuItem = styled.div`
   font-size: 16px;
   color: #3e3e3e;
   cursor: pointer;
@@ -92,7 +89,7 @@ const Right = styled.div`
   ${tablet({ display: 'none' })}
 `;
 
-const AuthText = styled.text`
+const AuthText = styled.div`
   font-size: 16px;
   color: #3e3e3e;
   cursor: pointer;

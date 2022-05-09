@@ -16,7 +16,6 @@ const TitleInput = ({ title }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
 `;
 
 const Title = styled.text`
