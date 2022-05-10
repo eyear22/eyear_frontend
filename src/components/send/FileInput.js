@@ -6,7 +6,9 @@ const FileInput = ({ file }) => {
   const [nameList, setNameList] = useState([]); // 선택한 파일 리스트
 
   const handleFile = (e) => {
-    file.onChange(e.target.files);
+    let files = e.target.files;
+    const count = [...files].filter((s) => s.type.includes('video')).length;
+    count <= 1 ? file.onChange(files) : alert('동영상은 1개만 첨부 가능합니다.');
   };
 
   const resetFile = () => {
@@ -25,10 +27,10 @@ const FileInput = ({ file }) => {
       <ListBox>
         {nameList &&
           Object.values(nameList).map((t) => (
-            <text key={t.name}>
+            <div key={t.name}>
               {t.name}
               <br />
-            </text>
+            </div>
           ))}
       </ListBox>
       <DeleteBtn>
