@@ -42,12 +42,14 @@ const FileInput = ({ file }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  margin-bottom: 30px;
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   color: #252525;
   font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: bold;
 `;
 
 const Input = styled.input`
@@ -66,10 +68,11 @@ const Label = styled.label`
   color: #252525;
   background-color: #fff;
   cursor: pointer;
-  margin: 5px 0;
+  margin-bottom: 5px;
 `;
 
 const ListBox = styled.div`
+  font-size: 18px;
   display: flex;
   min-height: 40px;
   padding: 10px;
@@ -85,7 +88,7 @@ const DeleteBtn = styled.div`
   cursor: pointer;
 `;
 
-const DeleteText = styled.text`
+const DeleteText = styled.div`
   font-size: 12px;
   &:hover {
     text-decoration: underline;

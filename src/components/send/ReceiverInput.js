@@ -103,12 +103,14 @@ const ReceiverInput = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  margin-bottom: 30px;
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   color: #252525;
   font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: bold;
 `;
 
 const Wrap = styled.div`
