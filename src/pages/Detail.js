@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
-import Test from '../assets/my.vtt';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
 import ItemLayout from '../components/detail/ItemLayout';
 import ButtonArea from '../components/detail/ButtonArea';
 import Content from '../components/detail/Content';
+import VideoArea from '../components/detail/VideoArea';
 
 const LetterData = [
   {
@@ -46,11 +46,9 @@ const Detail = () => {
           파일이름2
         </ItemLayout>
         {videoDetail.post_id && (
-          <Video controls>
-            <source src={`http://localhost:5000/${videoDetail.video}`} type="video/mp4" />
-            <track kind="subtitles" src={Test} srcLang="ko" label="Korean" />
-            없음
-          </Video>
+          <ItemLayout title="영상">
+            <VideoArea videoId={videoDetail.video} />
+          </ItemLayout>
         )}
         <ItemLayout title="내용">
           <Content img={LetterData.img} writing={LetterData.content} />
@@ -63,11 +61,6 @@ const Detail = () => {
 
 const Container = styled.div`
   margin-top: 40px;
-`;
-
-const Video = styled.video`
-  width: 100%;
-  margin-bottom: 20px;
 `;
 
 export default Detail;

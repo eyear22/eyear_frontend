@@ -19,7 +19,7 @@ const Title = styled.div`
   font-weight: bold;
   font-size: 20px;
   color: #252525;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 `;
 
 const Wrap = styled.div`
@@ -28,6 +28,7 @@ const Wrap = styled.div`
   border-radius: 5px;
   background-color: #fff;
   width: ${(props) => props.width || '100%-16px'};
+  font-size: 18px;
 `;
 
 export default ItemLayout;
