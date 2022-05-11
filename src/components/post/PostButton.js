@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SendButton = ({ onClick }) => {
+const PostButton = ({ onClick }) => {
   return (
     <Container onClick={onClick}>
       <Button type="submit">보내기</Button>
@@ -26,4 +26,4 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default SendButton;
+export default PostButton;

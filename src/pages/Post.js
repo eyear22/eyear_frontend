@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
-import ContentInput from '../components/send/ContentInput';
-import FileInput from '../components/send/FileInput';
-import ReceiverInput from '../components/send/ReceiverInput';
-import SendButton from '../components/send/SendButton';
-import TitleInput from '../components/send/TitleInput';
+import ContentInput from '../components/post/ContentInput';
+import FileInput from '../components/post/FileInput';
+import ReceiverInput from '../components/post/ReceiverInput';
+import PostButton from '../components/post/PostButton';
+import TitleInput from '../components/post/TitleInput';
 import useInput from '../utils/useInput';
 import { publicRequest } from '../hooks/requestMethods';
 
-const Send = () => {
+const Post = () => {
   const title = useInput('');
   const receiver = useInput(0);
   const file = useInput([]);
@@ -39,9 +39,9 @@ const Send = () => {
       <ReceiverInput />
       <FileInput file={file} />
       <ContentInput content={content} />
-      <SendButton onClick={onClick} />
+      <PostButton onClick={onClick} />
     </Layout>
   );
 };
 
-export default Send;
+export default Post;
