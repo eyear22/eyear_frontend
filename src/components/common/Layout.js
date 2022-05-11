@@ -23,15 +23,12 @@ const Container = styled.div`
   background-color: #f5f5f5;
 `;
 
-const Title = styled.h1`
+const Title = styled.div`
   color: #404040;
+  font-size: 32px;
   text-align: center;
-  text-decoration: underline #889287;
-  text-underline-offset: 8px;
 `;
 
-const Wrap = styled.div`
-  margin-top: 70px;
-`;
+const Wrap = styled.div``;
 
 export default Layout;

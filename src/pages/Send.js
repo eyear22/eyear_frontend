@@ -6,6 +6,7 @@ import ReceiverInput from '../components/send/ReceiverInput';
 import SendButton from '../components/send/SendButton';
 import TitleInput from '../components/send/TitleInput';
 import useInput from '../utils/useInput';
+import { publicRequest } from '../hooks/requestMethods';
 
 const Send = () => {
   const title = useInput('');
@@ -13,7 +14,19 @@ const Send = () => {
   const file = useInput([]);
   const content = useInput('');
 
-  const onClick = () => {
+  const onClick = async () => {
+    // try {
+    //   const res = await publicRequest.post('/post', {
+    //     title: title.value,
+    //     content: content.value,
+    //     from: '보내는사람',
+    //     to: receiver.value,
+    //     check: false,
+    //   });
+    //   console.log(res);
+    // } catch (err) {
+    //   console.log(err);
+    // }
     console.log('title', title.value);
     console.log('receiver', receiver.value);
     console.log('file', file.value);
