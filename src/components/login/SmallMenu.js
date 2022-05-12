@@ -28,7 +28,7 @@ const Container = styled.div`
   margin-bottom: 28px;
 `;
 
-const Text = styled.text`
+const Text = styled.div`
   font-size: 12px;
   padding: 0 5px;
   ${mobile({ fontSize: 10 })}

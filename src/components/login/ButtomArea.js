@@ -29,12 +29,12 @@ const Wrap = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   font-size: 14px;
   font-weight: bold;
 `;
 
-const SubTitle = styled.text`
+const SubTitle = styled.div`
   margin-top: 3px;
   font-size: 12px;
 `;
