@@ -16,17 +16,21 @@ const TitleInput = ({ title }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: 70px;
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   color: #252525;
   font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: bold;
 `;
 
 const Input = styled.input`
+  font-size: 18px;
   height: 28px;
   border: 1px solid #d9d9d9;
-  margin: 5px 0;
   padding: 7px;
   border-radius: 5px;
   ::placeholder {

@@ -6,7 +6,9 @@ const FileInput = ({ file }) => {
   const [nameList, setNameList] = useState([]); // 선택한 파일 리스트
 
   const handleFile = (e) => {
-    file.onChange(e.target.files);
+    let files = e.target.files;
+    const count = [...files].filter((s) => s.type.includes('video')).length;
+    count <= 1 ? file.onChange(files) : alert('동영상은 1개만 첨부 가능합니다.');
   };
 
   const resetFile = () => {
@@ -25,10 +27,10 @@ const FileInput = ({ file }) => {
       <ListBox>
         {nameList &&
           Object.values(nameList).map((t) => (
-            <text key={t.name}>
+            <div key={t.name}>
               {t.name}
               <br />
-            </text>
+            </div>
           ))}
       </ListBox>
       <DeleteBtn>
@@ -42,12 +44,14 @@ const FileInput = ({ file }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  margin-bottom: 30px;
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   color: #252525;
   font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: bold;
 `;
 
 const Input = styled.input`
@@ -66,10 +70,11 @@ const Label = styled.label`
   color: #252525;
   background-color: #fff;
   cursor: pointer;
-  margin: 5px 0;
+  margin-bottom: 5px;
 `;
 
 const ListBox = styled.div`
+  font-size: 18px;
   display: flex;
   min-height: 40px;
   padding: 10px;
@@ -85,7 +90,7 @@ const DeleteBtn = styled.div`
   cursor: pointer;
 `;
 
-const DeleteText = styled.text`
+const DeleteText = styled.div`
   font-size: 12px;
   &:hover {
     text-decoration: underline;

@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  margin: 20px;
+  margin-top: 20px;
   line-height: 160%;
   text-decoration: underline;
 `;

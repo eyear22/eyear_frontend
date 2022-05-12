@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
-import Test from '../assets/my.vtt';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
-import ItemLayout from '../components/detail/ItemLayout';
 import ButtonArea from '../components/detail/ButtonArea';
 import Content from '../components/detail/Content';
+import VideoArea from '../components/detail/VideoArea';
 
 const LetterData = [
   {
@@ -35,39 +34,47 @@ const Detail = () => {
   }, []);
 
   return (
-    <Layout title="손자 금쪽이 걸음마 영상">
+    <Layout title="수영이 걸음마 영상">
       <Container>
-        <ItemLayout title="보낸 사람" width="50%">
-          김대식
-        </ItemLayout>
-        <ItemLayout title="파일">
-          파일이름1
-          <br />
-          파일이름2
-        </ItemLayout>
-        {videoDetail.post_id && (
-          <Video controls>
-            <source src={`http://localhost:5000/${videoDetail.video}`} type="video/mp4" />
-            <track kind="subtitles" src={Test} srcLang="ko" label="Korean" />
-            없음
-          </Video>
-        )}
-        <ItemLayout title="내용">
+        <Info>
+          <Date>2022.05.09</Date>
+          <From>김수영(딸)</From>
+        </Info>
+        <Wrap>
+          {videoDetail.post_id && <VideoArea videoId={videoDetail.video} />}
           <Content img={LetterData.img} writing={LetterData.content} />
-        </ItemLayout>
-        <ButtonArea />
+          <ButtonArea />
+        </Wrap>
       </Container>
     </Layout>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div``;
+
+const Info = styled.div`
   margin-top: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #808080;
 `;
 
-const Video = styled.video`
-  width: 100%;
-  margin-bottom: 20px;
+const Date = styled.div`
+  font-size: 18px;
+`;
+
+const From = styled.div`
+  font-size: 16px;
+`;
+
+const Wrap = styled.div`
+  padding: 7px 8px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background-color: #fff;
+  width: ${(props) => props.width || '100%-16px'};
+  font-size: 18px;
 `;
 
 export default Detail;

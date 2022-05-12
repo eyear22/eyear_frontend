@@ -40,7 +40,6 @@ const DropDownInput = ({ open, setOpen, data, loading, onChange }) => {
 
 const Input = styled(Autocomplete)`
   min-width: 150px;
-  margin: 5px 0;
   margin-right: 10px;
   background-color: #fff;
   border-color: red;

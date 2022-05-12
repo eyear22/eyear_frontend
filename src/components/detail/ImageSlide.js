@@ -13,6 +13,7 @@ const ImageSlide = () => {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: '0px',
+    arrows: false,
   };
 
   const data = [
@@ -32,13 +33,7 @@ const ImageSlide = () => {
   );
 };
 
-const StyledSlider = styled(Slider)`
-  .slick-prev::before,
-  .slick-next::before {
-    color: #889287;
-  }
-  margin: 10px 20px;
-`;
+const StyledSlider = styled(Slider)``;
 
 const CardBox = styled.div``;
 
