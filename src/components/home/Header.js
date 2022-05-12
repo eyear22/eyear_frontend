@@ -13,8 +13,8 @@ const Header = () => {
     window.location.href = '/';
   };
   // 편지 쓰기 페이지로 이동
-  const goSend = () => {
-    window.location.href = '/send';
+  const goPost = () => {
+    window.location.href = '/post';
   };
 
   return (
@@ -33,7 +33,7 @@ const Header = () => {
         <Link to="/login">
           <AuthText>로그인</AuthText>
         </Link>
-        <Button onClick={goSend}>편지쓰기</Button>
+        <Button onClick={goPost}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>
         <Menu sx={{ fontSize: 30 }} />
