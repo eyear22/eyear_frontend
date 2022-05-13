@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const LetterTable = () => {
+const LetterTable = ({ list }) => {
+  const size = list.length;
   return (
     <>
       <Table>
@@ -14,13 +15,15 @@ const LetterTable = () => {
           </tr>
         </THead>
         <TBody>
-          <Tr>
-            <Td>9</Td>
-            <Td>no</Td>
-            <TitleTd>할머니 보고싶어요.</TitleTd>
-            <Td>김대식</Td>
-            <td>22.02.19</td>
-          </Tr>
+          {list.map((item, index) => (
+            <Tr key={item.post_id}>
+              <Td>{size - index}</Td>
+              <Td>{item.check ? 'y' : 'n'}</Td>
+              <TitleTd>{item.title}</TitleTd>
+              <Td>{item.from}</Td>
+              <td>{item.createdAt}</td>
+            </Tr>
+          ))}
         </TBody>
       </Table>
     </>
@@ -49,6 +52,7 @@ const TBody = styled.tbody`
 `;
 
 const Tr = styled.tr`
+  cursor: pointer;
   border-bottom: 2px solid #ebeeec;
 `;
 
