@@ -2,105 +2,28 @@ import styled from 'styled-components';
 
 const LetterTable = () => {
   return (
-    <div>
-      <div style={{ marginTop: 15, textAlign: 'right' }}>카테고리</div>
+    <>
       <Table>
-        <thead style={{ borderTop: '4px solid #889287', borderBottom: '1px solid #889287' }}>
+        <THead>
           <tr>
-            <td style={{ padding: 10, width: 40 }}>번호</td>
-            <td style={{ padding: 10, width: 60 }}>확인</td>
-            <td style={{ padding: 10 }}>제목</td>
-            <td style={{ padding: 10, width: 80 }}>작성자</td>
-            <td style={{ padding: 10, width: 100 }}>작성일</td>
+            <THeadTd width={50}>번호</THeadTd>
+            <THeadTd width={60}>확인</THeadTd>
+            <THeadTd>제목</THeadTd>
+            <THeadTd width={80}>작성자</THeadTd>
+            <THeadTd width={100}>작성일</THeadTd>
           </tr>
-        </thead>
-        <tbody
-          style={{ backgroundColor: '#fff', borderTop: '2.2px solid #889287', borderBottom: '2.2px solid #889287' }}
-        >
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
+        </THead>
+        <TBody>
+          <Tr>
+            <Td>9</Td>
+            <Td>no</Td>
+            <TitleTd>할머니 보고싶어요.</TitleTd>
+            <Td>김대식</Td>
             <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-          <tr style={{ borderBottom: '2px solid #EBEEEC' }}>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>9</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>no</td>
-            <td style={{ borderRight: '2px solid #EBEEEC', textAlign: 'left', padding: 15, paddingLeft: 30 }}>
-              할머니 보고싶어요.
-            </td>
-            <td style={{ borderRight: '2px solid #EBEEEC', padding: 15 }}>김대식</td>
-            <td>22.02.19</td>
-          </tr>
-        </tbody>
+          </Tr>
+        </TBody>
       </Table>
-    </div>
+    </>
   );
 };
 
@@ -109,6 +32,36 @@ const Table = styled.table`
   text-align: center;
   border-collapse: collapse;
   margin-top: 10px;
+`;
+
+const THead = styled.thead`
+  border-top: 3px solid #889287;
+`;
+
+const THeadTd = styled.td`
+  padding: 12px;
+  width: ${(props) => props.width || 'auto'};
+`;
+
+const TBody = styled.tbody`
+  background-color: #fff;
+  border-top: 2.2px solid #889287;
+`;
+
+const Tr = styled.tr`
+  border-bottom: 2px solid #ebeeec;
+`;
+
+const TitleTd = styled.td`
+  border-right: 2px solid #ebeeec;
+  text-align: left;
+  padding: 15px;
+  padding-left: 30px;
+`;
+
+const Td = styled.td`
+  border-right: 2px solid #ebeeec;
+  padding: 15px;
 `;
 
 export default LetterTable;
