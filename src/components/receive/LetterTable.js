@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const LetterTable = ({ list }) => {
   const size = list.length;
+  const onClick = (id) => {
+    window.location.href = `/detail/${id}`;
+  };
+
   return (
     <>
       <Table>
@@ -16,7 +21,7 @@ const LetterTable = ({ list }) => {
         </THead>
         <TBody>
           {list.map((item, index) => (
-            <Tr key={item.post_id}>
+            <Tr key={item.post_id} onClick={() => onClick(item.post_id)}>
               <Td>{size - index}</Td>
               <Td>{item.check ? 'y' : 'n'}</Td>
               <TitleTd>{item.title}</TitleTd>
@@ -49,11 +54,15 @@ const THeadTd = styled.td`
 const TBody = styled.tbody`
   background-color: #fff;
   border-top: 2.2px solid #889287;
+  border-bottom: 2.2px solid #889287;
 `;
 
 const Tr = styled.tr`
   cursor: pointer;
   border-bottom: 2px solid #ebeeec;
+  &:hover {
+    color: #252525;
+  }
 `;
 
 const TitleTd = styled.td`
