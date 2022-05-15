@@ -34,7 +34,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <Layout title="수영이 걸음마 영상">
+    <Layout title="수영이 걸음마 영상" width={1000}>
       <Container>
         <Info>
           <Date>2022.05.09</Date>

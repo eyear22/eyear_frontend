@@ -23,16 +23,18 @@ const Header = () => {
         <Image src={Logo} onClick={goHome} />
         <Center toggle={toggle}>
           <MenuItem>소개</MenuItem>
-          <MenuItem>받은편지</MenuItem>
+          <StyledLink to="/receive">
+            <MenuItem>받은편지</MenuItem>
+          </StyledLink>
           <MenuItem>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
-        <Link to="/login">
+        <StyledLink to="/login">
           <AuthText>로그인</AuthText>
-        </Link>
+        </StyledLink>
         <Button onClick={goPost}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>
@@ -118,6 +120,11 @@ const Hamburger = styled.div`
   position: absolute;
   right: 20px;
   ${tablet({ display: 'block' })}
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;
 
 export default Header;
