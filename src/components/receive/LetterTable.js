@@ -13,7 +13,7 @@ const LetterTable = ({ list }) => {
       <Table>
         <THead>
           <tr>
-            <THeadTd width={40}>번호</THeadTd>
+            <THeadTd width={30}>번호</THeadTd>
             <THeadTd width={30}>확인</THeadTd>
             <THeadTd>제목</THeadTd>
             <THeadTd width={80}>작성자</THeadTd>
@@ -43,6 +43,7 @@ const Table = styled.table`
   text-align: center;
   border-collapse: collapse;
   margin-top: 10px;
+  font-size: 14px;
 `;
 
 const THead = styled.thead`
@@ -79,7 +80,7 @@ const TitleTd = styled.td`
 
 const Td = styled.td`
   border-right: 2px solid #ebeeec;
-  padding: 12px;
+  padding: 10px 12px;
   justify-content: center;
 `;
 

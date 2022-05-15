@@ -1,8 +1,9 @@
-import { useInput } from '@mui/base';
+import useInput from '../utils/useInput';
 import { Pagination } from '@mui/material';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
+import FilterSelect from '../components/receive/FilterSelect';
 import LetterTable from '../components/receive/LetterTable';
 
 const LetterList = [
@@ -46,7 +47,7 @@ const LetterList = [
     title: '할머니 요즘 뭐하면서 지내세요?',
     createdAt: '22.02.09',
     from: '김대식',
-    check: true,
+    check: false,
   },
   {
     post_id: 6,
@@ -72,16 +73,17 @@ const LetterList = [
 ];
 
 const Receive = () => {
-  const [list, setList] = useState([]);
+  const list = useInput([]);
+  const filter = useInput('from');
 
   useEffect(() => {
-    setList(LetterList);
+    list.onChange(LetterList);
   }, []);
 
   return (
-    <Layout title="받은 편지" width={1000}>
-      <Filter>카테고리</Filter>
-      <LetterTable list={list} />
+    <Layout title="받은 편지" width={900}>
+      <FilterSelect filter={filter} />
+      <LetterTable list={list.value} />
       <Wrap>
         <StyledPagination count={10} shape="rounded" />
       </Wrap>
@@ -93,11 +95,6 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
-`;
-
-const Filter = styled.div`
-  margin-top: 15px;
-  text-align: right;
 `;
 
 const StyledPagination = styled(Pagination)`
