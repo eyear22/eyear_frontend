@@ -7,30 +7,24 @@ const ContentInput = ({ content }) => {
 
   return (
     <Container>
-      <Title>내용</Title>
-      <TextArea placeholder="내용을 입력해주세요." onChange={onChange} />
+      <TextArea onChange={onChange} />
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-`;
-
-const Title = styled.div`
-  color: #252525;
-  font-size: 20px;
-  margin-bottom: 6px;
-  font-weight: bold;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+  padding: 5px 7px;
 `;
 
 const TextArea = styled.textarea`
-  font-size: 18px;
+  width: 100%;
+  font-size: 16px;
   min-height: 400px;
-  border: 1px solid #d9d9d9;
-  padding: 7px;
-  border-radius: 5px;
+  border: none;
+  -webkit-appearance: none;
   line-height: 160%;
   resize: none;
   ::placeholder {
@@ -38,6 +32,9 @@ const TextArea = styled.textarea`
   }
   ::-ms-input-placeholder {
     color: #d9d9d9;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 

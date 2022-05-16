@@ -21,9 +21,6 @@ const FileInput = ({ file }) => {
 
   return (
     <Container>
-      <Title>파일 첨부</Title>
-      <Label htmlFor="file">파일찾기</Label>
-      <Input id="file" name="files" type="file" accept="image/*, video/*" multiple onChange={handleFile} />
       <ListBox>
         {nameList &&
           Object.values(nameList).map((t) => (
@@ -33,25 +30,22 @@ const FileInput = ({ file }) => {
             </div>
           ))}
       </ListBox>
-      <DeleteBtn>
-        <DeleteRounded style={{ color: '#252525', width: 16 }} />
-        <DeleteText onClick={resetFile}>삭제하기</DeleteText>
-      </DeleteBtn>
+      <Right>
+        <Label htmlFor="file">파일찾기</Label>
+        <Input id="file" name="files" type="file" accept="image/*, video/*" multiple onChange={handleFile} />
+        <DeleteBtn>
+          <DeleteRounded style={{ color: '#252525', width: 16 }} />
+          <DeleteText onClick={resetFile}>삭제하기</DeleteText>
+        </DeleteBtn>
+      </Right>
     </Container>
   );
 };
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-`;
-
-const Title = styled.div`
-  color: #252525;
-  font-size: 20px;
-  margin-bottom: 6px;
-  font-weight: bold;
+  flex-direction: row;
 `;
 
 const Input = styled.input`
@@ -60,28 +54,33 @@ const Input = styled.input`
 
 const Label = styled.label`
   display: flex;
-  padding: 10px;
+  display: flex;
   width: 60px;
+  height: 20px;
   align-items: center;
   justify-content: center;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+  border: 1px solid #252525;
   font-size: 14px;
   color: #252525;
   background-color: #fff;
   cursor: pointer;
-  margin-bottom: 5px;
 `;
 
 const ListBox = styled.div`
-  font-size: 18px;
+  width: 80%;
   display: flex;
   min-height: 40px;
-  padding: 10px;
+  padding: 5px 7px;
   flex-direction: column;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: space-between;
 `;
 
 const DeleteBtn = styled.div`

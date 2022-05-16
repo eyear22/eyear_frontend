@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
-import ContentInput from '../components/post/ContentInput';
-import FileInput from '../components/post/FileInput';
-import ReceiverInput from '../components/post/ReceiverInput';
 import PostButton from '../components/post/PostButton';
-import TitleInput from '../components/post/TitleInput';
 import useInput from '../utils/useInput';
 import { publicRequest } from '../hooks/requestMethods';
+import ItemLayout from '../components/post/ItemLayout';
+import ContentInput from '../components/post/ContentInput';
+import TitleInput from '../components/post/TitleInput';
+import ReceiverInput from '../components/post/ReceiverInput';
+import FileInput from '../components/post/FileInput';
 
 const Post = () => {
   const title = useInput('');
@@ -35,13 +36,74 @@ const Post = () => {
 
   return (
     <Layout title="편지 쓰기">
-      <TitleInput title={title} />
-      <ReceiverInput />
-      <FileInput file={file} />
-      <ContentInput content={content} />
+      <Wrap>
+        <ItemLayout title="제목" center>
+          <TitleInput title={title} />
+        </ItemLayout>
+        <ItemLayout title="받는 사람">
+          <ReceiverInput />
+        </ItemLayout>
+        <ItemLayout title="첨부 파일">
+          <FileInput file={file} />
+        </ItemLayout>
+        <ItemLayout title="내용">
+          <ContentInput content={content} />
+        </ItemLayout>
+      </Wrap>
       <PostButton onClick={onClick} />
     </Layout>
   );
 };
+
+const Wrap = styled.div`
+  margin-top: 40px;
+`;
+
+const FileArea = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
+const ListBox = styled.div`
+  width: 80%;
+  font-size: 18px;
+  display: flex;
+  min-height: 40px;
+  padding: 5px 7px;
+  flex-direction: column;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+`;
+
+const FInput = styled.input`
+  display: none;
+`;
+
+const Label = styled.label`
+  display: flex;
+  width: 60px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #252525;
+  font-size: 14px;
+  color: #252525;
+  background-color: #fff;
+  cursor: pointer;
+`;
+
+const DeleteBtn = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const DeleteText = styled.div`
+  font-size: 12px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 export default Post;

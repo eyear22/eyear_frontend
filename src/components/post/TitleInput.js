@@ -7,32 +7,26 @@ const TitleInput = ({ title }) => {
 
   return (
     <Container>
-      <Title>제목</Title>
-      <Input placeholder="제목을 입력해주세요." onChange={onChange} />
+      <Input onChange={onChange} />
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-  margin-top: 70px;
-`;
-
-const Title = styled.div`
-  color: #252525;
-  font-size: 20px;
-  margin-bottom: 6px;
-  font-weight: bold;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+  padding: 5px 7px;
 `;
 
 const Input = styled.input`
-  font-size: 18px;
-  height: 28px;
-  border: 1px solid #d9d9d9;
-  padding: 7px;
-  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  -webkit-appearance: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
   ::placeholder {
     color: #d9d9d9;
   }

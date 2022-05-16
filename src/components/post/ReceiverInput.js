@@ -85,37 +85,14 @@ const ReceiverInput = () => {
 
   return (
     <Container>
-      <Title>받는 사람</Title>
-      <Wrap>
-        <DropDownInput
-          open={open}
-          setOpen={setOpen}
-          data={options}
-          loading={loading}
-          onChange={console.log('click1')}
-        />
-        <DropDownInput open={open2} setOpen={setOpen2} data={options} loading={loading2} />
-      </Wrap>
+      <DropDownInput open={open} setOpen={setOpen} data={options} loading={loading} onChange={console.log('click1')} />
+      <DropDownInput open={open2} setOpen={setOpen2} data={options} loading={loading2} />
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-`;
-
-const Title = styled.div`
-  color: #252525;
-  font-size: 20px;
-  margin-bottom: 6px;
-  font-weight: bold;
-`;
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: row;
 `;
 
 export default ReceiverInput;
