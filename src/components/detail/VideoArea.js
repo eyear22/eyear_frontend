@@ -13,9 +13,7 @@ const VideoArea = ({ videoId }) => {
   );
 };
 
-const Container = styled.div`
-  padding: 10px;
-`;
+const Container = styled.div``;
 
 const Video = styled.video`
   width: 100%;

@@ -8,7 +8,7 @@ const Layout = ({ title, width, children }) => {
     <>
       <Header />
       <Container>
-        <Title>{title}</Title>
+        <Title width={width}>{title}</Title>
         <Wrap width={width}>{children}</Wrap>
       </Container>
       <Footer />
@@ -28,15 +28,15 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  width: 800px;
+  width: ${(props) => (props.width || 800) + 'px'};
   color: #404040;
   font-size: 32px;
-  text-align: center;
+  text-align: left;
   ${mobile({ width: '100%' })}
 `;
 
 const Wrap = styled.div`
-  width: ${(props) => props.width + 'px' || '800px'};
+  width: ${(props) => (props.width || 800) + 'px'};
   ${mobile({ width: '100%' })}
 `;
 

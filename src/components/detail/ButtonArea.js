@@ -11,6 +11,7 @@ const ButtonArea = () => {
 };
 
 const Container = styled.div`
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

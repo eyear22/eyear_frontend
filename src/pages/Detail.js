@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import ButtonArea from '../components/detail/ButtonArea';
 import Content from '../components/detail/Content';
 import VideoArea from '../components/detail/VideoArea';
+import UserIcon from '../assets/icon_user.png';
 
 const LetterData = [
   {
@@ -34,17 +35,18 @@ const Detail = () => {
   }, []);
 
   return (
-    <Layout title="수영이 걸음마 영상" width={1000}>
+    <Layout title="수영이 걸음마 영상" width={800}>
       <Container>
         <Info>
+          <From>
+            <Icon src={UserIcon} />
+            김수영, 딸
+          </From>
           <Date>2022.05.09</Date>
-          <From>김수영(딸)</From>
         </Info>
-        <Wrap>
-          {videoDetail.post_id && <VideoArea videoId={videoDetail.video} />}
-          <Content img={LetterData.img} writing={LetterData.content} />
-          <ButtonArea />
-        </Wrap>
+        {videoDetail.post_id && <VideoArea videoId={videoDetail.video} />}
+        <Content img={LetterData.img} writing={LetterData.content} />
+        <ButtonArea />
       </Container>
     </Layout>
   );
@@ -57,7 +59,8 @@ const Info = styled.div`
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  color: #808080;
+  color: #252525;
+  align-items: center;
 `;
 
 const Date = styled.div`
@@ -68,13 +71,9 @@ const From = styled.div`
   font-size: 16px;
 `;
 
-const Wrap = styled.div`
-  padding: 7px 8px;
-  border: 1px solid #d9d9d9;
-  border-radius: 5px;
-  background-color: #fff;
-  width: ${(props) => props.width || '100%-16px'};
-  font-size: 18px;
+const Icon = styled.img`
+  width: 12px;
+  margin-right: 5px;
 `;
 
 export default Detail;
