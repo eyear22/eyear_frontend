@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Layout from '../components/common/Layout';
 import FilterSelect from '../components/receive/FilterSelect';
 import LetterTable from '../components/receive/LetterTable';
+import MobileTable from '../components/receive/MobileTable';
 
 const LetterList = [
   {
@@ -84,6 +85,7 @@ const Receive = () => {
     <Layout title="받은 편지" width={900}>
       <FilterSelect filter={filter} />
       <LetterTable list={list.value} />
+      <MobileTable />
       <Wrap>
         <StyledPagination count={10} shape="rounded" />
       </Wrap>
