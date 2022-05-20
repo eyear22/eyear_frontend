@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
 const Layout = ({ title, children }) => {
   return (
@@ -15,12 +16,11 @@ const Container = styled.div`
 
 const Title = styled.h1`
   padding-left: 10vw;
-  text-decoration: underline #ba2b0c;
-  text-underline-offset: 8px;
+  ${mobile({ paddingLeft: '10vw', fontSize: 24 })}
 `;
 
 const Wrap = styled.div`
-  padding: 40px 0;
+  padding: 20px 0;
 `;
 
 export default Layout;

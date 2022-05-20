@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Banner from '../components/home/Banner';
 import Footer from '../components/home/Footer';
 import Header from '../components/home/Header';
+import Introduce from '../components/home/Introduce';
 import Layout from '../components/home/Layout';
 
 const Home = () => {
@@ -9,9 +10,7 @@ const Home = () => {
     <Container>
       <Header />
       <Banner />
-      <Layout title="아이어 소개">
-        <div>Home</div>
-      </Layout>
+      <Introduce />
       <Layout title="문의하기">
         <div>Home</div>
       </Layout>
@@ -23,5 +22,7 @@ const Home = () => {
 const Container = styled.div`
   background-color: #f5f5f5;
 `;
+
+const Desc = styled.div``;
 
 export default Home;
