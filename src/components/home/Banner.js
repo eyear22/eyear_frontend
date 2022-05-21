@@ -34,7 +34,7 @@ const Image = styled.img`
 const TextDiv = styled.div`
   position: absolute;
   top: 20%;
-  left: 10vw;
+  left: 100px;
 `;
 
 const SubTitle = styled.h2`

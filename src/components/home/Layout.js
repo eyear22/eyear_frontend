@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  padding-left: 10vw;
+  padding-left: 100px;
   ${mobile({ paddingLeft: '10vw', fontSize: 24 })}
 `;
 
