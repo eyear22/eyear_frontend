@@ -14,13 +14,11 @@ const Introduce = () => {
       <Wrap>
         <Item>
           <Image src={Icon1} />
-          <Right>
-            <Title>아이어</Title>
-            <SubTitle>
-              영상을 주고받으며 <br />
-              소통할 수 있는 플랫폼 서비스
-            </SubTitle>
-          </Right>
+          <Title>아이어</Title>
+          <SubTitle>
+            영상을 주고받으며 <br />
+            소통할 수 있는 플랫폼 서비스
+          </SubTitle>
         </Item>
         <Item>
           <Image src={Icon2} />
@@ -56,29 +54,31 @@ const Wrap = styled.div`
 `;
 
 const Item = styled.div`
+  flex-direction: column;
   display: flex;
   width: 400px;
-  padding: 20px;
+  padding: 50px 20px;
   border-radius: 8px;
   align-items: center;
   background-color: white;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  margin-right: 80px;
 `;
 
 const Image = styled.img`
   width: 120px;
 `;
 
-const Right = styled.div``;
-
 const Title = styled.div`
-  margin: 10px 0;
-  font-weight: 500;
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 20px;
 `;
 
 const SubTitle = styled.div`
   color: #5c5c5c;
+  text-align: center;
 `;
 
 export default Introduce;
