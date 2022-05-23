@@ -12,7 +12,7 @@ const Layout = ({ title, background, children }) => {
 
 const Container = styled.div`
   padding-top: 100px;
-  background: ${(props) => props.background || '#f5f5f5'};
+  background-color: ${(props) => props.background || '#f5f5f5'};
 `;
 
 const Title = styled.h1`

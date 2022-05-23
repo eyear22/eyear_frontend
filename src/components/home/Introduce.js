@@ -35,7 +35,7 @@ const items = [
 
 const Introduce = () => {
   return (
-    <Layout title="아이어 소개" id="introduce">
+    <Layout title="아이어 소개">
       <Desc>
         아이어는 요양병원을 이용하는 노인과 가족들간의 면회 상황에서 노인들이 겪는 불편함을 발견하면서 시작됐습니다.
       </Desc>
@@ -73,7 +73,6 @@ const Item = styled.div`
   flex-direction: column;
   display: flex;
   padding: 40px 60px;
-  border-radius: 8px;
   align-items: center;
 `;
 
