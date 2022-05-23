@@ -15,8 +15,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  padding-left: 100px;
-  ${mobile({ paddingLeft: '10vw', fontSize: 24 })}
+  text-align: center;
+  ${mobile({ fontSize: 24 })}
 `;
 
 const Wrap = styled.div`

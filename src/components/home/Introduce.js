@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Icon1 from '../../assets/icon_introduce1.png';
 import Icon2 from '../../assets/icon_introduce2.png';
 import Icon3 from '../../assets/icon_introduce3.png';
+import Icon4 from '../../assets/icon_introduce4.png';
 import { mobile } from '../../utils/responsive';
 import Layout from './Layout';
 
@@ -38,32 +39,40 @@ const Introduce = () => {
             보낸 편지를 통해 확인
           </SubTitle>
         </Item>
+        <Item>
+          <Image src={Icon4} />
+          <Title>인증된 병원</Title>
+          <SubTitle>
+            보건의료빅데이터개방시스템을 통해
+            <br />
+            요양병원 인증 절차 진행
+          </SubTitle>
+        </Item>
       </Wrap>
     </Layout>
   );
 };
 
 const Desc = styled.div`
-  padding-left: 100px;
-  ${mobile({ paddingLeft: '10vw', paddingRight: '10vw' })}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  ${mobile({ paddingLeft: 20, paddingRight: 20, fontSize: 14 })}
 `;
 
 const Wrap = styled.div`
   display: flex;
-  margin-left: 100px;
+  justify-content: center;
+  ${mobile({ flexDirection: 'column' })}
 `;
 
 const Item = styled.div`
   flex-direction: column;
   display: flex;
-  width: 400px;
-  padding: 50px 20px;
+  padding: 40px 60px;
   border-radius: 8px;
   align-items: center;
-  background-color: white;
-  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  margin-right: 80px;
 `;
 
 const Image = styled.img`
