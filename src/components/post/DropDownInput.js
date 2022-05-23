@@ -46,10 +46,11 @@ const Input = styled(Autocomplete)`
   & .MuiOutlinedInput-root {
     & fieldset {
       border-color: #d9d9d9;
+      border-radius: 0px;
     }
   }
   & .MuiInputBase-input {
-    height: 8px;
+    height: 4px;
   }
 `;
 

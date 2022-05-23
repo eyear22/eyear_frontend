@@ -12,7 +12,6 @@ const Container = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  margin-top: 50px;
 `;
 
 const Button = styled.button`
