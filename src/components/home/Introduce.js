@@ -8,7 +8,7 @@ import Layout from './Layout';
 
 const Introduce = () => {
   return (
-    <Layout title="아이어 소개">
+    <Layout title="아이어 소개" id="introduce">
       <Desc>
         아이어는 요양병원을 이용하는 노인과 가족들간의 면회 상황에서 노인들이 겪는 불편함을 발견하면서 시작됐습니다.
       </Desc>
@@ -55,6 +55,7 @@ const Introduce = () => {
 
 const Desc = styled.div`
   display: flex;
+  font-size: 18px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -64,6 +65,7 @@ const Desc = styled.div`
 const Wrap = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
   ${mobile({ flexDirection: 'column' })}
 `;
 

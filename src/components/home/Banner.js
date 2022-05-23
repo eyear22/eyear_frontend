@@ -17,11 +17,11 @@ const Banner = () => {
 
 const Container = styled.div`
   width: 100vw;
-  height: 50vh;
+  height: 500px;
   position: relative;
   margin-top: 70px;
   background-color: black;
-  ${mobile({ height: '40vh' })}
+  ${mobile({ height: 350 })}
 `;
 
 const Image = styled.img`
@@ -35,6 +35,7 @@ const TextDiv = styled.div`
   position: absolute;
   top: 20%;
   left: 100px;
+  ${mobile({ left: 40 })}
 `;
 
 const SubTitle = styled.h2`
@@ -50,7 +51,7 @@ const Title = styled.h1`
 `;
 
 const Button = styled.button`
-  margin-top: 10vh;
+  margin-top: 80px;
   color: white;
   padding: 10px;
   background-color: transparent;

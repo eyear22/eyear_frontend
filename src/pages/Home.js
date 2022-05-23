@@ -11,7 +11,7 @@ const Home = () => {
       <Header />
       <Banner />
       <Introduce />
-      <Layout title="문의하기">
+      <Layout title="문의하기" background="#DCEBF5">
         <div>Home</div>
       </Layout>
       <Footer />
@@ -22,7 +22,5 @@ const Home = () => {
 const Container = styled.div`
   background-color: #f5f5f5;
 `;
-
-const Desc = styled.div``;
 
 export default Home;
