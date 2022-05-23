@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 import Banner from '../components/home/Banner';
+import Contact from '../components/home/Contact';
 import Footer from '../components/home/Footer';
 import Header from '../components/home/Header';
-import Layout from '../components/home/Layout';
+import Introduce from '../components/home/Introduce';
 
 const Home = () => {
   return (
     <Container>
       <Header />
       <Banner />
-      <Layout title="아이어 소개">
-        <div>Home</div>
-      </Layout>
-      <Layout title="문의하기">
-        <div>Home</div>
-      </Layout>
+      <Introduce />
+      <Contact />
       <Footer />
     </Container>
   );

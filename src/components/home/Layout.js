@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, background, children }) => {
   return (
-    <Container>
+    <Container background={background}>
       <Title>{title}</Title>
       <Wrap>{children}</Wrap>
     </Container>
@@ -10,17 +11,18 @@ const Layout = ({ title, children }) => {
 };
 
 const Container = styled.div`
-  padding: 5vw 0;
+  padding-top: 100px;
+  background-color: ${(props) => props.background || '#f5f5f5'};
 `;
 
 const Title = styled.h1`
-  padding-left: 10vw;
-  text-decoration: underline #ba2b0c;
-  text-underline-offset: 8px;
+  text-align: center;
+  font-size: 34px;
+  ${mobile({ fontSize: 24 })}
 `;
 
 const Wrap = styled.div`
-  padding: 40px 0;
+  padding: 20px 0;
 `;
 
 export default Layout;

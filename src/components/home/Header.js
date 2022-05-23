@@ -17,6 +17,10 @@ const Header = () => {
     window.location.href = '/post';
   };
 
+  // const goIntroduce = () => {
+  //   window.scrollTo(0, 500);
+  // };
+
   return (
     <Container>
       <Wrap>
