@@ -1,5 +1,5 @@
-import AuthLayout from '../components/common/AuthLayout';
-import LoginTabMenu from '../components/common/LoginTabMenu';
+import AuthLayout from '../components/login/AuthLayout';
+import LoginTabMenu from '../components/login/LoginTabMenu';
 import Input from '../components/login/Input';
 import useInput from '../utils/useInput';
 

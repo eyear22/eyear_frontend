@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import AuthLayout from '../components/common/AuthLayout';
+import JoinLayout from '../components/common/JoinLayout';
 
 const JoinBusiness = () => {
-  return <AuthLayout title="기업 회원가입"></AuthLayout>;
+  return <JoinLayout title="기업 회원가입" num="2"></JoinLayout>;
 };
 
 export default JoinBusiness;
