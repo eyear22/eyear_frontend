@@ -20,6 +20,10 @@ const JoinUser = () => {
   const password = useInput('');
   const passwordCheck = useInput('');
 
+  const goJoinDone = () => {
+    window.location.replace('/join/done');
+  };
+
   // 회원가입 함수
   const join = () => {
     console.log('병원이름', hospitalName.value);
@@ -30,6 +34,7 @@ const JoinUser = () => {
     console.log('성별', sex.value);
     console.log('이름', username.value);
     console.log('비밀번호', password.value);
+    goJoinDone();
   };
 
   return (
@@ -62,14 +67,5 @@ const JoinUser = () => {
     </JoinLayout>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Wrap = styled.div`
-  border: 1px solid #626a61;
-  display: flex;
-`;
 
 export default JoinUser;

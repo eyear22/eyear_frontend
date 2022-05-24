@@ -45,7 +45,7 @@ const Right = styled.div`
   ${mobile({ textAlign: 'center', marginTop: 10 })}
 `;
 
-const Desc = styled.text`
+const Desc = styled.div`
   color: #737272;
   font-size: 16px;
 `;

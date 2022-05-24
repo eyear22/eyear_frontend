@@ -9,6 +9,7 @@ import JoinUser from './pages/JoinUser';
 import JoinBusiness from './pages/JoinBusiness';
 import Detail from './pages/Detail';
 import Receive from './pages/Receive';
+import JoinDone from './pages/JoinDone';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/join" element={<Join />} />
         <Route path="/join/user" element={<JoinUser />} />
         <Route path="/join/business" element={<JoinBusiness />} />
+        <Route path="/join/done" element={<JoinDone />} />
       </Routes>
     </BrowserRouter>
   );

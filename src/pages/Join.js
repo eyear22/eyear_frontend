@@ -6,21 +6,15 @@ import JoinLayout from '../components/common/JoinLayout';
 
 const Join = () => {
   const goJoinUser = () => {
-    window.location.href = '/join/user';
+    window.location.replace('/join/user');
   };
 
   const goJoinBusiness = () => {
-    window.location.href = '/join/business';
+    window.location.replace('/join/business');
   };
 
   return (
     <JoinLayout title="회원가입" num="1">
-      {/* <Center>
-        <BigDesc>
-          <StyledText>아이어</StyledText>에 오신것을 환영합니다.
-        </BigDesc>
-        <SmallDesc>아이어에서 제공하는 다앙햔 서비스를 이용해보세요.</SmallDesc>
-      </Center> */}
       <Bottom>
         <SelectBox Img={UserIcon} title="개인 회원" desc="영상을 주고 받고 싶다면?" onClick={goJoinUser} />
         <SelectBox Img={BusinessIcon} title="기업 회원" desc="병원을 등록하고 관리하려면?" onClick={goJoinBusiness} />
