@@ -117,7 +117,7 @@ const FullInput = styled.input`
   ::-ms-input-placeholder {
     color: #d9d9d9;
   }
-  ${mobile({ width: 130 })}
+  ${mobile({ width: 240 })}
 `;
 
 const RightButton = styled.button`
@@ -150,7 +150,7 @@ const Select = styled.select`
   &:focus {
     outline: none;
   }
-  ${mobile({ width: 130 })}
+  ${mobile({ width: 240 })}
 `;
 
 export default FirstInput;
