@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
 const JoinCircle = ({ num }) => {
   return (
@@ -71,6 +72,7 @@ const Line = styled.div`
 const Desc = styled.div`
   color: #889287;
   margin-top: 20px;
+  ${mobile({ fontSize: 14 })}
 `;
 
 export default JoinCircle;

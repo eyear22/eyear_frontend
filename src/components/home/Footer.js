@@ -19,7 +19,7 @@ const Container = styled.div`
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 100px 0;
+  padding: 60px 0;
   background-color: #fff;
 `;
 
