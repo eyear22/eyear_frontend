@@ -84,7 +84,7 @@ const Receive = () => {
   return (
     <Layout title="받은 편지" width={900}>
       <FilterSelect filter={filter} />
-      <MobileTable list={list.value} />
+      {/* <MobileTable list={list.value} /> */}
       <LetterTable list={list.value} />
       <Wrap>
         <StyledPagination count={10} shape="rounded" />
