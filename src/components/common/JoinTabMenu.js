@@ -24,35 +24,16 @@ const JoinTabMenu = ({ idx, title1, title2, Component1, Component2 }) => {
 
   return (
     <Container>
-      <Wrap>
-        <TopBar>
-          {tabMenu.map((section, index) => {
-            return section.title;
-          })}
-        </TopBar>
-      </Wrap>
       <InputArea>{tabMenu[idx.value].content}</InputArea>
     </Container>
   );
 };
 
 const Container = styled.div`
-  margin-top: 40px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const Wrap = styled.div`
-  border: 1px solid #889287;
-  width: 500px;
-  ${mobile({ width: '300px' })}
-`;
-
-const TopBar = styled.div`
-  display: flex;
-  cursor: pointer;
 `;
 
 const TitleContainer = styled.div`
@@ -69,8 +50,10 @@ const Title = styled.text`
 `;
 
 const InputArea = styled.div`
-  margin-top: 30px;
-  border: 1px solid #889287;
+  border-top: 1px solid #626a61;
+  border-left: 1px solid #889287;
+  border-right: 1px solid #889287;
+  border-bottom: 1px solid #889287;
   width: 500px;
   ${mobile({ width: '300px' })}
 `;

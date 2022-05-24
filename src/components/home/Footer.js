@@ -30,6 +30,7 @@ const Line = styled.div`
 `;
 
 const Text = styled.div`
+  color: #3e3e3e;
   width: 80vw;
   margin-top: 5px;
   font-size: 14px;

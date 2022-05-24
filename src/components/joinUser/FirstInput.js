@@ -1,48 +1,79 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const FirstInput = ({ activeIndex }) => {
+const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patientBirth, relation }) => {
+  // 병원 검색(현재는 임의 값)
+  const searchHospital = () => {
+    hospitalName.onChange('서울요양병원');
+  };
+
+  // 환자 확인(현재는 임의 값)
+  const checkPatient = () => {
+    if (patientId.value == '') alert('환자의 고유번호를 입력해주세요.');
+    else {
+      patientName.onChange('김대식');
+      patientBirth.onChange('1968.08.12');
+    }
+  };
+
+  // 필터 변경
+  const changeFilter = (e) => {
+    relation.onChange(e.target.value);
+  };
+
+  // null값이 있는지 확인
+  const checkNull =
+    hospitalName.value == '' || patientId.value == '' || patientName.value == '' || patientBirth.value == '';
+
   // 다음 버튼 눌렀을 때
-  const onClick = () => activeIndex.onChange(1);
+  const onClick = () => {
+    activeIndex.onChange(1);
+  };
+
   return (
     <Container>
       <Wrap>
         <Title>병원 이름</Title>
         <Right>
-          <Input placeholder="병원을 입력해주세요." />
-          <RightButton>병원검색</RightButton>
+          <Input disabled value={hospitalName.value} placeholder="병원을 입력해주세요." />
+          <RightButton onClick={() => searchHospital()}>병원검색</RightButton>
         </Right>
       </Wrap>
       <Wrap>
         <Title>환자 고유 번호</Title>
         <Right>
-          <Input placeholder="환자 고유 번호를 입력해주세요." />
-          <RightButton>환자확인</RightButton>
+          <Input
+            value={patientId.value}
+            onChange={(e) => patientId.onChange(e.target.value)}
+            placeholder="환자 고유 번호를 입력해주세요."
+          />
+          <RightButton onClick={() => checkPatient()}>환자확인</RightButton>
         </Right>
       </Wrap>
       <Wrap>
         <Title>환자 이름</Title>
-        <FullInput placeholder="환자 이름을 입력해주세요." />
-      </Wrap>
-      <Wrap>
-        <Title>성별</Title>
-        <FullInput placeholder="환자 이름을 입력해주세요." />
+        <FullInput disabled value={patientName.value} placeholder="환자 이름을 입력해주세요." />
       </Wrap>
       <Wrap>
         <Title>환자 생년월일</Title>
-        <FullInput placeholder="환자 이름을 입력해주세요." />
+        <FullInput disabled value={patientBirth.value} placeholder="환자의 생년월일을 입력해주세요." />
       </Wrap>
       <Wrap>
         <Title>환자와의 관계</Title>
-        <Input placeholder="환자 이름을 입력해주세요." />
+        <Select placeholder="환자와의 관계를 입력해주세요." onChange={changeFilter}>
+          <option value="sun">아들</option>
+          <option value="daughter">딸</option>
+        </Select>
       </Wrap>
-      <NextButton onClick={() => onClick()}>다음</NextButton>
+      <NextButton disabled={checkNull} onClick={() => onClick()}>
+        다음
+      </NextButton>
     </Container>
   );
 };
 
 const Container = styled.div`
-  padding: 18px;
+  padding: 24px 18px;
   display: flex;
   flex-direction: column;
 `;
@@ -57,7 +88,7 @@ const Wrap = styled.div`
   ${mobile({ flexDirection: 'column', alignItems: 'normal' })}
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   margin-right: 20px;
 `;
 
@@ -106,6 +137,20 @@ const NextButton = styled.button`
   background-color: #626a61;
   color: #fff;
   padding: 10px;
+  &:disabled {
+    cursor: default;
+    background-color: #d8d8d8;
+  }
+`;
+
+const Select = styled.select`
+  padding: 10px;
+  width: 332px;
+  border: 1px solid #d7d7d7;
+  &:focus {
+    outline: none;
+  }
+  ${mobile({ width: 130 })}
 `;
 
 export default FirstInput;
