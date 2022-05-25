@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
+import CustomSelect from './CustomSelect';
+
+const hospitals = [
+  { id: '0', name: '서울요양병원' },
+  { id: '1', name: '인천참사랑요양병원' },
+];
+
+const relations = [
+  { id: '0', name: '아들' },
+  { id: '1', name: '딸' },
+];
 
 const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patientBirth, relation }) => {
   // 병원 검색(현재는 임의 값)
@@ -23,7 +34,12 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
 
   // null값이 있는지 확인
   const checkNull =
-    hospitalName.value == '' || patientId.value == '' || patientName.value == '' || patientBirth.value == '';
+    hospitalName.value == '' ||
+    hospitalName.value == null ||
+    patientId.value == '' ||
+    patientName.value == '' ||
+    patientBirth.value == '' ||
+    patientBirth.value == null;
 
   // 다음 버튼 눌렀을 때
   const onClick = () => {
@@ -34,10 +50,7 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
     <Container>
       <Wrap>
         <Title>병원 이름</Title>
-        <Right>
-          <Input disabled value={hospitalName.value} placeholder="병원을 입력해주세요." />
-          <RightButton onClick={() => searchHospital()}>병원검색</RightButton>
-        </Right>
+        <CustomSelect data={hospitals} onChange={hospitalName.onChange} />
       </Wrap>
       <Wrap>
         <Title>환자 고유 번호</Title>
@@ -60,10 +73,7 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
       </Wrap>
       <Wrap>
         <Title>환자와의 관계</Title>
-        <Select placeholder="환자와의 관계를 입력해주세요." onChange={changeFilter}>
-          <option value="sun">아들</option>
-          <option value="daughter">딸</option>
-        </Select>
+        <CustomSelect data={relations} onChange={relation.onChange} />
       </Wrap>
       <NextButton disabled={checkNull} onClick={() => onClick()}>
         다음
@@ -141,16 +151,6 @@ const NextButton = styled.button`
     cursor: default;
     background-color: #d8d8d8;
   }
-`;
-
-const Select = styled.select`
-  padding: 10px;
-  width: 332px;
-  border: 1px solid #d7d7d7;
-  &:focus {
-    outline: none;
-  }
-  ${mobile({ width: 240 })}
 `;
 
 export default FirstInput;
