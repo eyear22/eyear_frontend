@@ -47,7 +47,7 @@ const Container = styled.div`
 
 const Wrap = styled.div`
   border: 1px solid #889287;
-  width: 400px;
+  width: 500px;
   ${mobile({ width: '300px' })}
 `;
 
@@ -57,14 +57,14 @@ const TopBar = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  width: 200px;
+  width: 250px;
   text-align: center;
   padding: 12px 0;
   ${mobile({ width: '150px' })}
   background-color: ${(props) => (props.active ? '#626a61' : '#fff')};
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   color: ${(props) => (props.active ? '#fff' : '#889287')};
 `;
 
