@@ -1,6 +1,6 @@
 import useInput from '../utils/useInput';
 import { Pagination } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import FilterSelect from '../components/receive/FilterSelect';
 import LetterTable from '../components/receive/LetterTable';

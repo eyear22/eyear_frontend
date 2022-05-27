@@ -22,7 +22,7 @@ const Container = styled.div`
 const TextArea = styled.textarea`
   width: 100%;
   font-size: 16px;
-  min-height: 400px;
+  min-height: 300px;
   border: none;
   -webkit-appearance: none;
   line-height: 160%;

@@ -18,13 +18,13 @@ const Layout = ({ title, width, children }) => {
 
 const Container = styled.div`
   margin-top: 70px;
-  padding: 70px 0;
+  padding: 60px 0;
   ${mobile({ padding: '20px 10vw' })}
   background-color: #f9f9fa;
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 70vh;
+  min-height: 50vh;
 `;
 
 const Title = styled.div`

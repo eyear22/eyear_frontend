@@ -16,6 +16,7 @@ const Post = () => {
   const file = useInput([]);
   const content = useInput('');
 
+  // 편지 보내기 버튼 클릭
   const onClick = async () => {
     let formData = new FormData();
     for (let i = 0; i < file.value.length; i++) {
@@ -26,24 +27,21 @@ const Post = () => {
     formData.append('pat_id', 0);
     formData.append('receiver', '아이어');
 
-    // post
-    // axios({
-    //   method: 'post',
-    //   url: 'http://localhost:5000/business/post',
-    //   headers: { 'Content-Type': 'multipart/form-data' },
-    //   data: formData,
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //     if (res.data == 'ok') {
-    //       console.log('성공');
-    //     } else {
-    //       alert('비디오 업로드 실패');
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log('실패');
-    //   });
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/business/post',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      data: formData,
+    })
+      .then((res) => {
+        if (res.data == 'ok') {
+          console.log('성공');
+          window.location.replace('/post/success');
+        }
+      })
+      .catch((err) => {
+        console.log('실패');
+      });
   };
 
   return (
