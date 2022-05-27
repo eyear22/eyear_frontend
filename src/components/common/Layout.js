@@ -29,7 +29,7 @@ const Container = styled.div`
 
 const Title = styled.div`
   width: ${(props) => (props.width || 800) + 'px'};
-  font-size: 32px;
+  font-size: 34px;
   text-align: center;
   font-weight: bold;
   ${mobile({ width: '100%' })}

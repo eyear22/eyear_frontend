@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import Img from '../../assets/img_background.jpg';
 import { mobile } from '../../utils/responsive';
 
-const Banner = () => {
+const Banner = ({ goContact }) => {
   return (
     <Container>
       <Image src={Img} alt="homeImage" />
       <TextDiv>
         <SubTitle>더 뚜렷한 요양병원 소통 플랫폼</SubTitle>
         <Title>아이어</Title>
-        <Button>문의하기</Button>
+        <Button onClick={goContact}>문의하기</Button>
       </TextDiv>
     </Container>
   );
@@ -61,7 +61,7 @@ const Button = styled.button`
   font-size: 18px;
   cursor: pointer;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.04);
   }
 `;
 

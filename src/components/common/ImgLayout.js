@@ -22,7 +22,7 @@ const Title = styled.div`
   top: 150px;
   left: 50%;
   color: #fff;
-  font-size: 32px;
+  font-size: 34px;
   text-align: center;
   font-weight: bold;
   transform: translate(-50%, 0);
