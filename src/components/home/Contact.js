@@ -23,5 +23,4 @@ const Container = styled.div`
   margin-bottom: 40px;
   ${mobile({ flexDirection: 'column', alignItems: 'center' })}
 `;
-
 export default Contact;

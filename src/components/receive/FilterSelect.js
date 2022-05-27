@@ -39,6 +39,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin: 10px 0;
 `;
 
 const Select = styled.select`
