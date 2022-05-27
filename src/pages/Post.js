@@ -18,8 +18,8 @@ const Post = () => {
 
   const onClick = async () => {
     let formData = new FormData();
-    for (let i = 0; i < file.length; i++) {
-      formData.append('many', file[i]);
+    for (let i = 0; i < file.value.length; i++) {
+      formData.append('many', file.value[i]);
     }
     formData.append('title', title.value);
     formData.append('content', content.value);
@@ -27,23 +27,23 @@ const Post = () => {
     formData.append('receiver', '아이어');
 
     // post
-    axios({
-      method: 'post',
-      url: 'http://localhost:5000/business/post',
-      headers: { 'Content-Type': 'multipart/form-data' },
-      data: formData,
-    })
-      .then((res) => {
-        console.log(res);
-        if (res.data == 'ok') {
-          console.log('성공');
-        } else {
-          alert('비디오 업로드 실패');
-        }
-      })
-      .catch((err) => {
-        console.log('실패');
-      });
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:5000/business/post',
+    //   headers: { 'Content-Type': 'multipart/form-data' },
+    //   data: formData,
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //     if (res.data == 'ok') {
+    //       console.log('성공');
+    //     } else {
+    //       alert('비디오 업로드 실패');
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log('실패');
+    //   });
   };
 
   return (
