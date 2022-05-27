@@ -42,8 +42,8 @@ const Table = styled.table`
   width: 100%;
   text-align: center;
   border-collapse: collapse;
-  margin-top: 10px;
-  font-size: 14px;
+  font-size: 16px;
+  background-color: #fff;
 `;
 
 const THead = styled.thead`
@@ -57,10 +57,8 @@ const THeadTd = styled.td`
 `;
 
 const TBody = styled.tbody`
-  font-size: 14px;
-  background-color: #fff;
+  font-size: 16px;
   border-top: 2.2px solid #889287;
-  border-bottom: 2.2px solid #889287;
 `;
 
 const Tr = styled.tr`

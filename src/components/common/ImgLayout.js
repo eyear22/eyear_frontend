@@ -3,12 +3,13 @@ import { mobile } from '../../utils/responsive';
 import Footer from '../home/Footer';
 import Header from '../home/Header';
 
-const Layout = ({ title, width, children }) => {
+const ImgLayout = ({ title, src, width, children }) => {
   return (
     <>
       <Header />
+      <Title width={width}>{title}</Title>
+      <Image src={src} />
       <Container>
-        <Title width={width}>{title}</Title>
         <Wrap width={width}>{children}</Wrap>
       </Container>
       <Footer />
@@ -16,23 +17,25 @@ const Layout = ({ title, width, children }) => {
   );
 };
 
+const Title = styled.div`
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  color: #fff;
+  font-size: 34px;
+  text-align: center;
+  font-weight: bold;
+  transform: translate(-50%, 0);
+  ${mobile({ width: '100%' })}
+`;
+
 const Container = styled.div`
-  margin-top: 70px;
-  padding: 60px 0;
   ${mobile({ padding: '20px 10vw' })}
   background-color: #f9f9fa;
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 50vh;
-`;
-
-const Title = styled.div`
-  width: ${(props) => (props.width || 800) + 'px'};
-  font-size: 34px;
-  text-align: center;
-  font-weight: bold;
-  ${mobile({ width: '100%' })}
+  min-height: 70vh;
 `;
 
 const Wrap = styled.div`
@@ -40,4 +43,11 @@ const Wrap = styled.div`
   ${mobile({ width: '100%' })}
 `;
 
-export default Layout;
+const Image = styled.img`
+  margin-top: 70px;
+  width: 100vw;
+  height: 200px;
+  object-fit: cover;
+`;
+
+export default ImgLayout;

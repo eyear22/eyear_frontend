@@ -9,6 +9,7 @@ import JoinUser from './pages/JoinUser';
 import JoinBusiness from './pages/JoinBusiness';
 import Detail from './pages/Detail';
 import Receive from './pages/Receive';
+import PostSuccess from './pages/PostSuccess';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/video" element={<Video />} />
         <Route path="/post" element={<Post />} />
+        <Route path="/post/success" element={<PostSuccess />} />
         <Route path="/receive" element={<Receive />} />
         <Route path="/videoDetail" element={<VideoDetail />} />
         <Route path="/detail/:postId" element={<Detail />} />

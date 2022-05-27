@@ -6,7 +6,7 @@ import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ goIntroduce }) => {
   const [toggle, setToggle] = useState(false);
 
   const goHome = () => {
@@ -17,7 +17,13 @@ const Header = () => {
     window.location.href = '/post';
   };
 
+  const goIntroduceSection = () => {
+    window.location.href = '/';
+    goIntroduce();
+  };
+
   // const goIntroduce = () => {
+  //   window.location.href = '/';
   //   window.scrollTo(0, 500);
   // };
 
@@ -26,7 +32,7 @@ const Header = () => {
       <Wrap>
         <Image src={Logo} onClick={goHome} />
         <Center toggle={toggle}>
-          <MenuItem>소개</MenuItem>
+          <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
           <StyledLink to="/receive">
             <MenuItem>받은편지</MenuItem>
           </StyledLink>
