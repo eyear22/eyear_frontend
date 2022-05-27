@@ -18,7 +18,9 @@ const Post = () => {
 
   const onClick = async () => {
     let formData = new FormData();
-    formData.append('many', file);
+    for (let i = 0; i < file.length; i++) {
+      formData.append('many', file[i]);
+    }
     formData.append('title', title.value);
     formData.append('content', content.value);
     formData.append('pat_id', 0);
