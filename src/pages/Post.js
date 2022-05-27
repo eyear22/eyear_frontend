@@ -8,6 +8,7 @@ import ContentInput from '../components/post/ContentInput';
 import TitleInput from '../components/post/TitleInput';
 import ReceiverInput from '../components/post/ReceiverInput';
 import FileInput from '../components/post/FileInput';
+import axios from 'axios';
 
 const Post = () => {
   const title = useInput('');
@@ -16,22 +17,31 @@ const Post = () => {
   const content = useInput('');
 
   const onClick = async () => {
-    // try {
-    //   const res = await publicRequest.post('/post', {
-    //     title: title.value,
-    //     content: content.value,
-    //     from: '보내는사람',
-    //     to: receiver.value,
-    //     check: false,
-    //   });
-    //   console.log(res);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    console.log('title', title.value);
-    console.log('receiver', receiver.value);
-    console.log('file', file.value);
-    console.log('content', content.value);
+    let formData = new FormData();
+    formData.append('many', file);
+    formData.append('title', title.value);
+    formData.append('content', content.value);
+    formData.append('pat_id', 0);
+    formData.append('receiver', '아이어');
+
+    // post
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/business/post',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      data: formData,
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.data == 'ok') {
+          console.log('성공');
+        } else {
+          alert('비디오 업로드 실패');
+        }
+      })
+      .catch((err) => {
+        console.log('실패');
+      });
   };
 
   return (
