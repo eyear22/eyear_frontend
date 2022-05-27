@@ -16,6 +16,7 @@ const SelectBox = ({ Img, title, desc, onClick }) => {
 };
 
 const Container = styled.div`
+  background-color: #fff;
   display: flex;
   align-items: center;
   border: 1px solid #889287;
@@ -25,12 +26,9 @@ const Container = styled.div`
   height: 160px;
   margin-bottom: 20px;
   cursor: pointer;
-  box-shadow: 2px 2px 4px 2px #dfdfdf;
   ${mobile({ width: 280, height: 200, flexDirection: 'column', justifyContent: 'center' })}
   &:hover {
-    width: 502px;
-    height: 162px;
-    ${mobile({ width: 282, height: 202 })}
+    background-color: #f9f9fa;
   }
 `;
 
@@ -47,7 +45,7 @@ const Right = styled.div`
   ${mobile({ textAlign: 'center', marginTop: 10 })}
 `;
 
-const Desc = styled.text`
+const Desc = styled.div`
   color: #737272;
   font-size: 16px;
 `;

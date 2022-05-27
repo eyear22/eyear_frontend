@@ -19,7 +19,7 @@ const Container = styled.div`
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 100px 0;
+  padding: 60px 0;
   background-color: #fff;
 `;
 
@@ -30,6 +30,7 @@ const Line = styled.div`
 `;
 
 const Text = styled.div`
+  color: #3e3e3e;
   width: 80vw;
   margin-top: 5px;
   font-size: 14px;

@@ -29,7 +29,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   padding: 0 5px;
   ${mobile({ fontSize: 10 })}
 `;
