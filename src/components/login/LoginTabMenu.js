@@ -39,13 +39,13 @@ const LoginTabMenu = ({ idx, Component1, Component2 }) => {
 
 const Container = styled.div`
   margin-top: 40px;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Wrap = styled.div`
+  background-color: #fff;
   border: 1px solid #889287;
   width: 500px;
   ${mobile({ width: '300px' })}

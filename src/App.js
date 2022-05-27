@@ -1,5 +1,4 @@
 import Home from './pages/Home';
-import Video from './pages/Video';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Post from './pages/Post';
 import VideoDetail from './pages/VideoDetail';
@@ -17,7 +16,6 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/video" element={<Video />} />
         <Route path="/post" element={<Post />} />
         <Route path="/post/success" element={<PostSuccess />} />
         <Route path="/receive" element={<Receive />} />

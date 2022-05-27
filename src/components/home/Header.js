@@ -4,48 +4,33 @@ import Logo from '../../assets/logo_header.png';
 import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useGoHome, useGoLogin, useGoPost, useGoReceive } from '../../hooks/navigateHooks';
 
 const Header = ({ goIntroduce }) => {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
 
-  const goHome = () => {
-    window.location.href = '/';
-  };
-  // 편지 쓰기 페이지로 이동
-  const goPost = () => {
-    window.location.href = '/post';
-  };
-
   const goIntroduceSection = () => {
-    window.location.href = '/';
-    goIntroduce();
+    navigate('/');
+    // goIntroduce();
   };
-
-  // const goIntroduce = () => {
-  //   window.location.href = '/';
-  //   window.scrollTo(0, 500);
-  // };
 
   return (
     <Container>
       <Wrap>
-        <Image src={Logo} onClick={goHome} />
+        <Image src={Logo} onClick={useGoHome()} />
         <Center toggle={toggle}>
           <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
-          <StyledLink to="/receive">
-            <MenuItem>받은편지</MenuItem>
-          </StyledLink>
+          <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
           <MenuItem>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
-        <StyledLink to="/login">
-          <AuthText>로그인</AuthText>
-        </StyledLink>
-        <Button onClick={goPost}>편지쓰기</Button>
+        <AuthText onClick={useGoLogin()}>로그인</AuthText>
+        <Button onClick={useGoPost()}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>
         <Menu sx={{ fontSize: 30 }} />
@@ -130,11 +115,6 @@ const Hamburger = styled.div`
   position: absolute;
   right: 20px;
   ${tablet({ display: 'block' })}
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #000;
 `;
 
 export default Header;

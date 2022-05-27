@@ -9,8 +9,11 @@ import TitleInput from '../components/post/TitleInput';
 import ReceiverInput from '../components/post/ReceiverInput';
 import FileInput from '../components/post/FileInput';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Post = () => {
+  const navigate = useNavigate();
+
   const title = useInput('');
   const receiver = useInput(0);
   const file = useInput([]);
@@ -36,7 +39,7 @@ const Post = () => {
       .then((res) => {
         if (res.data == 'ok') {
           console.log('성공');
-          window.location.replace('/post/success');
+          navigate('/post/success', { replace: true });
         }
       })
       .catch((err) => {

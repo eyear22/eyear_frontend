@@ -1,16 +1,9 @@
 import styled from 'styled-components';
 import JoinLayout from '../components/common/JoinLayout';
 import DoneIcon from '../assets/icon_joinDone.png';
+import { useGoHome, useGoLogin } from '../hooks/navigateHooks';
 
 const JoinDone = () => {
-  const goHome = () => {
-    window.location.href = '/';
-  };
-
-  const goLogin = () => {
-    window.location.href = '/login';
-  };
-
   return (
     <JoinLayout title="회원가입" num="3">
       <Container>
@@ -18,8 +11,8 @@ const JoinDone = () => {
         <Title>아이어 회원가입이 완료되었습니다.</Title>
         <SubTitle>아이어에서 제공하는 다앙햔 서비스를 이용해보세요.</SubTitle>
         <Wrap>
-          <HomeButton onClick={goHome}>홈으로</HomeButton>
-          <LoginButton onClick={goLogin}>로그인</LoginButton>
+          <HomeButton onClick={useGoHome()}>홈으로</HomeButton>
+          <LoginButton onClick={useGoLogin()}>로그인</LoginButton>
         </Wrap>
       </Container>
     </JoinLayout>

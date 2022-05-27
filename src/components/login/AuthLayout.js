@@ -20,7 +20,7 @@ const Wrap = styled.div`
   margin-top: 70px;
   padding: 50px 0;
   ${tablet({ padding: '20px 10vw' })}
-  background-color: #fff;
+  background-color: #f9f9fa;
 `;
 
 const Title = styled.h1`

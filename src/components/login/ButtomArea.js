@@ -1,17 +1,15 @@
 import styled from 'styled-components';
+import { useGoJoin } from '../../hooks/navigateHooks';
 import { mobile } from '../../utils/responsive';
 
 const ButtomArea = () => {
-  const goJoin = () => {
-    window.location.href = '/join';
-  };
   return (
     <Container>
       <Wrap>
         <Title>아직 아이어 회원이 아니신가요?</Title>
         <SubTitle>회원가입하고 다양한 서비스를 이용해보세요.</SubTitle>
       </Wrap>
-      <Button onClick={goJoin}>회원가입</Button>
+      <Button onClick={useGoJoin()}>회원가입</Button>
     </Container>
   );
 };
