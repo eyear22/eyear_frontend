@@ -1,7 +1,7 @@
-import AuthLayout from '../components/login/AuthLayout';
 import LoginTabMenu from '../components/login/LoginTabMenu';
 import Input from '../components/login/Input';
 import useInput from '../utils/useInput';
+import Layout from '../components/common/Layout';
 
 const Login = () => {
   const activeIndex = useInput(0);
@@ -9,13 +9,13 @@ const Login = () => {
   const password = useInput('');
 
   return (
-    <AuthLayout title="로그인">
+    <Layout title="로그인">
       <LoginTabMenu
         idx={activeIndex}
         Component1={<Input id={id} password={password} />}
         Component2={<Input id={id} password={password} />}
       />
-    </AuthLayout>
+    </Layout>
   );
 };
 

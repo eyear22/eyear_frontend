@@ -26,8 +26,8 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #404040;
   text-align: center;
+  font-size: 34px;
 `;
 
 export default JoinLayout;
