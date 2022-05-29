@@ -5,7 +5,7 @@ import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
-import { useGoHome, useGoLogin, useGoPost, useGoReceive } from '../../hooks/navigateHooks';
+import { useGoHome, useGoLogin, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 
 const Header = ({ goIntroduce }) => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Header = ({ goIntroduce }) => {
         <Center toggle={toggle}>
           <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
           <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
-          <MenuItem>보낸편지</MenuItem>
+          <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
           <MenuItem>환자관리</MenuItem>
           <MenuItem>공지사항</MenuItem>
         </Center>
@@ -71,8 +71,6 @@ const Center = styled.div`
 `;
 
 const MenuItem = styled.div`
-  font-size: 16px;
-  color: #3e3e3e;
   cursor: pointer;
   margin-right: 20px;
   &:hover {
@@ -87,8 +85,6 @@ const Right = styled.div`
 `;
 
 const AuthText = styled.div`
-  font-size: 16px;
-  color: #3e3e3e;
   cursor: pointer;
   margin-right: 20px;
   &:hover {

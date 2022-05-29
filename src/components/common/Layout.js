@@ -6,12 +6,10 @@ import Header from '../home/Header';
 const Layout = ({ title, width, children }) => {
   return (
     <>
-      <Header />
       <Container>
         <Title width={width}>{title}</Title>
         <Wrap width={width}>{children}</Wrap>
       </Container>
-      <Footer />
     </>
   );
 };
@@ -24,7 +22,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 50vh;
 `;
 
 const Title = styled.div`

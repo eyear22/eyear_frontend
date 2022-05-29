@@ -7,13 +7,11 @@ import JoinCircle from './JoinCircle';
 const JoinLayout = ({ title, num, children }) => {
   return (
     <>
-      <Header />
       <Wrap>
         <Title>{title}</Title>
         <JoinCircle num={num} />
         {children}
       </Wrap>
-      <Footer />
     </>
   );
 };

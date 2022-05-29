@@ -6,13 +6,11 @@ import Header from '../home/Header';
 const ImgLayout = ({ title, src, width, children }) => {
   return (
     <>
-      <Header />
       <Title width={width}>{title}</Title>
       <Image src={src} />
       <Container>
         <Wrap width={width}>{children}</Wrap>
       </Container>
-      <Footer />
     </>
   );
 };
@@ -45,7 +43,7 @@ const Wrap = styled.div`
 
 const Image = styled.img`
   margin-top: 70px;
-  width: 100vw;
+  width: 100%;
   height: 200px;
   object-fit: cover;
 `;

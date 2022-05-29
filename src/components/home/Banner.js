@@ -16,7 +16,7 @@ const Banner = ({ goContact }) => {
 };
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 500px;
   position: relative;
   margin-top: 70px;

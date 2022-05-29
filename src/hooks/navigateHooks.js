@@ -35,3 +35,8 @@ export const useGoReceive = () => {
   const navigate = useNavigate();
   return useCallback(() => navigate(`/receive`), []);
 };
+
+export const useGoSend = () => {
+  const navigate = useNavigate();
+  return useCallback(() => navigate(`/send`), []);
+};

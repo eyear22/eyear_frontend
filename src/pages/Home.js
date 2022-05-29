@@ -25,7 +25,6 @@ const Home = () => {
       <Introduce />
       <div ref={contactRef} />
       <Contact />
-      <Footer />
     </Container>
   );
 };
