@@ -27,7 +27,7 @@ const Post = () => {
     }
     formData.append('title', title.value);
     formData.append('content', content.value);
-    formData.append('pat_id', 0);
+    formData.append('pat_id', '629457ec2786d169073c5aea');
     formData.append('receiver', '아이어');
 
     axios({

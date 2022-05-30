@@ -5,51 +5,40 @@ import { useEffect, useState } from 'react';
 import ButtonArea from '../components/detail/ButtonArea';
 import Content from '../components/detail/Content';
 import VideoArea from '../components/detail/VideoArea';
-import UserIcon from '../assets/icon_user.png';
-
-const LetterData = [
-  {
-    post_id: 2,
-    title: '손자 금쪽이 걸음마 영상',
-    content: '',
-    img: [],
-    file: ['파일1.mp4', '파일2.png', '파일3.png'],
-    from: '',
-    to: '',
-  },
-];
+import UserIcon from '../assets/icon_from.png';
 
 const Detail = () => {
-  const [data, setData] = useState(LetterData);
-  const [videoDetail, setVideoDetail] = useState([]);
+  const post_id = 1;
+  const [data, setData] = useState([]);
 
-  // 비디오 불러오기
+  // 상세 데이터 불러오기
   useEffect(() => {
-    const videoRequest = async () => {
-      const res = await publicRequest.post('/video/getVideoDetail', {
-        post_id: 2,
-      });
-      setVideoDetail(res.data.video);
+    const detailRequest = async () => {
+      const res = await publicRequest.get(`/business/detail/${post_id}`);
+      console.log(res.data);
+      setData(res.data);
     };
-    videoRequest();
+    detailRequest();
   }, []);
 
-  return (
-    <Layout title="수영이 걸음마 영상" width={800}>
-      <Container>
-        <Info>
-          <From>
-            <Icon src={UserIcon} />
-            김수영, 딸
-          </From>
-          <Date>2022.05.09</Date>
-        </Info>
-        {videoDetail.post_id && <VideoArea videoId={videoDetail.video} />}
-        <Content img={LetterData.img} writing={LetterData.content} />
-        <ButtonArea />
-      </Container>
-    </Layout>
-  );
+  if (data.length != 0) {
+    return (
+      <Layout title={data.detail.title} width={800}>
+        <Container>
+          <Info>
+            <From>
+              <Icon src={UserIcon} />
+              {data.to.username + ', ' + data.relation.relation}
+            </From>
+            <Date>{data.detail.createdAt}</Date>
+          </Info>
+          <VideoArea videoId={0} />
+          <Content img={0} writing={data.detail.content} />
+          <ButtonArea />
+        </Container>
+      </Layout>
+    );
+  }
 };
 
 const Container = styled.div``;

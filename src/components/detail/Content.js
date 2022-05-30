@@ -5,13 +5,7 @@ const Content = ({ img, writing }) => {
   return (
     <Container>
       <ImageSlide />
-      <Wrap>
-        {'엄마 잘 지내고 있지?'} <div /> {'나'}
-        <div /> {'엄마 잘 지내고 있지?'}
-        <div /> {'엄마 잘 지내고 있지?'}
-        <div /> {'엄마 잘 지내고 있지?'}
-        <div /> {'엄마 잘 지내고 있지?'}
-      </Wrap>
+      <Wrap>{writing}</Wrap>
     </Container>
   );
 };
@@ -30,6 +24,7 @@ const Wrap = styled.div`
   text-decoration: underline;
   text-decoration-color: #e4e4e4;
   text-underline-offset: 3px;
+  white-space: pre-wrap;
 `;
 
 export default Content;
