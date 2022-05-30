@@ -5,7 +5,7 @@ const VideoArea = ({ videoId }) => {
   return (
     <Container>
       <Video controls>
-        <source src={`http://localhost:5000/${videoId}`} type="video/mp4" />
+        <source src={videoId} type="video/mp4" />
         <track kind="subtitles" src={Test} srcLang="ko" label="Korean" />
         없음
       </Video>

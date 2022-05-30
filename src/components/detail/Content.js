@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import ImageSlide from './ImageSlide';
 
-const Content = ({ img, writing }) => {
+const Content = ({ img, content, bucketName }) => {
   return (
     <Container>
-      <ImageSlide />
-      <Wrap>{writing}</Wrap>
+      <ImageSlide img={img} bucketName={bucketName} />
+      <Wrap>{content}</Wrap>
     </Container>
   );
 };

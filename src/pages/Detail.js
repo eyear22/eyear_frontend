@@ -7,6 +7,9 @@ import Content from '../components/detail/Content';
 import VideoArea from '../components/detail/VideoArea';
 import UserIcon from '../assets/icon_from.png';
 
+// 임의로 추가
+const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
+
 const Detail = () => {
   const post_id = 1;
   const [data, setData] = useState([]);
@@ -32,8 +35,8 @@ const Detail = () => {
             </From>
             <Date>{data.detail.createdAt}</Date>
           </Info>
-          <VideoArea videoId={0} />
-          <Content img={0} writing={data.detail.content} />
+          <VideoArea videoId={bucketName + data.video[0].video} />
+          <Content img={data.image} content={data.detail.content} bucketName={bucketName} />
           <ButtonArea />
         </Container>
       </Layout>
