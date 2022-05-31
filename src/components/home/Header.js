@@ -37,7 +37,7 @@ const Header = () => {
       <Hamburger onClick={() => setToggle(!toggle)}>
         <Menu sx={{ fontSize: 30 }} />
       </Hamburger>
-      <ToggleMenu toggle={toggle} />
+      <ToggleMenu toggle={toggle} setToggle={setToggle} />
     </Container>
   );
 };
