@@ -15,7 +15,8 @@ const Post = () => {
   const navigate = useNavigate();
 
   const title = useInput('');
-  const receiver = useInput(0);
+  const pat_id = useInput([]);
+  const receiver = useInput([]);
   const file = useInput([]);
   const content = useInput('');
 
@@ -27,8 +28,8 @@ const Post = () => {
     }
     formData.append('title', title.value);
     formData.append('content', content.value);
-    formData.append('pat_id', '629457ec2786d169073c5aea');
-    formData.append('receiver', '아이어');
+    formData.append('pat_id', pat_id.value.id);
+    formData.append('receiver', receiver.value.name);
 
     axios({
       method: 'post',
@@ -55,7 +56,7 @@ const Post = () => {
           <TitleInput title={title} />
         </ItemLayout>
         <ItemLayout title="받는 사람">
-          <ReceiverInput />
+          <ReceiverInput pat_id={pat_id} receiver={receiver} />
         </ItemLayout>
         <ItemLayout title="첨부 파일">
           <FileInput file={file} />
@@ -71,53 +72,6 @@ const Post = () => {
 
 const Wrap = styled.div`
   margin-top: 40px;
-`;
-
-const FileArea = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-`;
-
-const ListBox = styled.div`
-  width: 80%;
-  font-size: 18px;
-  display: flex;
-  min-height: 40px;
-  padding: 5px 7px;
-  flex-direction: column;
-  border: 1px solid #d9d9d9;
-  background-color: #fff;
-`;
-
-const FInput = styled.input`
-  display: none;
-`;
-
-const Label = styled.label`
-  display: flex;
-  width: 60px;
-  height: 20px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #252525;
-  font-size: 14px;
-  color: #252525;
-  background-color: #fff;
-  cursor: pointer;
-`;
-
-const DeleteBtn = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
-
-const DeleteText = styled.div`
-  font-size: 12px;
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 export default Post;
