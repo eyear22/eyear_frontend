@@ -5,7 +5,7 @@ import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
-import { useGoHome, useGoLogin, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
+import { useGoHome, useGoLogin, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Header = () => {
           <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
           <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
           {/* <MenuItem>환자관리</MenuItem> */}
-          <MenuItem>공지사항</MenuItem>
+          <MenuItem onClick={useGoNotice()}>공지사항</MenuItem>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
