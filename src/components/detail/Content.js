@@ -1,17 +1,11 @@
 import styled from 'styled-components';
 import ImageSlide from './ImageSlide';
 
-const Content = ({ img, writing }) => {
+const Content = ({ img, content, bucketName }) => {
   return (
     <Container>
-      <ImageSlide />
-      <Wrap>
-        {'엄마 잘 지내고 있지?'} <div /> {'나'}
-        <div /> {'엄마 잘 지내고 있지?'}
-        <div /> {'엄마 잘 지내고 있지?'}
-        <div /> {'엄마 잘 지내고 있지?'}
-        <div /> {'엄마 잘 지내고 있지?'}
-      </Wrap>
+      <ImageSlide img={img} bucketName={bucketName} />
+      <Wrap>{content}</Wrap>
     </Container>
   );
 };
@@ -30,6 +24,7 @@ const Wrap = styled.div`
   text-decoration: underline;
   text-decoration-color: #e4e4e4;
   text-underline-offset: 3px;
+  white-space: pre-wrap;
 `;
 
 export default Content;

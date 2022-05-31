@@ -1,7 +1,9 @@
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const DropDownInput = ({ open, setOpen, data, loading, onChange }) => {
+const DropDownInput = ({ data, onChange }) => {
+  const [open, setOpen] = useState(false);
   return (
     <div>
       <Input
@@ -12,27 +14,17 @@ const DropDownInput = ({ open, setOpen, data, loading, onChange }) => {
         onClose={() => {
           setOpen(false);
         }}
-        isOptionEqualToValue={(option, value) => option.pat_id === value.pat_id}
-        getOptionLabel={(option) => option.pat_name}
+        isOptionEqualToValue={(option, value) => option.id == value.id}
+        getOptionLabel={(option) => option.name}
         options={data}
-        loading={loading}
+        loading={false}
         sx={{ maxWidth: 200 }}
         renderInput={(params) => (
-          <TextField
-            {...params}
-            label=""
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
-            }}
-          />
+          <TextField key={params.id} {...params} label="" InputLabelProps={{ style: { fontSize: 14 } }} />
         )}
-        onChange={onChange}
+        onChange={(e, value) => {
+          onChange(value);
+        }}
       />
     </div>
   );

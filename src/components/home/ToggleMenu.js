@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useGoLogin, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 
-const ToggleMenu = ({ toggle }) => {
+const ToggleMenu = ({ toggle, setToggle }) => {
   return (
-    <Container toggle={toggle}>
-      <MenuItem>받은편지</MenuItem>
-      <MenuItem>보낸편지</MenuItem>
-      <MenuItem>환자관리</MenuItem>
+    <Container toggle={toggle} onClick={() => setToggle(false)}>
+      <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
+      <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
+      {/* <MenuItem>환자관리</MenuItem> */}
       <MenuItem>공지사항</MenuItem>
-      <MenuItem>로그인</MenuItem>
-      <MenuItem>편지쓰기</MenuItem>
+      <MenuItem onClick={useGoLogin()}>로그인</MenuItem>
+      <MenuItem onClick={useGoPost()}>편지쓰기</MenuItem>
     </Container>
   );
 };

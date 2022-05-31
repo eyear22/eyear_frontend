@@ -4,23 +4,44 @@ const patientSlice = createSlice({
   name: 'patient',
   initialState: {
     patientList: null,
-    isFetching: false,
-    error: false,
+    patientListFetching: false,
+    patientListError: false,
+    userList: null,
+    userListFetching: false,
+    userListError: false,
   },
   reducers: {
     fetchPatientStart: (state) => {
-      state.isFetching = true;
+      state.patientListFetching = true;
     },
     fetchPatientSuccess: (state, action) => {
-      state.isFetching = false;
+      state.patientListFetching = false;
       state.patientList = action.payload;
     },
     fetchPatientFailure: (state) => {
-      state.isFetching = false;
-      state.error = true;
+      state.patientListFetching = false;
+      state.patientListError = true;
+    },
+    fetchUserStart: (state) => {
+      state.userListFetching = true;
+    },
+    fetchUserSuccess: (state, action) => {
+      state.userListFetching = false;
+      state.userList = action.payload;
+    },
+    fetchUserFailure: (state) => {
+      state.userListFetching = false;
+      state.userListError = true;
     },
   },
 });
 
-export const { fetchPatentStart, fetchPatentSuccess, fetchPatentFailure } = patientSlice.actions;
+export const {
+  fetchPatientStart,
+  fetchPatientSuccess,
+  fetchPatientFailure,
+  fetchUserStart,
+  fetchUserSuccess,
+  fetchUserFailure,
+} = patientSlice.actions;
 export default patientSlice.reducer;

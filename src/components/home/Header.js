@@ -7,24 +7,26 @@ import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
 import { useGoHome, useGoLogin, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 
-const Header = ({ goIntroduce }) => {
+const Header = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
 
   const goIntroduceSection = () => {
     navigate('/');
-    // goIntroduce();
+    setTimeout(() => {
+      window.scrollTo({ top: 500, behavior: 'smooth' });
+    }, 100);
   };
 
   return (
     <Container>
-      <Wrap>
+      <Wrap onClick={() => setToggle(false)}>
         <Image src={Logo} onClick={useGoHome()} />
         <Center toggle={toggle}>
           <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
           <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
           <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
-          <MenuItem>환자관리</MenuItem>
+          {/* <MenuItem>환자관리</MenuItem> */}
           <MenuItem>공지사항</MenuItem>
         </Center>
       </Wrap>
@@ -35,7 +37,7 @@ const Header = ({ goIntroduce }) => {
       <Hamburger onClick={() => setToggle(!toggle)}>
         <Menu sx={{ fontSize: 30 }} />
       </Hamburger>
-      <ToggleMenu toggle={toggle} />
+      <ToggleMenu toggle={toggle} setToggle={setToggle} />
     </Container>
   );
 };

@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Test from '../../assets/img_home.jpg';
 
-const ImageSlide = () => {
+const ImageSlide = ({ img, bucketName }) => {
   const settings = {
     dots: true,
     infinie: true,
@@ -16,15 +15,15 @@ const ImageSlide = () => {
     arrows: false,
   };
 
-  const data = [
-    { key: 0, image: Test },
-    { key: 1, image: Test },
-  ];
+  const images = img.map((v, key) => {
+    return { key: key, image: bucketName + v.image };
+  });
+
   return (
     <StyledSlider {...settings}>
-      {data.map(({ key, image }) => {
+      {images.map(({ key, image }) => {
         return (
-          <CardBox key={key}>
+          <CardBox key={image}>
             <CardImg src={image} />
           </CardBox>
         );
@@ -38,6 +37,8 @@ const StyledSlider = styled(Slider)``;
 const CardBox = styled.div``;
 
 const CardImg = styled.img`
+  object-fit: cover;
+  max-height: 500px;
   width: 100%;
 `;
 
