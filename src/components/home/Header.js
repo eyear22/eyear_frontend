@@ -20,13 +20,13 @@ const Header = () => {
 
   return (
     <Container>
-      <Wrap>
+      <Wrap onClick={() => setToggle(false)}>
         <Image src={Logo} onClick={useGoHome()} />
         <Center toggle={toggle}>
           <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
           <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
           <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
-          <MenuItem>환자관리</MenuItem>
+          {/* <MenuItem>환자관리</MenuItem> */}
           <MenuItem>공지사항</MenuItem>
         </Center>
       </Wrap>
