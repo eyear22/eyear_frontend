@@ -8,12 +8,7 @@ import Header from '../components/home/Header';
 import Introduce from '../components/home/Introduce';
 
 const Home = () => {
-  const introduceRef = useRef(null);
   const contactRef = useRef(null);
-
-  const goIntroduce = () => {
-    introduceRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
   const onContact = () => {
     contactRef.current.scrollIntoView({ behavior: 'smooth' });
   };
@@ -30,9 +25,8 @@ const Home = () => {
 
   return (
     <Container>
-      <Header goIntroduce={goIntroduce} />
+      <Header />
       <Banner goContact={onContact} />
-      <div ref={introduceRef} />
       <Introduce />
       <div ref={contactRef} />
       <Contact />

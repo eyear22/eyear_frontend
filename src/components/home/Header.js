@@ -7,13 +7,15 @@ import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
 import { useGoHome, useGoLogin, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 
-const Header = ({ goIntroduce }) => {
+const Header = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
 
   const goIntroduceSection = () => {
     navigate('/');
-    // goIntroduce();
+    setTimeout(() => {
+      window.scrollTo({ top: 500, behavior: 'smooth' });
+    }, 100);
   };
 
   return (
