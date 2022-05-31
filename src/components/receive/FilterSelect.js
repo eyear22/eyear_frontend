@@ -39,12 +39,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin: 10px 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
 `;
 
 const Select = styled.select`
   height: 30px;
-  min-width: 60px;
+  min-width: 100px;
   margin-right: 10px;
   border-radius: 2px;
   border: solid 1px #d9d9d9;
