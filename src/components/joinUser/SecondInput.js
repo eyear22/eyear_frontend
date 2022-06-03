@@ -48,12 +48,15 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
       alert('이메일을 입력해주세요.');
     } else if (!regex.test(email.value)) {
       alert('이메일 형식이 올바르지 않습니다.');
+      email.onChange('');
     } else {
       try {
         // 이메일 중복 확인
         const res = await publicRequest.get(`/join/user_email_check/${email.value}`);
-        if (res.data == 'exit') alert('중복되는 이메일이 있습니다.');
-        else {
+        if (res.data == 'exit') {
+          alert('중복되는 이메일이 있습니다.');
+          email.onChange('');
+        } else {
           alert('사용가능한 이메일입니다.');
           checkEmail.onChange(true);
         }
@@ -68,8 +71,10 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
     try {
       // 아이디 중복 확인
       const res = await publicRequest.get(`/join/user_id_check/${userId.value}`);
-      if (res.data == 'exit') alert('중복되는 아이디가 있습니다.');
-      else {
+      if (res.data == 'exit') {
+        alert('중복되는 아이디가 있습니다.');
+        userId.onChange('');
+      } else {
         alert('사용가능한 아이디입니다.');
         checkId.onChange(true);
       }
@@ -85,7 +90,9 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
     userId.value == '' ||
     username.value == '' ||
     password.value == '' ||
-    password.value != passwordCheck.value;
+    password.value != passwordCheck.value ||
+    errPwd.value != '' ||
+    errPwdCheck.value != '';
 
   return (
     <Container>
@@ -139,6 +146,7 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
       <Wrap style={{ margin: 0 }}>
         <Title>비밀번호</Title>
         <FullInput
+          type="password"
           value={password.value}
           onChange={(e) => {
             password.onChange(e.target.value);
@@ -151,6 +159,7 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
       <Wrap style={{ margin: 0 }}>
         <Title>비밀번호 확인</Title>
         <FullInput
+          type="password"
           value={passwordCheck.value}
           onChange={(e) => {
             passwordCheck.onChange(e.target.value);
