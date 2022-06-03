@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { publicRequest } from '../../hooks/requestMethods';
 import { mobile } from '../../utils/responsive';
 import useInput from '../../utils/useInput';
+import GenderInput from './GenderInput';
 
 const SecondInput = ({ activeIndex, email, userId, sex, username, password, passwordCheck, join }) => {
   // 아이디/이메일 체크여부
@@ -12,8 +13,6 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
   const errPwdCheck = useInput('');
   // 이전 버튼 눌렀을 때
   const onPrev = () => activeIndex.onChange(0);
-  // 성별 선택
-  const changeSex = (v) => sex.onChange(v);
 
   // 비밀번호 형식 확인
   const checkPwdRegex = (pwd) => {
@@ -124,17 +123,7 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
           <RightButton onClick={confirmId}>중복확인</RightButton>
         </Right>
       </Wrap>
-      <Wrap>
-        <Title>성별</Title>
-        <SelectArea>
-          <SelectDiv active={!sex.value} onClick={() => changeSex(0)}>
-            남자
-          </SelectDiv>
-          <SelectDiv active={sex.value} onClick={() => changeSex(1)}>
-            여자
-          </SelectDiv>
-        </SelectArea>
-      </Wrap>
+      <GenderInput sex={sex} />
       <Wrap>
         <Title>이름</Title>
         <FullInput
@@ -254,27 +243,6 @@ const NextButton = styled.button`
     cursor: default;
     background-color: #d8d8d8;
   }
-`;
-
-const SelectArea = styled.div`
-  display: flex;
-  width: 330px;
-  border: 1px solid #d7d7d7;
-  height: 32px;
-  ${mobile({ width: 260 })}
-`;
-
-const SelectDiv = styled.div`
-  display: flex;
-  width: 165px;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: ${(props) => (props.active ? '#889287' : '#fff')};
-  color: ${(props) => (props.active ? '#fff' : '#black')};
-  font-size: 14px;
-  ${mobile({ width: 130 })}
 `;
 
 const Error = styled.div`

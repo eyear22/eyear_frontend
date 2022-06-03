@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import DropDownInput from './DropDownInput';
 import { fetchPatients, fetchUsers } from '../../api/patient';
-import useInput from '../../utils/useInput';
 
 const ReceiverInput = ({ pat_id, receiver }) => {
   const dispatch = useDispatch();
 
   // 병원 고유 번호 (임의값)
-  const hos_id = '000000000000000000000000';
+  const hos_id = '6299ee7d86075cdad418286f';
 
   // 환자 데이터 불러오기
   useEffect(() => {
