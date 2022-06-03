@@ -37,7 +37,7 @@ const SecondInput = ({ activeIndex, email, userId, sex, username, password, pass
             onChange={(e) => email.onChange(e.target.value)}
             placeholder="이메일을 입력해주세요."
           />
-          <RightButton>인증하기</RightButton>
+          <RightButton>중복확인</RightButton>
         </Right>
       </Wrap>
       <Wrap>

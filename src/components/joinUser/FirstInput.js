@@ -2,28 +2,19 @@ import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 import CustomSelect from './CustomSelect';
 
-const hospitals = [
-  { id: '0', name: '서울요양병원' },
-  { id: '1', name: '인천참사랑요양병원' },
-];
-
 const relations = [
   { id: '0', name: '아들' },
   { id: '1', name: '딸' },
 ];
 
 const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patientBirth, relation }) => {
-  // 병원 검색(현재는 임의 값)
-  const searchHospital = () => {
-    hospitalName.onChange('서울요양병원');
-  };
-
   // 환자 확인(현재는 임의 값)
   const checkPatient = () => {
     if (patientId.value == '') alert('환자의 고유번호를 입력해주세요.');
     else {
       patientName.onChange('김대식');
       patientBirth.onChange('1968.08.12');
+      hospitalName.onChange('참사랑요양병원');
     }
   };
 
@@ -39,7 +30,9 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
     patientId.value == '' ||
     patientName.value == '' ||
     patientBirth.value == '' ||
-    patientBirth.value == null;
+    patientBirth.value == null ||
+    relation.value == '' ||
+    relation.value == null;
 
   // 다음 버튼 눌렀을 때
   const onClick = () => {
@@ -48,10 +41,6 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
 
   return (
     <Container>
-      <Wrap>
-        <Title>병원 이름</Title>
-        <CustomSelect data={hospitals} onChange={hospitalName.onChange} />
-      </Wrap>
       <Wrap>
         <Title>환자 고유 번호</Title>
         <Right>
@@ -64,6 +53,10 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
         </Right>
       </Wrap>
       <Wrap>
+        <Title>병원 이름</Title>
+        <FullInput disabled value={hospitalName.value} placeholder="환자의 병원을 입력해주세요." />
+      </Wrap>
+      <Wrap>
         <Title>환자 이름</Title>
         <FullInput disabled value={patientName.value} placeholder="환자 이름을 입력해주세요." />
       </Wrap>
@@ -73,7 +66,7 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
       </Wrap>
       <Wrap>
         <Title>환자와의 관계</Title>
-        <CustomSelect data={relations} onChange={relation.onChange} />
+        <CustomSelect data={relations} value={relation.value} onChange={relation.onChange} />
       </Wrap>
       <NextButton disabled={checkNull} onClick={() => onClick()}>
         다음

@@ -11,7 +11,7 @@ const JoinUser = () => {
   const patientId = useInput('');
   const patientName = useInput('');
   const patientBirth = useInput('');
-  const relation = useInput('sun');
+  const relation = useInput('');
 
   const email = useInput('');
   const userId = useInput('');
@@ -31,10 +31,10 @@ const JoinUser = () => {
     console.log('환자와의 관계', relation.value);
     console.log('이메일', email.value);
     console.log('아이디', userId.value);
-    console.log('성별', sex.value);
+    console.log('성별', sex.value == 1 ? 'female' : 'male');
     console.log('이름', username.value);
     console.log('비밀번호', password.value);
-    goJoinDone();
+    // goJoinDone();
   };
 
   return (

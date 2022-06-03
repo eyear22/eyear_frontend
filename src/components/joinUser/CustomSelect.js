@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const CustomSelect = ({ data, onChange }) => {
+const CustomSelect = ({ data, value, onChange }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,15 +16,16 @@ const CustomSelect = ({ data, onChange }) => {
         onClose={() => {
           setOpen(false);
         }}
-        isOptionEqualToValue={(option, value) => option.id === value.id}
+        isOptionEqualToValue={(option, value) => option.id == value.id}
         getOptionLabel={(option) => option.name}
+        defaultValue={() => (value == '' ? null : data.find((v) => v.name == value))}
         options={data}
         ListboxProps={{
           sx: { fontSize: 14 },
         }}
         renderInput={(params) => <TextField {...params} label="" InputLabelProps={{ style: { fontSize: 14 } }} />}
         onChange={(e, value) => {
-          onChange(value);
+          onChange(value.name);
         }}
       />
     </div>
