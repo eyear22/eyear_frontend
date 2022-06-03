@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useGoLogin, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
+import { useGoLogin, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 
 const ToggleMenu = ({ toggle, setToggle }) => {
   return (
@@ -7,7 +7,7 @@ const ToggleMenu = ({ toggle, setToggle }) => {
       <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
       <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
       {/* <MenuItem>환자관리</MenuItem> */}
-      <MenuItem>공지사항</MenuItem>
+      <MenuItem onClick={useGoNotice()}>공지사항</MenuItem>
       <MenuItem onClick={useGoLogin()}>로그인</MenuItem>
       <MenuItem onClick={useGoPost()}>편지쓰기</MenuItem>
     </Container>

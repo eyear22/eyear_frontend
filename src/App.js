@@ -10,6 +10,7 @@ import Receive from './pages/Receive';
 import JoinDone from './pages/JoinDone';
 import PostSuccess from './pages/PostSuccess';
 import Send from './pages/Send';
+import Notice from './pages/Notice';
 import Header from './components/home/Header';
 import ScrollToTop from './utils/ScrollToTop';
 import Footer from './components/home/Footer';
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/receive" element={<Receive />} />
         <Route path="/send" element={<Send />} />
         <Route path="/detail/:postId" element={<Detail />} />
+        <Route path="/notice" element={<Notice />} />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
         <Route path="/join/user" element={<JoinUser />} />

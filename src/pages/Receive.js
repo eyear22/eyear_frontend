@@ -3,7 +3,7 @@ import { Pagination } from '@mui/material';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import FilterSelect from '../components/receive/FilterSelect';
-import LetterTable from '../components/receive/LetterTable';
+import ReceiveTable from '../components/receive/ReceiveTable';
 import MobileTable from '../components/receive/MobileTable';
 import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_receive.png';
@@ -21,7 +21,7 @@ const LetterList = [
     title: '손녀 수영이 걸음마 영상.',
     createdAt: '22.02.10',
     from: '박대식',
-    check: true,
+    check: false,
   },
   {
     post_id: 2,
@@ -49,7 +49,7 @@ const LetterList = [
     title: '할머니 요즘 뭐하면서 지내세요?',
     createdAt: '22.02.09',
     from: '김대식',
-    check: false,
+    check: true,
   },
   {
     post_id: 6,
@@ -86,7 +86,7 @@ const Receive = () => {
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
       <FilterSelect filter={filter} />
       {/* <MobileTable list={list.value} /> */}
-      <LetterTable list={list.value} />
+      <ReceiveTable list={list.value} />
       <Wrap>
         <StyledPagination count={10} shape="rounded" />
       </Wrap>

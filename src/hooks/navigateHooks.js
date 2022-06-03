@@ -46,3 +46,8 @@ export const useGoSend = () => {
   const navigate = useNavigate();
   return useCallback(() => navigate(`/send`), []);
 };
+
+export const useGoNotice = () => {
+  const navigate = useNavigate();
+  return useCallback(() => navigate(`/notice`), []);
+};

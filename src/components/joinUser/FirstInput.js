@@ -1,45 +1,49 @@
 import styled from 'styled-components';
+import { publicRequest } from '../../hooks/requestMethods';
 import { mobile } from '../../utils/responsive';
+import useInput from '../../utils/useInput';
 import CustomSelect from './CustomSelect';
-
-const hospitals = [
-  { id: '0', name: '서울요양병원' },
-  { id: '1', name: '인천참사랑요양병원' },
-];
 
 const relations = [
   { id: '0', name: '아들' },
   { id: '1', name: '딸' },
 ];
 
-const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patientBirth, relation }) => {
-  // 병원 검색(현재는 임의 값)
-  const searchHospital = () => {
-    hospitalName.onChange('서울요양병원');
-  };
+const FirstInput = ({ activeIndex, hospitalName, patientId, patientNum, patientName, patientBirth, relation }) => {
+  const checkPaientNum = useInput(false);
 
-  // 환자 확인(현재는 임의 값)
-  const checkPatient = () => {
-    if (patientId.value == '') alert('환자의 고유번호를 입력해주세요.');
+  // 환자 확인
+  const checkPatient = async () => {
+    if (patientNum.value == '') alert('환자의 고유번호를 입력해주세요.');
     else {
-      patientName.onChange('김대식');
-      patientBirth.onChange('1968.08.12');
+      try {
+        const res = await publicRequest.post('/join/patient_check', { pat_number: patientNum.value });
+        if (res.data == 'not exited patient') {
+          alert('등록되어있지 않은 환자입니다.');
+          patientNum.onChange('');
+        } else {
+          patientId.onChange(res.data.pat_id);
+          patientName.onChange(res.data.pat_name);
+          patientBirth.onChange(res.data.birth);
+          hospitalName.onChange(res.data.hos_name);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
-  };
-
-  // 필터 변경
-  const changeFilter = (e) => {
-    relation.onChange(e.target.value);
   };
 
   // null값이 있는지 확인
   const checkNull =
+    !checkPaientNum ||
     hospitalName.value == '' ||
     hospitalName.value == null ||
-    patientId.value == '' ||
+    patientNum.value == '' ||
     patientName.value == '' ||
     patientBirth.value == '' ||
-    patientBirth.value == null;
+    patientBirth.value == null ||
+    relation.value == '' ||
+    relation.value == null;
 
   // 다음 버튼 눌렀을 때
   const onClick = () => {
@@ -49,19 +53,26 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
   return (
     <Container>
       <Wrap>
-        <Title>병원 이름</Title>
-        <CustomSelect data={hospitals} onChange={hospitalName.onChange} />
-      </Wrap>
-      <Wrap>
         <Title>환자 고유 번호</Title>
         <Right>
           <Input
-            value={patientId.value}
-            onChange={(e) => patientId.onChange(e.target.value)}
+            value={patientNum.value}
+            onChange={(e) => {
+              patientNum.onChange(e.target.value);
+              checkPaientNum.onChange(false);
+              patientId.onChange('');
+              patientName.onChange('');
+              patientBirth.onChange('');
+              hospitalName.onChange('');
+            }}
             placeholder="환자 고유 번호를 입력해주세요."
           />
           <RightButton onClick={() => checkPatient()}>환자확인</RightButton>
         </Right>
+      </Wrap>
+      <Wrap>
+        <Title>병원 이름</Title>
+        <FullInput disabled value={hospitalName.value} placeholder="환자의 병원을 입력해주세요." />
       </Wrap>
       <Wrap>
         <Title>환자 이름</Title>
@@ -73,7 +84,7 @@ const FirstInput = ({ activeIndex, hospitalName, patientId, patientName, patient
       </Wrap>
       <Wrap>
         <Title>환자와의 관계</Title>
-        <CustomSelect data={relations} onChange={relation.onChange} />
+        <CustomSelect data={relations} value={relation.value} onChange={relation.onChange} />
       </Wrap>
       <NextButton disabled={checkNull} onClick={() => onClick()}>
         다음
