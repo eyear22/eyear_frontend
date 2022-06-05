@@ -7,6 +7,7 @@ import ReceiveTable from '../components/receive/ReceiveTable';
 import MobileTable from '../components/receive/MobileTable';
 import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_receive.png';
+import TopFilter from '../components/receive/TopFilter';
 
 const LetterList = [
   {
@@ -84,7 +85,8 @@ const Receive = () => {
 
   return (
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
-      <FilterSelect filter={filter} />
+      <TopFilter />
+      {/* <FilterSelect filter={filter} /> */}
       {/* <MobileTable list={list.value} /> */}
       <ReceiveTable list={list.value} />
       <Wrap>
