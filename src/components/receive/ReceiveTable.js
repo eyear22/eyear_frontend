@@ -43,12 +43,13 @@ const Table = styled.table`
   text-align: center;
   border-collapse: collapse;
   font-size: 16px;
-  background-color: #fff;
+  background-color: #f9f9fa;
 `;
 
 const THead = styled.thead`
-  border-top: 1.5px solid #889287;
+  border-top: 3px solid #889287;
   background-color: #f9f9fa;
+  border-bottom: 3px solid #ebeeec;
 `;
 
 const THeadTd = styled.td`
@@ -58,7 +59,6 @@ const THeadTd = styled.td`
 
 const TBody = styled.tbody`
   font-size: 16px;
-  border-top: 1.5px solid #889287;
 `;
 
 const Tr = styled.tr`

@@ -8,6 +8,7 @@ import MobileTable from '../components/receive/MobileTable';
 import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_receive.png';
 import TopFilter from '../components/receive/TopFilter';
+import EmptyTable from '../components/receive/EmptyTable';
 
 const LetterList = [
   {
@@ -88,11 +89,19 @@ const Receive = () => {
       <TopFilter />
       {/* <FilterSelect filter={filter} /> */}
       {/* <MobileTable list={list.value} /> */}
+      {list.value.length != 0 ? <HaveTable list={list} /> : <EmptyTable />}
+    </ImgLayout>
+  );
+};
+
+const HaveTable = ({ list }) => {
+  return (
+    <>
       <ReceiveTable list={list.value} />
       <Wrap>
         <StyledPagination count={10} shape="rounded" />
       </Wrap>
-    </ImgLayout>
+    </>
   );
 };
 

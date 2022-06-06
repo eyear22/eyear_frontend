@@ -16,15 +16,14 @@ const TopFilter = () => {
 };
 
 const Container = styled.div`
-  background-color: #d6d9da;
-  padding: 14px 80px;
+  padding: 14px 10px;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 36px;
 `;
@@ -40,18 +39,21 @@ const Select = styled.select`
 
 const Input = styled.input`
   height: 100%;
-  min-width: 500px;
+  min-width: 460px;
   border: solid 1px #d9d9d9;
   &:focus {
     outline: none;
   }
+  margin: 0px 14px;
 `;
 
 const Button = styled.button`
+  color: #fff;
   height: 100%;
   width: 100px;
-  border: solid 1px #d9d9d9;
-  background-color: white;
+  border: solid 1px #3b3b3b;
+  background-color: #3b3b3b;
+  cursor: pointer;
 `;
 
 export default TopFilter;
