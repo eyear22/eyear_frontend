@@ -77,6 +77,7 @@ const LetterList = [
 ];
 
 const Receive = () => {
+  const innerWidth = useInput(window.innerWidth);
   const list = useInput([]);
   const filter = useInput('from');
 
@@ -84,12 +85,24 @@ const Receive = () => {
     list.onChange(LetterList);
   }, []);
 
+  useEffect(() => {
+    const resizeListener = () => {
+      innerWidth.onChange(window.innerWidth);
+    };
+    window.addEventListener('resize', resizeListener);
+  }, []);
+
+  // 모바일페이지의 테이블 분리
   return (
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
       <TopFilter />
-      {/* <FilterSelect filter={filter} /> */}
-      {/* <MobileTable list={list.value} /> */}
-      {list.value.length != 0 ? <HaveTable list={list} /> : <EmptyTable />}
+      {innerWidth.value <= 390 ? (
+        <MobileTable list={list.value} />
+      ) : list.value.length != 0 ? (
+        <HaveTable list={list} />
+      ) : (
+        <EmptyTable />
+      )}
     </ImgLayout>
   );
 };

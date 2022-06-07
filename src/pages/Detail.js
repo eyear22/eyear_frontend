@@ -11,7 +11,7 @@ import UserIcon from '../assets/icon_from.png';
 const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
 
 const Detail = () => {
-  const post_id = 2;
+  const post_id = 3;
   const [data, setData] = useState([]);
 
   // 상세 데이터 불러오기

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
-import Footer from '../home/Footer';
-import Header from '../home/Header';
 
 const Layout = ({ title, width, children }) => {
   return (
