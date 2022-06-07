@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
 const TopFilter = () => {
   return (
     <Container>
       <Wrap>
         <Select name="filter">
-          <option value="from">작성자</option>
-          <option value="title">제목</option>
+          <option value="from">환자이름</option>
+          <option value="title">환자번호</option>
         </Select>
         <Input />
         <Button>검색</Button>
@@ -19,6 +20,7 @@ const Container = styled.div`
   padding: 14px 10px;
   margin-top: 20px;
   margin-bottom: 30px;
+  ${mobile({ marginTop: 0, marginBottom: 20, padding: 0 })}
 `;
 
 const Wrap = styled.div`
@@ -35,6 +37,7 @@ const Select = styled.select`
   &:focus {
     outline: none;
   }
+  ${mobile({ minWidth: 70 })}
 `;
 
 const Input = styled.input`
@@ -45,6 +48,7 @@ const Input = styled.input`
     outline: none;
   }
   margin: 0px 14px;
+  ${mobile({ minWidth: 100 })}
 `;
 
 const Button = styled.button`

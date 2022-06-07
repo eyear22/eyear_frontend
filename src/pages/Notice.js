@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_notice.png';
-import TopArea from '../components/notice.js/TopArea';
+import TopArea from '../components/notice/TopArea';
 
 const Notice = () => {
   return (

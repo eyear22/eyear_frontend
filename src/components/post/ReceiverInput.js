@@ -17,7 +17,7 @@ const ReceiverInput = ({ pat_id, receiver }) => {
 
   // 환자와 관련된 개인 데이터 불러오기
   useEffect(() => {
-    pat_id.value != '' && fetchUsers(dispatch, pat_id.value.id);
+    pat_id.value != null && pat_id.value != '' && fetchUsers(dispatch, pat_id.value.id);
   }, [pat_id.value]);
 
   // 환자 리스트
