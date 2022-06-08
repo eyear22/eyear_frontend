@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Check from '../../assets/icon_check.png';
 import UnCheck from '../../assets/icon_uncheck.png';
+import EmptyTable from './EmptyTable';
 
-const ReceiveTable = ({ list }) => {
+const ReceiveTable = ({ list, isNotNull }) => {
   const size = list.length;
   const onClick = (id) => {
     window.location.href = `/detail/${id}`;
@@ -20,19 +21,23 @@ const ReceiveTable = ({ list }) => {
             <THeadTd width={100}>작성일</THeadTd>
           </tr>
         </THead>
-        <TBody>
-          {list.map((item, index) => (
-            <Tr key={item.post_id} onClick={() => onClick(item.post_id)} check={item.check}>
-              <Td>{size - index}</Td>
-              <Td>
-                <Icon src={item.check ? Check : UnCheck} />
-              </Td>
-              <TitleTd>{item.title}</TitleTd>
-              <Td>{item.from}</Td>
-              <td>{item.createdAt}</td>
-            </Tr>
-          ))}
-        </TBody>
+        {isNotNull ? (
+          <TBody>
+            {list.map((item, index) => (
+              <Tr key={item.post_id} onClick={() => onClick(item.post_id)} check={item.check}>
+                <Td>{size - index}</Td>
+                <Td>
+                  <Icon src={item.check ? Check : UnCheck} />
+                </Td>
+                <TitleTd>{item.title}</TitleTd>
+                <Td>{item.from}</Td>
+                <td>{item.createdAt}</td>
+              </Tr>
+            ))}
+          </TBody>
+        ) : (
+          <EmptyTable />
+        )}
       </Table>
     </>
   );

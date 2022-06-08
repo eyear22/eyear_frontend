@@ -9,112 +9,59 @@ import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_receive.png';
 import TopFilter from '../components/receive/TopFilter';
 import EmptyTable from '../components/receive/EmptyTable';
-
-const LetterList = [
-  {
-    post_id: 0,
-    title: '할머니 보고싶어요.',
-    createdAt: '22.02.11',
-    from: '김대식',
-    check: false,
-  },
-  {
-    post_id: 1,
-    title: '손녀 수영이 걸음마 영상.',
-    createdAt: '22.02.10',
-    from: '박대식',
-    check: false,
-  },
-  {
-    post_id: 2,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-  {
-    post_id: 3,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-  {
-    post_id: 4,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-  {
-    post_id: 5,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-  {
-    post_id: 6,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-  {
-    post_id: 7,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-  {
-    post_id: 8,
-    title: '할머니 요즘 뭐하면서 지내세요?',
-    createdAt: '22.02.09',
-    from: '김대식',
-    check: true,
-  },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReceiveLetters } from '../api/letter';
 
 const Receive = () => {
+  const _id = '629a28786fd0827ba894f3f8';
   const innerWidth = useInput(window.innerWidth);
-  const list = useInput([]);
   const filter = useInput('from');
+  const dispatch = useDispatch();
 
+  // 받은 편지 불러오기
   useEffect(() => {
-    list.onChange(LetterList);
-  }, []);
+    fetchReceiveLetters(dispatch, _id);
+  }, [_id]);
 
+  // 모바일 화면인지 확인
   useEffect(() => {
     const resizeListener = () => {
       innerWidth.onChange(window.innerWidth);
     };
     window.addEventListener('resize', resizeListener);
-  }, []);
+  }, [window.innerWidth]);
+
+  // 받은 편지 리스트
+  const letters = useSelector((state) => state.letter.receiveLetters);
+
+  // 리스트가 null값인지 확인
+  const notNull = letters != null && letters.length != 0;
+
+  /*
+  // TODO:
+  // FIXME:
+  1. 작성자 오브젝트 아이디로 넘어옴
+  2. 작성일 T까지 다 넘어옴
+  3. 작성일 기준으로 정렬해서 데이터 보내기
+  */
 
   // 모바일페이지의 테이블 분리
   return (
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
+      {console.log(letters)}
+      {console.log(innerWidth.value)}
       <TopFilter />
-      {innerWidth.value <= 390 ? (
-        <MobileTable list={list.value} />
-      ) : list.value.length != 0 ? (
-        <HaveTable list={list} />
+      {innerWidth.value <= 500 ? (
+        <MobileTable list={letters} isNotNull={notNull} />
       ) : (
-        <EmptyTable />
+        <>
+          <ReceiveTable list={letters} isNotNull={notNull} />
+          <Wrap>
+            <StyledPagination count={10} shape="rounded" />
+          </Wrap>
+        </>
       )}
     </ImgLayout>
-  );
-};
-
-const HaveTable = ({ list }) => {
-  return (
-    <>
-      <ReceiveTable list={list.value} />
-      <Wrap>
-        <StyledPagination count={10} shape="rounded" />
-      </Wrap>
-    </>
   );
 };
 
