@@ -5,7 +5,7 @@ import { login } from '../../api/auth';
 import ButtomArea from './ButtomArea';
 import SmallMenu from './SmallMenu';
 
-const Input = ({ id, password }) => {
+const Input = ({ id, password, flag }) => {
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
@@ -14,14 +14,15 @@ const Input = ({ id, password }) => {
     e.preventDefault();
     const userId = id.value;
     const userPwd = password.value;
-    login(dispatch, { uid: userId, password: userPwd });
+    login(dispatch, { uid: userId, password: userPwd, flag: flag });
   };
 
-  //  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <>
       <Wrap>
+        {console.log(user)}
         <MyInput placeholder="아이디" onChange={(e) => id.onChange(e.target.value)} />
         <MyInput placeholder="비밀번호" onChange={(e) => password.onChange(e.target.value)} type="password" />
         <FormGroup>
