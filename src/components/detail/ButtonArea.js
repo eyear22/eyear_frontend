@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
-import { useGoBack, useGoPost } from '../../hooks/navigateHooks';
+import { useGoBack, useGoPost, useGoReceive } from '../../hooks/navigateHooks';
 
 const ButtonArea = () => {
   return (
     <Container>
-      <ListButton onClick={useGoBack()}>목록</ListButton>
+      <ListButton onClick={useGoReceive()}>목록</ListButton>
       <SendButton onClick={useGoPost()}>답장하기</SendButton>
     </Container>
   );

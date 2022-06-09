@@ -6,18 +6,22 @@ import ButtonArea from '../components/detail/ButtonArea';
 import Content from '../components/detail/Content';
 import VideoArea from '../components/detail/VideoArea';
 import UserIcon from '../assets/icon_from.png';
+import { useParams } from 'react-router-dom';
 
 // 임의로 추가
 const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
 
 const Detail = () => {
-  const post_id = 3;
+  // const post_id = 3;
+  //const post_id = match.params.id;
+  //const { postId } = useParams();
+  const { postId } = useParams();
   const [data, setData] = useState([]);
 
   // 상세 데이터 불러오기
   useEffect(() => {
     const detailRequest = async () => {
-      const res = await publicRequest.get(`/business/detail/${post_id}`);
+      const res = await publicRequest.get(`/business/detail/${postId}`);
       console.log(res.data);
       setData(res.data);
     };
@@ -33,7 +37,7 @@ const Detail = () => {
               <Icon src={UserIcon} />
               {data.to.username + ', ' + data.relation.relation}
             </From>
-            <Date>{data.detail.createdAt}</Date>
+            <Date>{data.date}</Date>
           </Info>
           <VideoArea videoId={bucketName + data.video[0].video} />
           <Content img={data.image} content={data.detail.content} bucketName={bucketName} />

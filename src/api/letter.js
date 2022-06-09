@@ -12,7 +12,7 @@ import { publicRequest } from '../hooks/requestMethods';
 export const fetchReceiveLetters = async (dispatch, _id) => {
   dispatch(fetchReceiveLetterStart());
   try {
-    const res = await publicRequest.get(`/receive_list/${_id}`);
+    const res = await publicRequest.get(`user/receive_list/${_id}`);
     dispatch(fetchReceiveLetterSuccess(res.data));
   } catch (err) {
     dispatch(fetchReceiveLetterFailure());

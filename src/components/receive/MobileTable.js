@@ -15,7 +15,7 @@ const MobileTable = ({ list }) => {
     <Container>
       <Line />
       {list.map((item) => (
-        <Wrap key={item.post_id} onClick={() => onClick(3)}>
+        <Wrap key={item.post_id} onClick={() => onClick(item.post_id)}>
           <First>
             <Icon src={item.check ? Check : UnCheck} />
           </First>
