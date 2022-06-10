@@ -1,13 +1,48 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
+import useInput from '../../utils/useInput';
+
+const userSelect = [
+  {
+    key: 0,
+    value: 'name',
+    text: '작성자',
+  },
+];
+
+const businessSelect = [
+  {
+    key: 0,
+    value: 'name',
+    text: '환자이름',
+  },
+  {
+    key: 2,
+    value: 'number',
+    text: '환자번호',
+  },
+];
 
 const TopFilter = () => {
+  // select 배열 개인/기업에 따라 다르게 지정
+  const options = useInput([]);
+  const user = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    user.flag == 0 ? options.onChange(userSelect) : options.onChange(businessSelect);
+  }, []);
+
   return (
     <Container>
       <Wrap>
         <Select name="filter">
-          <option value="from">환자이름</option>
-          <option value="title">환자번호</option>
+          {options.value.map(({ key, value, text }) => (
+            <option key={key} value={value}>
+              {text}
+            </option>
+          ))}
         </Select>
         <Input />
         <Button>검색</Button>

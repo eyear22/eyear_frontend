@@ -15,12 +15,14 @@ import { fetchReceiveLetters } from '../api/letter';
 const Receive = () => {
   const _id = '629a28786fd0827ba894f3f8';
   const innerWidth = useInput(window.innerWidth);
-  const filter = useInput('from');
+  const filter = useInput('name');
   const dispatch = useDispatch();
+  // 현재 사용자
+  const user = useSelector((state) => state.user.currentUser);
 
   // 받은 편지 불러오기
   useEffect(() => {
-    fetchReceiveLetters(dispatch, _id);
+    fetchReceiveLetters(dispatch, user.user._id, user.flag);
   }, [_id]);
 
   // 모바일 화면인지 확인
@@ -48,8 +50,6 @@ const Receive = () => {
   // 모바일페이지의 테이블 분리
   return (
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
-      {console.log(letters)}
-      {console.log(innerWidth.value)}
       <TopFilter />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />

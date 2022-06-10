@@ -19,9 +19,9 @@ const Home = () => {
   const hos_id = '6299ee7d86075cdad418286f';
 
   // 환자 데이터 불러오기
-  useEffect(() => {
-    fetchPatients(dispatch, hos_id);
-  }, []);
+  // useEffect(() => {
+  //   fetchPatients(dispatch, hos_id);
+  // }, []);
 
   return (
     <Container>
