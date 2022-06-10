@@ -7,21 +7,22 @@ import Content from '../components/detail/Content';
 import VideoArea from '../components/detail/VideoArea';
 import UserIcon from '../assets/icon_from.png';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // 임의로 추가
 const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
 
 const Detail = () => {
-  // const post_id = 3;
-  //const post_id = match.params.id;
-  //const { postId } = useParams();
-  const { postId } = useParams();
+  const { flag, postId } = useParams();
   const [data, setData] = useState([]);
+  // 현재 사용자
+  const user = useSelector((state) => state.user.currentUser);
 
   // 상세 데이터 불러오기
   useEffect(() => {
+    const detail = flag == 0 ? 'receiveDetail' : 'sendDetail'; // 0: 받은편지, 1: 보낸편지
     const detailRequest = async () => {
-      const res = await publicRequest.get(`/business/detail/${postId}`);
+      const res = await publicRequest.get(`/${detail}/${user.flag}/${postId}`);
       console.log(res.data);
       setData(res.data);
     };
@@ -33,10 +34,12 @@ const Detail = () => {
       <Layout title={data.detail.title} width={800}>
         <Container>
           <Info>
-            <From>
-              <Icon src={UserIcon} />
-              {data.to.username + ', ' + data.relation.relation}
-            </From>
+            {flag == 0 && (
+              <From>
+                <Icon src={UserIcon} />
+                {user.flag == 0 ? data.from.pat_name : data.to.username + ', ' + data.relation.relation}
+              </From>
+            )}
             <Date>{data.date}</Date>
           </Info>
           {data.video.length != 0 && <VideoArea videoId={bucketName + data.video[0].video} />}

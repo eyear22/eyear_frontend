@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Layout from '../components/common/Layout';
 import PostButton from '../components/post/PostButton';
 import useInput from '../utils/useInput';
-import { publicRequest } from '../hooks/requestMethods';
 import ItemLayout from '../components/post/ItemLayout';
 import ContentInput from '../components/post/ContentInput';
 import TitleInput from '../components/post/TitleInput';
@@ -10,6 +9,7 @@ import ReceiverInput from '../components/post/ReceiverInput';
 import FileInput from '../components/post/FileInput';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Post = () => {
   const navigate = useNavigate();
@@ -20,20 +20,27 @@ const Post = () => {
   const file = useInput([]);
   const content = useInput('');
 
+  // 현재 사용자
+  const user = useSelector((state) => state.user.currentUser);
+
   // 편지 보내기 버튼 클릭
   const onClick = async () => {
+    const from = user.flag == 0 ? user.user._id : pat_id.value.id;
+    const to = user.flag == 0 ? pat_id.value.id : receiver.value.id;
+
     let formData = new FormData();
     for (let i = 0; i < file.value.length; i++) {
       formData.append('many', file.value[i]);
     }
     formData.append('title', title.value);
     formData.append('content', content.value);
-    formData.append('pat_id', pat_id.value.id);
-    formData.append('receiver', receiver.value.name);
+    formData.append('from', from); // from: 기관,  to: 개인
+    formData.append('to', to);
+    formData.append('flag', user.flag);
 
     axios({
       method: 'post',
-      url: 'http://localhost:5000/business/post',
+      url: `http://localhost:5000/post`,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: formData,
     })

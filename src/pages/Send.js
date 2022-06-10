@@ -6,6 +6,10 @@ import useInput from '../utils/useInput';
 import { Pagination } from '@mui/material';
 import SendTable from '../components/send/SendTable';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSendLetters } from '../api/letter';
+import TopFilter from '../components/receive/TopFilter';
+import MobileTable from '../components/receive/MobileTable';
 
 const LetterList = [
   {
@@ -74,20 +78,51 @@ const LetterList = [
 ];
 
 const Send = () => {
-  const list = useInput([]);
+  const dispatch = useDispatch();
+  const innerWidth = useInput(window.innerWidth);
   const filter = useInput('from');
 
+  // 현재 사용자
+  const user = useSelector((state) => state.user.currentUser);
+
+  // 보낸 편지 불러오기
   useEffect(() => {
-    list.onChange(LetterList);
+    fetchSendLetters(dispatch, user.user._id, user.flag);
   }, []);
+
+  // 모바일 화면인지 확인
+  useEffect(() => {
+    const resizeListener = () => {
+      innerWidth.onChange(window.innerWidth);
+    };
+    window.addEventListener('resize', resizeListener);
+  }, [window.innerWidth]);
+
+  // 보낸 편지 리스트
+  const letters = useSelector((state) => state.letter.sendLetters);
+
+  // 리스트가 null값인지 확인
+  const notNull = letters != null && letters.length != 0;
 
   return (
     <ImgLayout title="보낸 편지" src={TopImg} width={900}>
-      <FilterSelect filter={filter} />
-      <SendTable list={list.value} />
+      {console.log(letters)}
+      {/* <FilterSelect filter={filter} />
+      <SendTable list={letters} />
       <Wrap>
         <StyledPagination count={10} shape="rounded" />
-      </Wrap>
+      </Wrap> */}
+      <TopFilter />
+      {innerWidth.value <= 500 ? (
+        <MobileTable list={letters} isNotNull={notNull} />
+      ) : (
+        <>
+          <SendTable list={letters} isNotNull={notNull} />
+          <Wrap>
+            <StyledPagination count={10} shape="rounded" />
+          </Wrap>
+        </>
+      )}
     </ImgLayout>
   );
 };

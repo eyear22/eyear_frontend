@@ -21,10 +21,11 @@ export const fetchReceiveLetters = async (dispatch, _id, flag) => {
 };
 
 // 보낸 편지 불러오기
-export const fetchSendLetters = async (dispatch, _id) => {
+export const fetchSendLetters = async (dispatch, _id, flag) => {
+  const user = flag == 0 ? 'user' : 'business';
   dispatch(fetchSendLetterStart());
   try {
-    const res = await publicRequest.get(`/send_list/${_id}`);
+    const res = await publicRequest.get(`${user}/send_list/${_id}`);
     dispatch(fetchSendLetterSuccess(res.data));
   } catch (err) {
     dispatch(fetchSendLetterFailure());

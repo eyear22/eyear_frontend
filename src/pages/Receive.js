@@ -23,7 +23,7 @@ const Receive = () => {
   // 받은 편지 불러오기
   useEffect(() => {
     fetchReceiveLetters(dispatch, user.user._id, user.flag);
-  }, [_id]);
+  }, []);
 
   // 모바일 화면인지 확인
   useEffect(() => {

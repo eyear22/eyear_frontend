@@ -24,7 +24,7 @@ const AuthRoutes = () => (
     <Route path="/post/success" element={<PostSuccess />} />
     <Route path="/receive" element={<Receive />} />
     <Route path="/send" element={<Send />} />
-    <Route path="/detail/:postId" element={<Detail />} />
+    <Route path="/detail/:flag/:postId" element={<Detail />} />
     <Route path="/notice" element={<Notice />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>

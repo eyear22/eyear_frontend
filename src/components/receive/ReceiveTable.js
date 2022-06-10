@@ -5,8 +5,8 @@ import EmptyTable from './EmptyTable';
 
 const ReceiveTable = ({ list, isNotNull }) => {
   const size = list.length;
-  const onClick = (id) => {
-    window.location.href = `/detail/${id}`;
+  const onClick = (id, flag) => {
+    window.location.href = `/detail/${flag}/${id}`;
   };
 
   return (
@@ -24,7 +24,7 @@ const ReceiveTable = ({ list, isNotNull }) => {
         {isNotNull ? (
           <TBody>
             {list.map((item, index) => (
-              <Tr key={item.post_id} onClick={() => onClick(item.post_id)} check={item.check}>
+              <Tr key={item.post_id} onClick={() => onClick(item.post_id, 0)} check={item.check}>
                 <Td>{size - index}</Td>
                 <Td>
                   <Icon src={item.check ? Check : UnCheck} />
