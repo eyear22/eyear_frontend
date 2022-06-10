@@ -14,7 +14,7 @@ const Input = ({ id, password, flag }) => {
     e.preventDefault();
     const userId = id.value;
     const userPwd = password.value;
-    login(dispatch, { uid: userId, password: userPwd, flag: flag });
+    login(dispatch, { uid: userId, password: userPwd });
   };
 
   const user = useSelector((state) => state.user.currentUser);
