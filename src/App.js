@@ -1,5 +1,5 @@
 import Home from './pages/Home';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Post from './pages/Post';
 import Login from './pages/Login';
 import Join from './pages/Join';
@@ -14,26 +14,45 @@ import Notice from './pages/Notice';
 import Header from './components/home/Header';
 import ScrollToTop from './utils/ScrollToTop';
 import Footer from './components/home/Footer';
+import { useSelector } from 'react-redux';
+
+// 로그인된 경우 접근할 수 있는 url
+const AuthRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/post" element={<Post />} />
+    <Route path="/post/success" element={<PostSuccess />} />
+    <Route path="/receive" element={<Receive />} />
+    <Route path="/send" element={<Send />} />
+    <Route path="/detail/:postId" element={<Detail />} />
+    <Route path="/notice" element={<Notice />} />
+    <Route path="*" element={<Navigate replace to="/" />} />
+  </Routes>
+);
+
+// 로그인안된 경우 접근할 수 있는 url
+const HomeRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/join" element={<Join />} />
+    <Route path="/join/user" element={<JoinUser />} />
+    <Route path="/join/business" element={<JoinBusiness />} />
+    <Route path="/join/done" element={<JoinDone />} />
+    <Route path="*" element={<Navigate replace to="/" />} />
+  </Routes>
+);
 
 const App = () => {
+  // 로그인한 사용자가 있는지 확인
+  const user = useSelector((state) => state.user.currentUser);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/post" element={<Post />} />
-        <Route path="/post/success" element={<PostSuccess />} />
-        <Route path="/receive" element={<Receive />} />
-        <Route path="/send" element={<Send />} />
-        <Route path="/detail/:postId" element={<Detail />} />
-        <Route path="/notice" element={<Notice />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/join/user" element={<JoinUser />} />
-        <Route path="/join/business" element={<JoinBusiness />} />
-        <Route path="/join/done" element={<JoinDone />} />
-      </Routes>
+      {console.log(user)}
+      {user ? <AuthRoutes /> : <HomeRoutes />}
       <Footer />
     </BrowserRouter>
   );
