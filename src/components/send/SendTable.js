@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import EmptyTable from '../receive/EmptyTable';
+import EmptyTable from '../common/EmptyTable';
 
 const SendTable = ({ list, isNotNull }) => {
-  const size = list.length;
-  const onClick = (id, flag) => {
-    window.location.href = `/detail/${flag}/${id}`;
+  const size = isNotNull && list.length;
+  const onClick = (id) => {
+    window.location.href = `/send/detail/${id}`;
   };
 
   return (
@@ -23,7 +22,7 @@ const SendTable = ({ list, isNotNull }) => {
         {isNotNull ? (
           <TBody>
             {list.map((item, index) => (
-              <Tr key={item.post_id} onClick={() => onClick(item.post_id, 1)}>
+              <Tr key={item.post_id} onClick={() => onClick(item.post_id)}>
                 <Td>{size - index}</Td>
                 <TitleTd>{item.title}</TitleTd>
                 <Td>{item.to}</Td>
@@ -33,7 +32,7 @@ const SendTable = ({ list, isNotNull }) => {
             ))}
           </TBody>
         ) : (
-          <EmptyTable />
+          <EmptyTable flag={1} />
         )}
       </Table>
     </>

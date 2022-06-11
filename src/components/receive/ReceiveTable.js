@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import Check from '../../assets/icon_check.png';
 import UnCheck from '../../assets/icon_uncheck.png';
-import EmptyTable from './EmptyTable';
+import EmptyTable from '../common/EmptyTable';
 
 const ReceiveTable = ({ list, isNotNull }) => {
   const size = list.length;
-  const onClick = (id, flag) => {
-    window.location.href = `/detail/${flag}/${id}`;
+  const onClick = (id) => {
+    window.location.href = `/receive/detail/${id}`;
   };
 
   return (
@@ -24,7 +24,7 @@ const ReceiveTable = ({ list, isNotNull }) => {
         {isNotNull ? (
           <TBody>
             {list.map((item, index) => (
-              <Tr key={item.post_id} onClick={() => onClick(item.post_id, 0)} check={item.check}>
+              <Tr key={item.post_id} onClick={() => onClick(item.post_id)} check={item.check}>
                 <Td>{size - index}</Td>
                 <Td>
                   <Icon src={item.check ? Check : UnCheck} />
@@ -36,7 +36,7 @@ const ReceiveTable = ({ list, isNotNull }) => {
             ))}
           </TBody>
         ) : (
-          <EmptyTable />
+          <EmptyTable flag={0} />
         )}
       </Table>
     </>
