@@ -35,11 +35,13 @@ const Detail = () => {
           <Info>
             <From>
               <Icon src={UserIcon} />
-              {'보낸 사람  : ' + user.flag == 0 ? data.from.pat_name : data.to.username + ', ' + data.relation.relation}
+              {user.flag == 0
+                ? '보낸 사람 : ' + data.from.pat_name
+                : '보낸 사람 : ' + data.to.username + ', ' + data.relation.relation}
             </From>
             <Date>{data.date}</Date>
           </Info>
-          {data.video.length != 0 && <VideoArea videoId={bucketName + data.video[0].video} />}
+          {data.video.length != 0 && <VideoArea videoId={bucketName + data.video[0].video} url={data.videourl} />}
           {data.image.length != 0 && <Content img={data.image} content={data.detail.content} bucketName={bucketName} />}
           <ButtonArea />
         </Container>
