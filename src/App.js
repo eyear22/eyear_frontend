@@ -15,6 +15,8 @@ import Header from './components/home/Header';
 import ScrollToTop from './utils/ScrollToTop';
 import Footer from './components/home/Footer';
 import { useSelector } from 'react-redux';
+import ReceiveDetail from './pages/ReceiveDetail';
+import SendDetail from './pages/SendDetail';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (
@@ -23,7 +25,9 @@ const AuthRoutes = () => (
     <Route path="/post" element={<Post />} />
     <Route path="/post/success" element={<PostSuccess />} />
     <Route path="/receive" element={<Receive />} />
+    <Route path="/receive/detail/:postId" element={<ReceiveDetail />} />
     <Route path="/send" element={<Send />} />
+    <Route path="/send/detail/:postId" element={<SendDetail />} />
     <Route path="/detail/:flag/:postId" element={<Detail />} />
     <Route path="/notice" element={<Notice />} />
     <Route path="*" element={<Navigate replace to="/" />} />

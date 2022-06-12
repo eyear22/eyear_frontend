@@ -2,13 +2,12 @@ import useInput from '../utils/useInput';
 import { Pagination } from '@mui/material';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import FilterSelect from '../components/receive/FilterSelect';
 import ReceiveTable from '../components/receive/ReceiveTable';
 import MobileTable from '../components/receive/MobileTable';
 import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_receive.png';
 import TopFilter from '../components/receive/TopFilter';
-import EmptyTable from '../components/receive/EmptyTable';
+import EmptyTable from '../components/common/EmptyTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReceiveLetters } from '../api/letter';
 
@@ -38,14 +37,6 @@ const Receive = () => {
 
   // 리스트가 null값인지 확인
   const notNull = letters != null && letters.length != 0;
-
-  /*
-  // TODO:
-  // FIXME:
-  1. 작성자 오브젝트 아이디로 넘어옴
-  2. 작성일 T까지 다 넘어옴
-  3. 작성일 기준으로 정렬해서 데이터 보내기
-  */
 
   // 모바일페이지의 테이블 분리
   return (
