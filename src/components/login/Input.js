@@ -31,7 +31,7 @@ const Input = ({ id, password, flag }) => {
             label={<Typography sx={{ fontSize: 12 }}>로그인 상태유지</Typography>}
           />
         </FormGroup>
-        <Button onClick={HandleLogin} disabled={isFetching}>
+        <Button onClick={HandleLogin} disabled={false}>
           로그인
         </Button>
         <SmallMenu />

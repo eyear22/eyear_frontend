@@ -42,7 +42,7 @@ const Detail = () => {
             <Date>{data.date}</Date>
           </Info>
           {data.video.length != 0 && <VideoArea videoId={bucketName + data.video[0].video} url={data.videourl} />}
-          {data.image.length != 0 && <Content img={data.image} content={data.detail.content} bucketName={bucketName} />}
+          <Content img={data.image} content={data.detail.content} bucketName={bucketName} />
           <ButtonArea />
         </Container>
       </Layout>

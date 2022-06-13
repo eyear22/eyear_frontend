@@ -4,7 +4,7 @@ import ImageSlide from './ImageSlide';
 const Content = ({ img, content, bucketName }) => {
   return (
     <Container>
-      <ImageSlide img={img} bucketName={bucketName} />
+      {img.length != 0 && <ImageSlide img={img} bucketName={bucketName} />}
       <Wrap>{content}</Wrap>
     </Container>
   );
