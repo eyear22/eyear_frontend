@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import VTT from '../../vtt/test.vtt';
+import VTT from '../../vtt/finaltest.vtt';
 
 const VideoArea = ({ videoId, url }) => {
   return (

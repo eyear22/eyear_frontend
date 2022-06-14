@@ -37,7 +37,7 @@ const Detail = () => {
               <Icon src={UserIcon} />
               {user.flag == 0
                 ? '보낸 사람 : ' + data.from.pat_name
-                : '보낸 사람 : ' + data.to.username + ', ' + data.relation.relation}
+                : '보낸 사람 : ' + data.from.username + ', ' + data.relation.relation}
             </From>
             <Date>{data.date}</Date>
           </Info>

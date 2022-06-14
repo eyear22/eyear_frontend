@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 import ListButton from '../components/sendDetail/ListButton';
 
 // 임의로 추가
-const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
+const bucketName = 'https://storage.cloud.google.com/swu_eyear/';
 
 const SendDetail = () => {
   const { postId } = useParams();
@@ -36,7 +36,7 @@ const SendDetail = () => {
           <Info>
             <From>
               <Icon src={UserIcon} />
-              {'받는 사람 : ' + data.to.pat_name}
+              {user.flag == 0 ? '받는 사람 : ' + data.to.pat_name : '받는 사람 : ' + data.to.username}
             </From>
             <Date>{data.date}</Date>
           </Info>
