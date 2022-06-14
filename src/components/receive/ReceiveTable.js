@@ -14,8 +14,8 @@ const ReceiveTable = ({ list, isNotNull }) => {
       <Table>
         <THead>
           <tr>
-            <THeadTd width={30}>번호</THeadTd>
-            <THeadTd width={30}>확인</THeadTd>
+            <THeadTd width={40}>번호</THeadTd>
+            <THeadTd width={40}>확인</THeadTd>
             <THeadTd>제목</THeadTd>
             <THeadTd width={80}>작성자</THeadTd>
             <THeadTd width={100}>작성일</THeadTd>
