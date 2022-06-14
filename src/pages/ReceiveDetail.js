@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // 임의로 추가
-const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
+const bucketName = 'https://storage.cloud.google.com/swu_eyear/';
 
 const Detail = () => {
   const { postId } = useParams();
