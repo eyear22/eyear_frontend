@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
-import { useGoBack, useGoPost, useGoReceive } from '../../hooks/navigateHooks';
+import { useGoPost, useGoReceive } from '../../hooks/navigateHooks';
 
 const ButtonArea = () => {
   return (

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Layout from '../components/common/Layout';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
-import ButtonArea from '../components/detail/ButtonArea';
 import Content from '../components/detail/Content';
 import VideoArea from '../components/detail/VideoArea';
 import UserIcon from '../assets/icon_from.png';
