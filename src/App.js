@@ -5,7 +5,6 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import JoinUser from './pages/JoinUser';
 import JoinBusiness from './pages/JoinBusiness';
-import Detail from './pages/Detail';
 import Receive from './pages/Receive';
 import JoinDone from './pages/JoinDone';
 import PostSuccess from './pages/PostSuccess';
@@ -28,7 +27,6 @@ const AuthRoutes = () => (
     <Route path="/receive/detail/:postId" element={<ReceiveDetail />} />
     <Route path="/send" element={<Send />} />
     <Route path="/send/detail/:postId" element={<SendDetail />} />
-    <Route path="/detail/:flag/:postId" element={<Detail />} />
     <Route path="/notice" element={<Notice />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>

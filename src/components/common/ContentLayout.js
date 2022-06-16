@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ImageSlide from './ImageSlide';
 
-const Content = ({ img, content, bucketName }) => {
+const ContentLayout = ({ img, content, bucketName }) => {
   return (
     <Container>
       {img.length != 0 && <ImageSlide img={img} bucketName={bucketName} />}
@@ -27,4 +27,4 @@ const Wrap = styled.div`
   white-space: pre-wrap;
 `;
 
-export default Content;
+export default ContentLayout;

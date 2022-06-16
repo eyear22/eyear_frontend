@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Layout from '../components/common/Layout';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
-import Content from '../components/detail/Content';
-import VideoArea from '../components/detail/VideoArea';
+import VideoArea from '../components/common/VideoArea';
 import UserIcon from '../assets/icon_from.png';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ListButton from '../components/sendDetail/ListButton';
+import ContentLayout from '../components/common/ContentLayout';
 
 // 임의로 추가
 const bucketName = 'https://storage.cloud.google.com/swu_eyear/';
@@ -40,7 +40,7 @@ const SendDetail = () => {
             <Date>{data.date}</Date>
           </Info>
           {data.video.length != 0 && <VideoArea videoId={bucketName + data.video[0].video} />}
-          <Content img={data.image} content={data.detail.content} bucketName={bucketName} />
+          <ContentLayout img={data.image} content={data.detail.content} bucketName={bucketName} />
           <ListButton />
         </Container>
       </Layout>
