@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 import useInput from '../../utils/useInput';
 
+// 개인 select 메뉴
 const userSelect = [
   {
     key: 0,
@@ -12,6 +13,7 @@ const userSelect = [
   },
 ];
 
+// 기관 select 메뉴
 const businessSelect = [
   {
     key: 0,
@@ -25,27 +27,41 @@ const businessSelect = [
   },
 ];
 
-const TopFilter = () => {
+const TopFilter = ({ filter }) => {
   // select 배열 개인/기업에 따라 다르게 지정
   const options = useInput([]);
   const user = useSelector((state) => state.user.currentUser);
+  const filterInput = useInput([]);
 
   useEffect(() => {
     user.flag == 0 ? options.onChange(userSelect) : options.onChange(businessSelect);
   }, []);
 
+  const handleFilter = (e) => {
+    filter.onChange(e.target.value);
+  };
+
+  const handlefilterInput = (e) => {
+    filterInput.onChange(e.target.value);
+  };
+
+  const searchClick = () => {
+    console.log(filter.value);
+    console.log(filterInput.value);
+  };
+
   return (
     <Container>
       <Wrap>
-        <Select name="filter">
+        <Select name="filter" onChange={handleFilter}>
           {options.value.map(({ key, value, text }) => (
             <option key={key} value={value}>
               {text}
             </option>
           ))}
         </Select>
-        <Input />
-        <Button>검색</Button>
+        <Input value={handleFilter.value} onChange={handlefilterInput} />
+        <Button onClick={searchClick}>검색</Button>
       </Wrap>
     </Container>
   );
