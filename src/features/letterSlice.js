@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const letterSlice = createSlice({
   name: 'letter',
   initialState: {
-    receiveLetters: [],
+    receiveLetters: [], // 받은편지 리스트
     receiveLettersFetching: false,
     receiveLettersError: false,
-    sendLetters: null,
+    sendLetters: null, // 보낸편지 리스트
     sendLettersFetching: false,
     sendLettersError: false,
   },

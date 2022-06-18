@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    currentUser: null,
+    currentUser: null, // 현재 로그인된 계정
     isFetching: false,
     error: false,
     logoutLoading: false,
