@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// 편지리스트가 비었을 때
 const EmptyTable = ({ flag }) => {
   const text = flag == 0 ? '받은' : '보낸';
   return (

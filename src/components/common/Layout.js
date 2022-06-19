@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
+// 일반적인 공통 레이아웃
 const Layout = ({ title, width, children }) => {
   return (
     <>

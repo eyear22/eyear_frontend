@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
-import Footer from '../home/Footer';
-import Header from '../home/Header';
 
+// 상단에 이미지 배너가 들어간 공통 레이아웃
 const ImgLayout = ({ title, src, width, children }) => {
   return (
     <>

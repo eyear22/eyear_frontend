@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import ImageSlide from './ImageSlide';
 
+// 상세페이지 이미지 & 내용 공통 레이아웃
 const ContentLayout = ({ img, content, bucketName }) => {
   return (
     <Container>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
+// 회원가입 탭메뉴 레이아웃
 const JoinTabMenu = ({ idx, Component1, Component2 }) => {
   const tabMenu = [
     {

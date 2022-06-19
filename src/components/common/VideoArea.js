@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import VTT from '../../vtt/finaltest.vtt';
 
+// 상세페이지 비디오 영역 레이아웃
 const VideoArea = ({ videoId, url }) => {
   return (
     <Container>

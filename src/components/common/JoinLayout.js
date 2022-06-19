@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { tablet } from '../../utils/responsive';
-import Footer from '../home/Footer';
-import Header from '../home/Header';
 import JoinCircle from './JoinCircle';
 
+// 회원가입 공통 레이아웃
 const JoinLayout = ({ title, num, children }) => {
   return (
     <>
