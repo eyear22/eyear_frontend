@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const TopArea = () => {
   return (
     <Container>
-      <div>카테고리</div>
-      <div>TopArea</div>
+      <Title>공지사항</Title>
+      <Desc>아이어의 새로운 소식과 공지를 확인해보세요!</Desc>
     </Container>
   );
 };
@@ -12,7 +12,17 @@ const TopArea = () => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const Title = styled.h2`
+  padding-top: 80px;
+`;
+
+const Desc = styled.div`
+  color: #999999;
+  font-size: 14px;
 `;
 
 export default TopArea;

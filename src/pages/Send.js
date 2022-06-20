@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import ImgLayout from '../components/common/ImgLayout';
 import TopImg from '../assets/img_send.png';
-import FilterSelect from '../components/receive/FilterSelect';
 import useInput from '../utils/useInput';
 import { Pagination } from '@mui/material';
 import SendTable from '../components/send/SendTable';
