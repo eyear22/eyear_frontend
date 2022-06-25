@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
+import ButtonLayout from './ButtonLayout';
+import InputLayout from './InputLayout';
 
 const FirstInfo = ({ activeIndex }) => {
   // 다음 버튼 눌렀을 때
@@ -8,6 +10,7 @@ const FirstInfo = ({ activeIndex }) => {
   };
   return (
     <Container>
+      <ButtonLayout title="병원 고유 번호" placeholder="병원 고유 번호를 입력해주세요." btnText="병원인증" />
       <Wrap>
         <Title>병원 고유 번호</Title>
         <Right>
@@ -52,6 +55,7 @@ const FirstInfo = ({ activeIndex }) => {
           <RightButton>주소검색</RightButton>
         </Right>
       </Wrap>
+      <ButtonLayout title="주소" placeholder="주소를 입력해주세요." btnText="주소검색" />
       <Wrap>
         <Title>상세주소</Title>
         <FullInput placeholder="상세주소를 입력해주세요." />
