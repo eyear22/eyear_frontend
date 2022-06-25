@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import ImageSlide from './ImageSlide';
 
-const Content = ({ img, content, bucketName }) => {
+// 상세페이지 이미지 & 내용 공통 레이아웃
+const ContentLayout = ({ img, content, bucketName }) => {
   return (
     <Container>
-      <ImageSlide img={img} bucketName={bucketName} />
+      {img.length != 0 && <ImageSlide img={img} bucketName={bucketName} />}
       <Wrap>{content}</Wrap>
     </Container>
   );
@@ -27,4 +28,4 @@ const Wrap = styled.div`
   white-space: pre-wrap;
 `;
 
-export default Content;
+export default ContentLayout;

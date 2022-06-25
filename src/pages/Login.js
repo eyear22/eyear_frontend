@@ -12,8 +12,8 @@ const Login = () => {
     <Layout title="로그인">
       <LoginTabMenu
         idx={activeIndex}
-        Component1={<Input id={id} password={password} />}
-        Component2={<Input id={id} password={password} />}
+        Component1={<Input id={id} password={password} flag={activeIndex.value} />}
+        Component2={<Input id={id} password={password} flag={activeIndex.value} />}
       />
     </Layout>
   );

@@ -9,10 +9,11 @@ import {
 import { publicRequest } from '../hooks/requestMethods';
 
 // 환자 리스트 불러오기
-export const fetchPatients = async (dispatch, hos_id) => {
+export const fetchPatients = async (dispatch, _id, flag) => {
+  const user = flag == 0 ? 'user' : 'business'; // 0: 개인, 1: 기업
   dispatch(fetchPatientStart());
   try {
-    const res = await publicRequest.get(`/business/${hos_id}/patientList`);
+    const res = await publicRequest.get(`/${user}/${_id}/patientList`);
     dispatch(fetchPatientSuccess(res.data));
   } catch (err) {
     dispatch(fetchPatientFailure());

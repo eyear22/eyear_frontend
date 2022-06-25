@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
+// 회원가입 단계 나타내는 컴포넌트 (1,2,3)
 const JoinCircle = ({ num }) => {
   return (
     <Container>

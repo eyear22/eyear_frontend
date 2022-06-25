@@ -2,22 +2,26 @@ import styled from 'styled-components';
 import Layout from '../components/common/Layout';
 import { publicRequest } from '../hooks/requestMethods';
 import { useEffect, useState } from 'react';
-import ButtonArea from '../components/detail/ButtonArea';
-import Content from '../components/detail/Content';
-import VideoArea from '../components/detail/VideoArea';
+import VideoArea from '../components/common/VideoArea';
 import UserIcon from '../assets/icon_from.png';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import ListButton from '../components/sendDetail/ListButton';
+import ContentLayout from '../components/common/ContentLayout';
 
 // 임의로 추가
-const bucketName = 'https://storage.cloud.google.com/myeyearbucket2022/';
+const bucketName = 'https://storage.cloud.google.com/swu_eyear/';
 
-const Detail = () => {
-  const post_id = 2;
+const SendDetail = () => {
+  const { postId } = useParams();
   const [data, setData] = useState([]);
+  // 현재 사용자
+  const user = useSelector((state) => state.user.currentUser);
 
   // 상세 데이터 불러오기
   useEffect(() => {
     const detailRequest = async () => {
-      const res = await publicRequest.get(`/business/detail/${post_id}`);
+      const res = await publicRequest.get(`/SendDetail/${user.flag}/${postId}`);
       console.log(res.data);
       setData(res.data);
     };
@@ -31,13 +35,13 @@ const Detail = () => {
           <Info>
             <From>
               <Icon src={UserIcon} />
-              {data.to.username + ', ' + data.relation.relation}
+              {user.flag == 0 ? '받는 사람 : ' + data.to.pat_name : '받는 사람 : ' + data.to.username}
             </From>
-            <Date>{data.detail.createdAt}</Date>
+            <Date>{data.date}</Date>
           </Info>
-          <VideoArea videoId={bucketName + data.video[0].video} />
-          <Content img={data.image} content={data.detail.content} bucketName={bucketName} />
-          <ButtonArea />
+          {data.video.length != 0 && <VideoArea videoId={bucketName + data.video[0].video} />}
+          <ContentLayout img={data.image} content={data.detail.content} bucketName={bucketName} />
+          <ListButton />
         </Container>
       </Layout>
     );
@@ -68,4 +72,4 @@ const Icon = styled.img`
   margin-right: 5px;
 `;
 
-export default Detail;
+export default SendDetail;

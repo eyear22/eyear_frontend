@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
-import Footer from '../home/Footer';
-import Header from '../home/Header';
 
+// 일반적인 공통 레이아웃
 const Layout = ({ title, width, children }) => {
   return (
     <>

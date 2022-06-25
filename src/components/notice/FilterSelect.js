@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import SearchIcon from '../../assets/icon_search.png';
+import { mobile } from '../../utils/responsive';
 import useInput from '../../utils/useInput';
 
-const FilterSelect = ({ filter }) => {
-  const input = useInput('');
-
+const FilterSelect = ({ filter, input }) => {
   // input 변경
   const onChange = (e) => {
     input.onChange(e.target.value);
@@ -41,6 +40,7 @@ const Container = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
   margin-bottom: 10px;
+  ${mobile({ justifyContent: 'center' })}
 `;
 
 const Select = styled.select`

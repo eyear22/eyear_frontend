@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import Test from '../../assets/my.vtt';
+import VTT from '../../vtt/finaltest.vtt';
 
-const VideoArea = ({ videoId }) => {
+// 상세페이지 비디오 영역 레이아웃
+const VideoArea = ({ videoId, url }) => {
   return (
     <Container>
-      <Video controls>
+      <Video controls crossorigin="anonymous">
         <source src={videoId} type="video/mp4" />
-        <track kind="subtitles" src={Test} srcLang="ko" label="Korean" />
+        <track kind="subtitles" src={VTT} srcLang="ko" label="Korean" />
         없음
       </Video>
     </Container>

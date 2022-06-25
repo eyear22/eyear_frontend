@@ -5,7 +5,7 @@ import { login } from '../../api/auth';
 import ButtomArea from './ButtomArea';
 import SmallMenu from './SmallMenu';
 
-const Input = ({ id, password }) => {
+const Input = ({ id, password, flag }) => {
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
@@ -17,11 +17,12 @@ const Input = ({ id, password }) => {
     login(dispatch, { uid: userId, password: userPwd });
   };
 
-  //  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <>
       <Wrap>
+        {console.log(user)}
         <MyInput placeholder="아이디" onChange={(e) => id.onChange(e.target.value)} />
         <MyInput placeholder="비밀번호" onChange={(e) => password.onChange(e.target.value)} type="password" />
         <FormGroup>
@@ -30,7 +31,7 @@ const Input = ({ id, password }) => {
             label={<Typography sx={{ fontSize: 12 }}>로그인 상태유지</Typography>}
           />
         </FormGroup>
-        <Button onClick={HandleLogin} disabled={isFetching}>
+        <Button onClick={HandleLogin} disabled={false}>
           로그인
         </Button>
         <SmallMenu />

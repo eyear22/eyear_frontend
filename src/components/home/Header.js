@@ -5,17 +5,27 @@ import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
-import { useGoHome, useGoLogin, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
+import { useGoHome, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../api/auth';
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
+
+  const user = useSelector((state) => state.user.currentUser);
 
   const goIntroduceSection = () => {
     navigate('/');
     setTimeout(() => {
       window.scrollTo({ top: 500, behavior: 'smooth' });
     }, 100);
+  };
+
+  // 로그인/로그아웃 버튼
+  const LoginLogoutClick = () => {
+    user ? logout(dispatch) : navigate('/login');
   };
 
   return (
@@ -31,7 +41,7 @@ const Header = () => {
         </Center>
       </Wrap>
       <Right toggle={toggle}>
-        <AuthText onClick={useGoLogin()}>로그인</AuthText>
+        <AuthText onClick={() => LoginLogoutClick()}>{user ? '로그아웃' : '로그인'}</AuthText>
         <Button onClick={useGoPost()}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import Check from '../../assets/icon_check.png';
-import UnCheck from '../../assets/icon_uncheck.png';
+import EmptyTable from '../common/EmptyTable';
 
-const SendTable = ({ list }) => {
-  const size = list.length;
+const SendTable = ({ list, isNotNull }) => {
+  const size = isNotNull && list.length;
   const onClick = (id) => {
-    window.location.href = `/detail/${id}`;
+    window.location.href = `/send/detail/${id}`;
   };
 
   return (
@@ -13,24 +12,28 @@ const SendTable = ({ list }) => {
       <Table>
         <THead>
           <tr>
-            <THeadTd width={30}>번호</THeadTd>
+            <THeadTd width={40}>번호</THeadTd>
             <THeadTd>제목</THeadTd>
-            <THeadTd width={80}>작성자</THeadTd>
+            <THeadTd width={80}>받는사람</THeadTd>
             <THeadTd width={100}>작성일</THeadTd>
             <THeadTd width={80}>수신확인</THeadTd>
           </tr>
         </THead>
-        <TBody>
-          {list.map((item, index) => (
-            <Tr key={item.post_id} onClick={() => onClick(item.post_id)}>
-              <Td>{size - index}</Td>
-              <TitleTd>{item.title}</TitleTd>
-              <Td>{item.from}</Td>
-              <Td>{item.createdAt}</Td>
-              <td>{item.check ? '읽음' : '읽지않음'}</td>
-            </Tr>
-          ))}
-        </TBody>
+        {isNotNull ? (
+          <TBody>
+            {list.map((item, index) => (
+              <Tr key={item.post_id} onClick={() => onClick(item.post_id)}>
+                <Td>{size - index}</Td>
+                <TitleTd>{item.title}</TitleTd>
+                <Td>{item.to}</Td>
+                <Td>{item.createdAt}</Td>
+                <td>{item.check ? '읽음' : '읽지않음'}</td>
+              </Tr>
+            ))}
+          </TBody>
+        ) : (
+          <EmptyTable flag={1} />
+        )}
       </Table>
     </>
   );
@@ -41,12 +44,13 @@ const Table = styled.table`
   text-align: center;
   border-collapse: collapse;
   font-size: 16px;
-  background-color: #fff;
+  background-color: #f9f9fa;
 `;
 
 const THead = styled.thead`
-  border-top: 1.5px solid #889287;
+  border-top: 3px solid #889287;
   background-color: #f9f9fa;
+  border-bottom: 3px solid #ebeeec;
 `;
 
 const THeadTd = styled.td`
@@ -55,9 +59,7 @@ const THeadTd = styled.td`
 `;
 
 const TBody = styled.tbody`
-  color: #2b2b2b;
   font-size: 16px;
-  border-top: 1.5px solid #889287;
 `;
 
 const Tr = styled.tr`

@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const patientSlice = createSlice({
   name: 'patient',
   initialState: {
-    patientList: null,
+    patientList: null, // 환자 리스트
     patientListFetching: false,
     patientListError: false,
-    userList: null,
+    userList: null, // 개인 리스트
     userListFetching: false,
     userListError: false,
   },
