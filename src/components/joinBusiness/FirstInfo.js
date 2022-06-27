@@ -3,7 +3,7 @@ import { mobile } from '../../utils/responsive';
 import ButtonLayout from './ButtonLayout';
 import InputLayout from './InputLayout';
 
-const FirstInfo = ({ activeIndex }) => {
+const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdressDetail }) => {
   // 다음 버튼 눌렀을 때
   const onClick = () => {
     activeIndex.onChange(1);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const SecondInfo = ({ activeIndex }) => {
+const SecondInfo = ({ activeIndex, email, password, passwordCheck }) => {
   // 이전 버튼 눌렀을 때
   const onPrev = () => activeIndex.onChange(0);
   return (
