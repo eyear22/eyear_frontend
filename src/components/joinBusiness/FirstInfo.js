@@ -8,57 +8,64 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
   const onClick = () => {
     activeIndex.onChange(1);
   };
+
+  // TODO: 병원 고유 번호?
+  const checkHos = () => {
+    hosName.onChange('참사랑병원');
+  };
+
   return (
     <Container>
-      <ButtonLayout title="병원 고유 번호" placeholder="병원 고유 번호를 입력해주세요." btnText="병원인증" />
+      {/* <ButtonLayout title="병원 고유 번호" placeholder="병원 고유 번호를 입력해주세요." btnText="병원인증" /> */}
       <Wrap>
         <Title>병원 고유 번호</Title>
         <Right>
           <Input
-            // value={patientNum.value}
-            // onChange={(e) => {
-            //   patientNum.onChange(e.target.value);
-            //   checkPaientNum.onChange(false);
-            //   patientId.onChange('');
-            //   patientName.onChange('');
-            //   patientBirth.onChange('');
-            //   hospitalName.onChange('');
-            // }}
+            value={hosNum.value}
+            onChange={(e) => {
+              hosNum.onChange(e.target.value);
+              hosName.onChange('');
+            }}
             placeholder="병원 고유 번호를 입력해주세요."
           />
-          <RightButton>병원인증</RightButton>
+          <RightButton onClick={() => checkHos()}>병원인증</RightButton>
         </Right>
       </Wrap>
       <Wrap>
         <Title>병원 이름</Title>
-        <FullInput disabled placeholder="병원 이름을 입력해주세요." />
+        <FullInput value={hosName.value} disabled placeholder="병원 이름을 입력해주세요." />
       </Wrap>
       <Wrap>
         <Title>전화번호</Title>
-        <FullInput placeholder="병원 전화번호를 공백없이 입력해주세요." />
+        <FullInput
+          value={hosPhone.value}
+          onChange={(e) => hosPhone.onChange(e.target.value)}
+          placeholder="병원 전화번호를 공백없이 입력해주세요."
+        />
       </Wrap>
       <Wrap>
         <Title>주소</Title>
         <Right>
           <Input
-            // value={patientNum.value}
-            // onChange={(e) => {
-            //   patientNum.onChange(e.target.value);
-            //   checkPaientNum.onChange(false);
-            //   patientId.onChange('');
-            //   patientName.onChange('');
-            //   patientBirth.onChange('');
-            //   hospitalName.onChange('');
-            // }}
+            value={hosAdress.value}
+            onChange={(e) => {
+              hosAdress.onChange(e.target.value);
+            }}
             placeholder="주소를 입력해주세요."
           />
           <RightButton>주소검색</RightButton>
         </Right>
       </Wrap>
-      <ButtonLayout title="주소" placeholder="주소를 입력해주세요." btnText="주소검색" />
+      {/* <ButtonLayout title="주소" placeholder="주소를 입력해주세요." btnText="주소검색" /> */}
       <Wrap>
         <Title>상세주소</Title>
-        <FullInput placeholder="상세주소를 입력해주세요." />
+        <FullInput
+          value={hosAdressDetail.value}
+          onChange={(e) => {
+            hosAdressDetail.onChange(e.target.value);
+          }}
+          placeholder="상세주소를 입력해주세요."
+        />
       </Wrap>
       <NextButton disabled={false} onClick={() => onClick()}>
         다음

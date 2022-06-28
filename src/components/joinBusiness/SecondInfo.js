@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const SecondInfo = ({ activeIndex, email, password, passwordCheck }) => {
+const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join }) => {
   // 이전 버튼 눌렀을 때
   const onPrev = () => activeIndex.onChange(0);
   return (
@@ -10,11 +10,10 @@ const SecondInfo = ({ activeIndex, email, password, passwordCheck }) => {
         <Title>이메일</Title>
         <Right>
           <Input
-            // value={email.value}
-            // onChange={(e) => {
-            //   email.onChange(e.target.value);
-            //   checkEmail.onChange(false);
-            // }}
+            value={email.value}
+            onChange={(e) => {
+              email.onChange(e.target.value);
+            }}
             placeholder="이메일을 입력해주세요."
           />
           <RightButton>중복확인</RightButton>
@@ -24,11 +23,10 @@ const SecondInfo = ({ activeIndex, email, password, passwordCheck }) => {
         <Title>아이디</Title>
         <Right>
           <Input
-            // value={userId.value}
-            // onChange={(e) => {
-            //   userId.onChange(e.target.value);
-            //   checkId.onChange(false);
-            // }}
+            value={userId.value}
+            onChange={(e) => {
+              userId.onChange(e.target.value);
+            }}
             placeholder="아이디를 입력해주세요."
           />
           <RightButton>중복확인</RightButton>
@@ -38,11 +36,10 @@ const SecondInfo = ({ activeIndex, email, password, passwordCheck }) => {
         <Title>비밀번호</Title>
         <FullInput
           type="password"
-          //   value={password.value}
-          //   onChange={(e) => {
-          //     password.onChange(e.target.value);
-          //     checkPwdRegex(e.target.value);
-          //   }}
+          value={password.value}
+          onChange={(e) => {
+            password.onChange(e.target.value);
+          }}
           placeholder="비밀번호를 입력해주세요."
         />
       </Wrap>
@@ -51,18 +48,19 @@ const SecondInfo = ({ activeIndex, email, password, passwordCheck }) => {
         <Title>비밀번호 확인</Title>
         <FullInput
           type="password"
-          //   value={passwordCheck.value}
-          //   onChange={(e) => {
-          //     passwordCheck.onChange(e.target.value);
-          //     checkPwdInput(password.value, e.target.value);
-          //   }}
-          //   placeholder="비밀번호를 입력해주세요."
+          value={passwordCheck.value}
+          onChange={(e) => {
+            passwordCheck.onChange(e.target.value);
+          }}
+          placeholder="비밀번호를 입력해주세요."
         />
       </Wrap>
       {/* <Error>{errPwdCheck.value}</Error> */}
       <Bottom>
         <NextButton onClick={() => onPrev()}>이전</NextButton>
-        <NextButton disabled={false}>회원가입</NextButton>
+        <NextButton disabled={false} onClick={() => join()}>
+          회원가입
+        </NextButton>
       </Bottom>
     </Container>
   );
