@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const ButtonLayout = ({ title, placeholder, btnText, value, onChange, btnClick }) => {
+const ButtonLayout = ({ title, placeholder, btnText, value, onChange, btnClick, disabled }) => {
   return (
     <Container>
       <Title>{title}</Title>
       <Right>
-        <Input value={value} onChange={onChange} placeholder={placeholder} />
+        <Input value={value} onChange={onChange} placeholder={placeholder} readOnly={disabled} disabled={disabled} />
         <Button onClick={btnClick}>{btnText}</Button>
       </Right>
     </Container>

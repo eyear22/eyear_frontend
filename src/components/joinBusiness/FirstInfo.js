@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import ButtonLayout from './ButtonLayout';
+import { hospitalInfoData } from './HospitalInfoData';
 import InputLayout from './InputLayout';
+import useInput from '../../utils/useInput';
+import DaumPostCode from 'react-daum-postcode';
 
 const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdressDetail }) => {
   // 다음 버튼 눌렀을 때
@@ -8,13 +11,55 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
     activeIndex.onChange(1);
   };
 
-  // TODO: 병원 고유 번호?
-  const checkHos = () => {
-    hosName.onChange('참사랑병원');
+  const checkHosNumAndSetHosName = () => {
+    const hospital = hospitalInfoData.filter((info) => hosNum.value == info.num);
+    try {
+      hosName.onChange(hospital[0].name);
+    } catch (e) {
+      alert('일치하는 병원이 없습니다.');
+      hosNum.onChange('');
+    }
+  };
+
+  const modalOpen = useInput(false);
+
+  const handleComplete = (data) => {
+    let fullAddress = data.address;
+    let extraAddress = '';
+
+    if (data.addressType === 'R') {
+      if (data.bname !== '') {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== '') {
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+    hosAdress.onChange(fullAddress);
+    modalOpen.onChange(false);
   };
 
   return (
     <Container>
+      {/* {modalOpen.value ? (
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: '80%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: 'rgba(200, 200, 200, 0.8)',
+          }}
+        >
+          <button title="닫기" onClick={() => modalOpen.onChange(false)}>
+            닫기
+          </button>
+          <AddressModal height={900} width={600} />
+        </div>
+      ) : null} */}
       <ButtonLayout
         title="병원 고유 번호"
         placeholder="병원 고유 번호를 입력해주세요."
@@ -24,7 +69,7 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
           hosNum.onChange(e.target.value);
           hosName.onChange('');
         }}
-        btnClick={checkHos}
+        btnClick={checkHosNumAndSetHosName}
       />
       <InputLayout title="병원 이름" value={hosName.value} disabled placeholder="병원 이름을 입력해주세요." />
       <InputLayout
@@ -38,11 +83,36 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
         placeholder="주소를 입력해주세요."
         btnText="주소검색"
         value={hosAdress.value}
-        onChange={(e) => {
-          hosAdress.onChange(e.target.value);
-        }}
-        btnClick={checkHos}
+        disabled
+        btnClick={() => modalOpen.onChange(true)}
       />
+      {modalOpen.value ? (
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: 0,
+            left: 0,
+            background: 'rgba(200, 200, 200, 0.8)',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              width: 800,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <button title="닫기" onClick={() => modalOpen.onChange(false)}>
+              닫기
+            </button>
+            <AddressModal height={700} onComplete={handleComplete} />
+          </div>
+        </div>
+      ) : null}
       <InputLayout
         title="상세주소"
         value={hosAdressDetail.value}
@@ -74,5 +144,7 @@ const NextButton = styled.button`
     background-color: #d8d8d8;
   }
 `;
+
+const AddressModal = styled(DaumPostCode)``;
 
 export default FirstInfo;
