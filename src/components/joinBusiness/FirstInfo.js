@@ -9,6 +9,11 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
   // 다음 버튼 눌렀을 때
   const clickNextButton = () => {
     activeIndex.onChange(1);
+    console.log(hosNum.value);
+    console.log(hosName.value);
+    console.log(hosPhone.value);
+    console.log(hosAdress.value);
+    console.log(hosAdressDetail.value);
   };
 
   const checkHosNumAndSetHosName = () => {
@@ -40,26 +45,15 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
     modalOpen.onChange(false);
   };
 
+  const checkNull =
+    hosNum.value == '' ||
+    hosName.value == '' ||
+    hosPhone.value == '' ||
+    hosAdress.value == '' ||
+    hosAdressDetail.value == '';
+
   return (
     <Container>
-      {/* {modalOpen.value ? (
-        <div
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            top: '80%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'rgba(200, 200, 200, 0.8)',
-          }}
-        >
-          <button title="닫기" onClick={() => modalOpen.onChange(false)}>
-            닫기
-          </button>
-          <AddressModal height={900} width={600} />
-        </div>
-      ) : null} */}
       <ButtonLayout
         title="병원 고유 번호"
         placeholder="병원 고유 번호를 입력해주세요."
@@ -119,7 +113,7 @@ const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdres
         onChange={(e) => hosAdressDetail.onChange(e.target.value)}
         placeholder="상세주소를 입력해주세요."
       />
-      <NextButton disabled={false} onClick={clickNextButton}>
+      <NextButton disabled={checkNull} onClick={clickNextButton}>
         다음
       </NextButton>
     </Container>
