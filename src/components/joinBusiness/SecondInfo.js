@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import { publicRequest } from '../../hooks/requestMethods';
 import { mobile } from '../../utils/responsive';
+import useInput from '../../utils/useInput';
 import ButtonLayout from './ButtonLayout';
 import InputLayout from './InputLayout';
 
 const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join }) => {
   // 이전 버튼 눌렀을 때
   const onPrev = () => activeIndex.onChange(0);
+  const code = useInput('');
+  const codeInput = useInput('');
+  const checkIdDone = useInput(false);
+  const checkEmailDone = useInput(false);
 
   const checkId = async () => {
     if (checkId.value == '') {
@@ -27,6 +32,30 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
     }
   };
 
+  const checkEmail = async () => {
+    const regex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if (email.value == '') {
+      alert('이메일을 입력해주세요.');
+    } else if (!regex.test(email.value)) {
+      alert('이메일 형식이 올바르지 않습니다.');
+      email.onChange('');
+    } else {
+      try {
+        const res = await publicRequest.get(`/join/email_check/${email.value}`);
+        if (res.data == 'exit') {
+          alert('중복되는 이메일이 있습니다.');
+          email.onChange('');
+        } else {
+          alert('인증번호가 전송되었습니다');
+          checkEmailDone.onChange(true);
+          code.onChange(res.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <Container>
       <ButtonLayout
@@ -34,9 +63,23 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
         placeholder="이메일을 입력해주세요."
         btnText="중복확인"
         value={email.value}
-        onChange={(e) => email.onChange(e.target.value)}
-        btnClick={() => console.log('d')}
+        onChange={(e) => {
+          email.onChange(e.target.value);
+          checkEmailDone.onChange(false);
+        }}
+        btnClick={checkEmail}
       />
+      {checkEmailDone.value && (
+        <ButtonLayout
+          title="인증번호"
+          placeholder="인증번호를 입력해주세요."
+          btnText="확인"
+          value={codeInput.value}
+          onChange={(e) => codeInput.onChange(e.target.value)}
+          btnClick={() => console.log('d')}
+        />
+      )}
+
       <ButtonLayout
         title="아이디"
         placeholder="아이디를 입력해주세요."
