@@ -94,15 +94,17 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
     }
   };
 
-  // const checkNull =
-  //   !checkId.value ||
-  //   !checkEmail.value ||
-  //   userId.value == '' ||
-  //   username.value == '' ||
-  //   password.value == '' ||
-  //   password.value != passwordCheck.value ||
-  //   errPwd.value != '' ||
-  //   errPwdCheck.value != '';
+  const checkNull =
+    !checkId.value ||
+    !checkEmail.value ||
+    userId.value == '' ||
+    checkCodeDone ||
+    checkEmailDone ||
+    checkIdDone ||
+    password.value == '' ||
+    password.value != passwordCheck.value ||
+    errPwd.value != '' ||
+    errPwdCheck.value != '';
 
   return (
     <Container>
@@ -168,7 +170,7 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
       <Error>{errPwdCheck.value}</Error>
       <Bottom>
         <NextButton onClick={() => onPrev()}>이전</NextButton>
-        <NextButton disabled={false} onClick={() => join()}>
+        <NextButton disabled={checkNull} onClick={() => join()}>
           회원가입
         </NextButton>
       </Bottom>
