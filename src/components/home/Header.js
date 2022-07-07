@@ -5,7 +5,14 @@ import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
-import { useGoHome, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
+import {
+  useGoHome,
+  useGoManagePatients,
+  useGoNotice,
+  useGoPost,
+  useGoReceive,
+  useGoSend,
+} from '../../hooks/navigateHooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../api/auth';
 
@@ -36,7 +43,7 @@ const Header = () => {
           <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
           <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
           <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
-          {/* <MenuItem>환자관리</MenuItem> */}
+          <MenuItem onClick={useGoManagePatients()}>환자관리</MenuItem>
           <MenuItem onClick={useGoNotice()}>공지사항</MenuItem>
         </Center>
       </Wrap>
