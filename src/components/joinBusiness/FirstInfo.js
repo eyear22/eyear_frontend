@@ -1,62 +1,119 @@
 import styled from 'styled-components';
-import { mobile } from '../../utils/responsive';
+import ButtonLayout from './ButtonLayout';
+import { hospitalInfoData } from './HospitalInfoData';
+import InputLayout from './InputLayout';
+import useInput from '../../utils/useInput';
+import DaumPostCode from 'react-daum-postcode';
 
-const FirstInfo = ({ activeIndex }) => {
+const FirstInfo = ({ activeIndex, hosNum, hosName, hosPhone, hosAdress, hosAdressDetail }) => {
   // 다음 버튼 눌렀을 때
-  const onClick = () => {
+  const clickNextButton = () => {
     activeIndex.onChange(1);
+    console.log(hosNum.value);
+    console.log(hosName.value);
+    console.log(hosPhone.value);
+    console.log(hosAdress.value);
+    console.log(hosAdressDetail.value);
   };
+
+  const checkHosNumAndSetHosName = () => {
+    const hospital = hospitalInfoData.filter((info) => hosNum.value == info.num);
+    try {
+      hosName.onChange(hospital[0].name);
+    } catch (e) {
+      alert('일치하는 병원이 없습니다.');
+      hosNum.onChange('');
+    }
+  };
+
+  const modalOpen = useInput(false);
+
+  const handleComplete = (data) => {
+    let fullAddress = data.address;
+    let extraAddress = '';
+
+    if (data.addressType === 'R') {
+      if (data.bname !== '') {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== '') {
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+    hosAdress.onChange(fullAddress);
+    modalOpen.onChange(false);
+  };
+
+  const checkNull =
+    hosNum.value == '' ||
+    hosName.value == '' ||
+    hosPhone.value == '' ||
+    hosAdress.value == '' ||
+    hosAdressDetail.value == '';
+
   return (
     <Container>
-      <Wrap>
-        <Title>병원 고유 번호</Title>
-        <Right>
-          <Input
-            // value={patientNum.value}
-            // onChange={(e) => {
-            //   patientNum.onChange(e.target.value);
-            //   checkPaientNum.onChange(false);
-            //   patientId.onChange('');
-            //   patientName.onChange('');
-            //   patientBirth.onChange('');
-            //   hospitalName.onChange('');
-            // }}
-            placeholder="병원 고유 번호를 입력해주세요."
-          />
-          <RightButton>병원인증</RightButton>
-        </Right>
-      </Wrap>
-      <Wrap>
-        <Title>병원 이름</Title>
-        <FullInput disabled placeholder="병원 이름을 입력해주세요." />
-      </Wrap>
-      <Wrap>
-        <Title>전화번호</Title>
-        <FullInput placeholder="병원 전화번호를 공백없이 입력해주세요." />
-      </Wrap>
-      <Wrap>
-        <Title>주소</Title>
-        <Right>
-          <Input
-            // value={patientNum.value}
-            // onChange={(e) => {
-            //   patientNum.onChange(e.target.value);
-            //   checkPaientNum.onChange(false);
-            //   patientId.onChange('');
-            //   patientName.onChange('');
-            //   patientBirth.onChange('');
-            //   hospitalName.onChange('');
-            // }}
-            placeholder="주소를 입력해주세요."
-          />
-          <RightButton>주소검색</RightButton>
-        </Right>
-      </Wrap>
-      <Wrap>
-        <Title>상세주소</Title>
-        <FullInput placeholder="상세주소를 입력해주세요." />
-      </Wrap>
-      <NextButton disabled={false} onClick={() => onClick()}>
+      <ButtonLayout
+        title="병원 고유 번호"
+        placeholder="병원 고유 번호를 입력해주세요."
+        btnText="병원인증"
+        value={hosNum.value}
+        onChange={(e) => {
+          hosNum.onChange(e.target.value);
+          hosName.onChange('');
+        }}
+        btnClick={checkHosNumAndSetHosName}
+      />
+      <InputLayout title="병원 이름" value={hosName.value} disabled placeholder="병원 이름을 입력해주세요." />
+      <InputLayout
+        title="전화번호"
+        value={hosPhone.value}
+        onChange={(e) => hosPhone.onChange(e.target.value)}
+        placeholder="병원 전화번호를 공백없이 입력해주세요."
+      />
+      <ButtonLayout
+        title="주소"
+        placeholder="주소를 입력해주세요."
+        btnText="주소검색"
+        value={hosAdress.value}
+        disabled
+        btnClick={() => modalOpen.onChange(true)}
+      />
+      {modalOpen.value ? (
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: 0,
+            left: 0,
+            background: 'rgba(200, 200, 200, 0.8)',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              width: 800,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <button title="닫기" onClick={() => modalOpen.onChange(false)}>
+              닫기
+            </button>
+            <AddressModal height={700} onComplete={handleComplete} />
+          </div>
+        </div>
+      ) : null}
+      <InputLayout
+        title="상세주소"
+        value={hosAdressDetail.value}
+        onChange={(e) => hosAdressDetail.onChange(e.target.value)}
+        placeholder="상세주소를 입력해주세요."
+      />
+      <NextButton disabled={checkNull} onClick={clickNextButton}>
         다음
       </NextButton>
     </Container>
@@ -67,58 +124,6 @@ const Container = styled.div`
   padding: 24px 18px;
   display: flex;
   flex-direction: column;
-`;
-
-const Wrap = styled.div`
-  width: 100%;
-  margin-bottom: 24px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  ${mobile({ flexDirection: 'column', alignItems: 'normal' })}
-`;
-
-const Title = styled.div`
-  margin-right: 20px;
-`;
-
-const Right = styled.div``;
-
-const Input = styled.input`
-  padding: 10px;
-  width: 200px;
-  border: 1px solid #d7d7d7;
-  ::placeholder {
-    color: #d9d9d9;
-  }
-  ::-ms-input-placeholder {
-    color: #d9d9d9;
-  }
-  ${mobile({ width: 130 })}
-`;
-
-const RightButton = styled.button`
-  cursor: pointer;
-  margin-left: 10px;
-  padding: 10px;
-  border: none;
-  background-color: #889287;
-  color: #fff;
-  width: 100px;
-`;
-
-const FullInput = styled.input`
-  padding: 10px;
-  width: 310px;
-  border: 1px solid #d7d7d7;
-  ::placeholder {
-    color: #d9d9d9;
-  }
-  ::-ms-input-placeholder {
-    color: #d9d9d9;
-  }
-  ${mobile({ width: 240 })}
 `;
 
 const NextButton = styled.button`
@@ -133,5 +138,7 @@ const NextButton = styled.button`
     background-color: #d8d8d8;
   }
 `;
+
+const AddressModal = styled(DaumPostCode)``;
 
 export default FirstInfo;

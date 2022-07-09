@@ -16,6 +16,7 @@ import Footer from './components/home/Footer';
 import { useSelector } from 'react-redux';
 import ReceiveDetail from './pages/ReceiveDetail';
 import SendDetail from './pages/SendDetail';
+import ManagePatients from './pages/ManagePatients';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (
@@ -41,6 +42,7 @@ const HomeRoutes = () => (
     <Route path="/join/user" element={<JoinUser />} />
     <Route path="/join/business" element={<JoinBusiness />} />
     <Route path="/join/done" element={<JoinDone />} />
+    <Route path="/managePatients" element={<ManagePatients />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>
 );
