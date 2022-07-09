@@ -9,10 +9,11 @@ import {
 } from '../features/userSlice';
 
 // 로그인
-export const login = async (dispatch, user) => {
+export const login = async (dispatch, flag, user) => {
+  const url = flag == 0 ? 'user' : 'hospital';
   dispatch(loginStart());
   try {
-    const res = await publicRequest.post('/login', user);
+    const res = await publicRequest.post(`/login/${url}`, user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());

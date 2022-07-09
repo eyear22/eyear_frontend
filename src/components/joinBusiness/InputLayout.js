@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const InputLayout = ({ title, value, disabled, onChange, placeholder }) => {
+const InputLayout = ({ title, value, disabled, onChange, placeholder, type }) => {
   return (
     <Container>
       <Title>{title}</Title>
-      <Input value={value} onChange={onChange} placeholder={placeholder} readOnly={disabled} disabled={disabled} />
+      <Input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        readOnly={disabled}
+        disabled={disabled}
+      />
     </Container>
   );
 };
