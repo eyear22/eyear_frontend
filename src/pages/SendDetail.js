@@ -21,7 +21,7 @@ const SendDetail = () => {
   // 상세 데이터 불러오기
   useEffect(() => {
     const detailRequest = async () => {
-      const res = await publicRequest.get(`/SendDetail/${user.flag}/${postId}`);
+      const res = await publicRequest.get(`/SendDetail/${user.flag}/${postId}`, { withCredentials: true });
       console.log(res.data);
       setData(res.data);
     };

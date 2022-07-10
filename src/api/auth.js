@@ -7,6 +7,7 @@ import {
   logoutSuccess,
   logoutFailure,
 } from '../features/userSlice';
+// credentials: 'include'
 
 // 로그인
 export const login = async (dispatch, flag, user) => {
