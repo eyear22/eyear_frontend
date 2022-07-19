@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import ReceiveDetail from './pages/ReceiveDetail';
 import SendDetail from './pages/SendDetail';
 import ManagePatients from './pages/ManagePatients';
+import NoticeDetail from './pages/NoticeDetail';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (
@@ -29,6 +30,7 @@ const AuthRoutes = () => (
     <Route path="/send" element={<Send />} />
     <Route path="/send/detail/:postId" element={<SendDetail />} />
     <Route path="/notice" element={<Notice />} />
+    <Route path="/notice/:id" element={<NoticeDetail />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>
 );
