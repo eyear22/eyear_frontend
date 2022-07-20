@@ -21,7 +21,7 @@ const Send = () => {
   // 보낸 편지 불러오기
   useEffect(() => {
     const id = user.flag == 0 ? user.user._id : '62942b42f6d27bfec6359adc';
-    fetchSendLetters(dispatch, id, user.flag);
+    fetchSendLetters(dispatch, 0);
   }, []);
 
   // 모바일 화면인지 확인
