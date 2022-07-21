@@ -16,13 +16,12 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h2`
-  padding-top: 80px;
-`;
+const Title = styled.h2``;
 
 const Desc = styled.div`
   color: #999999;
   font-size: 14px;
+  margin-bottom: 40px;
 `;
 
 export default TopArea;

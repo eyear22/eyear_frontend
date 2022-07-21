@@ -5,6 +5,7 @@ import TopArea from '../components/notice/TopArea';
 import FilterSelect from '../components/notice/FilterSelect';
 import useInput from '../utils/useInput';
 import NoticeTable from '../components/notice/NoticeTable';
+import NoticeDetail from './NoticeDetail';
 
 const dummy = [
   {
@@ -26,11 +27,18 @@ const Notice = () => {
   const filter = useInput('from');
   return (
     <ImgLayout title="공지사항" src={TopImg} width={900}>
-      <TopArea />
-      <FilterSelect filter={filter} input={input} />
-      <NoticeTable list={dummy} isNotNull={true} />
+      <Wrap>
+        <TopArea />
+        {/* <FilterSelect filter={filter} input={input} />
+        <NoticeTable list={dummy} isNotNull={true} /> */}
+        <NoticeDetail />
+      </Wrap>
     </ImgLayout>
   );
 };
+
+const Wrap = styled.div`
+  margin-top: 80px;
+`;
 
 export default Notice;
