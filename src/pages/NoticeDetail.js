@@ -1,15 +1,19 @@
 import styled from 'styled-components';
+import TopImg from '../assets/img_notice.png';
+import ImgLayout from '../components/common/ImgLayout';
+import TopArea from '../components/notice/TopArea';
 
 const NoticeDetail = () => {
   return (
-    <>
+    <ImgLayout title="공지사항" src={TopImg} width={900}>
+      <TopArea />
       <Wrap>
         <Title>서비스 일시 중지안내(07/21)</Title>
         <HR />
         <Desc>서비스 일시 중지안내 관련 공지사항 입니다.</Desc>
       </Wrap>
-      <Button>목록</Button>
-    </>
+      <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
+    </ImgLayout>
   );
 };
 
