@@ -14,6 +14,7 @@ const Send = () => {
   const dispatch = useDispatch();
   const innerWidth = useInput(window.innerWidth);
   const filter = useInput('from');
+  const patientNum = useInput('');
 
   // 현재 사용자
   const user = useSelector((state) => state.user.currentUser);
@@ -44,12 +45,12 @@ const Send = () => {
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (
-        <>
+        <Section visible={patientNum.value != ''}>
           <SendTable list={letters} isNotNull={notNull} />
           <Wrap>
             <StyledPagination count={10} shape="rounded" />
           </Wrap>
-        </>
+        </Section>
       )}
     </ImgLayout>
   );
@@ -62,5 +63,10 @@ const Wrap = styled.div`
 `;
 
 const StyledPagination = styled(Pagination)``;
+
+const Section = styled.div`
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+  background-color: aliceblue;
+`;
 
 export default Send;
