@@ -12,9 +12,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchReceiveLetters } from '../api/letter';
 
 const Receive = () => {
-  const _id = '629a28786fd0827ba894f3f8';
   const innerWidth = useInput(window.innerWidth);
   const filter = useInput('name');
+  const searchInput = useInput('');
   const dispatch = useDispatch();
   // 현재 사용자
   const user = useSelector((state) => state.user.currentUser);
@@ -37,12 +37,15 @@ const Receive = () => {
   const letters = useSelector((state) => state.letter.receiveLetters);
 
   // 리스트가 null값인지 확인
-  const notNull = letters != null && letters.length != 0;
+  const notNull =
+    user.flag == 1
+      ? letters != null && letters.length != 0 && searchInput.value
+      : letters != null && letters.length != 0;
 
   // 모바일페이지의 테이블 분리
   return (
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
-      <TopFilter filter={filter} />
+      <TopFilter filter={filter} input={searchInput} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (

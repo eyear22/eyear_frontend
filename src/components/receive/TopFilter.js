@@ -17,21 +17,20 @@ const userSelect = [
 const businessSelect = [
   {
     key: 0,
-    value: 'name',
-    text: '환자이름',
-  },
-  {
-    key: 2,
     value: 'number',
     text: '환자번호',
   },
+  {
+    key: 1,
+    value: 'name',
+    text: '환자이름',
+  },
 ];
 
-const TopFilter = ({ filter }) => {
+const TopFilter = ({ filter, input }) => {
   // select 배열 개인/기업에 따라 다르게 지정
   const options = useInput([]);
   const user = useSelector((state) => state.user.currentUser);
-  const filterInput = useInput([]);
 
   useEffect(() => {
     user.flag == 0 ? options.onChange(userSelect) : options.onChange(businessSelect);
@@ -42,12 +41,12 @@ const TopFilter = ({ filter }) => {
   };
 
   const handlefilterInput = (e) => {
-    filterInput.onChange(e.target.value);
+    input.onChange(e.target.value);
   };
 
   const searchClick = () => {
     console.log(filter.value);
-    console.log(filterInput.value);
+    console.log(input.value);
   };
 
   return (
