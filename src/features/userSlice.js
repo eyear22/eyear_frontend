@@ -25,9 +25,9 @@ const userSlice = createSlice({
     logoutStart: (state) => {
       state.logoutLoading = true;
     },
-    logoutSuccess: (state) => {
+    logoutSuccess: (state, action) => {
       state.logoutLoading = false;
-      state.logoutDone = true;
+      state.logoutDone = action.payload;
       state.currentUser = null;
     },
     logoutFailure: (state, action) => {

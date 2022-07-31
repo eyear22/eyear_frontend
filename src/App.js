@@ -31,6 +31,7 @@ const AuthRoutes = () => (
     <Route path="/send/detail/:postId" element={<SendDetail />} />
     <Route path="/notice" element={<Notice />} />
     <Route path="/notice/:id" element={<NoticeDetail />} />
+    <Route path="/managePatients" element={<ManagePatients />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>
 );

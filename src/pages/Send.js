@@ -42,6 +42,7 @@ const Send = () => {
   return (
     <ImgLayout title="보낸 편지" src={TopImg} width={900}>
       <TopFilter />
+      {console.log(letters)}
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (
