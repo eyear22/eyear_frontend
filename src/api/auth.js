@@ -25,7 +25,7 @@ export const login = async (dispatch, flag, user) => {
 export const logout = async (dispatch) => {
   dispatch(logoutStart());
   try {
-    // const res = await publicRequest.get('/logout');
+    const res = await publicRequest.get('/logout');
     dispatch(logoutSuccess());
   } catch (err) {
     dispatch(logoutFailure());
