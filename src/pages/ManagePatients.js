@@ -17,6 +17,9 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useSelector } from 'react-redux';
+import { Search } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
+import { FormControl, InputAdornment, InputBase, InputLabel, OutlinedInput } from '@mui/material';
 
 const createPatients = (pat_num, pat_name, sex, birth) => ({
   pat_num,
@@ -105,27 +108,43 @@ const ManagePatients = () => {
   const user = useSelector((state) => state.user.currentUser);
 
   return (
-    <ImgLayout title={`${user.user.hos_name} 환자관리`} src={TopImg} width={1000}>
-      <TableContainer component={Paper}>
-        <Table aria-label="collapsible table">
-          <TableHead>
-            <TableRow>
-              <TableCell />
-              <TableCell>고유번호</TableCell>
-              <TableCell>이름</TableCell>
-              <TableCell>성별</TableCell>
-              <TableCell>생년월일</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <Row key={row.pat_num} row={row} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+    <ImgLayout title={`${user.user.hos_name} 환자관리`} src={TopImg} width={'100%'}>
+      <Wrap>
+        <Input />
+        <TableContainer component={Paper}>
+          <Table stickyHeader aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell>고유번호</TableCell>
+                <TableCell>이름</TableCell>
+                <TableCell>성별</TableCell>
+                <TableCell>생년월일</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <Row key={row.pat_num} row={row} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Wrap>
     </ImgLayout>
   );
 };
+
+const Wrap = styled.div`
+  width: 1200px;
+  margin-top: 40px;
+`;
+
+const Input = styled.input`
+  width: 80%;
+  height: 20px;
+  border: none;
+  margin-bottom: 20px;
+  padding: 5px;
+`;
 
 export default ManagePatients;
