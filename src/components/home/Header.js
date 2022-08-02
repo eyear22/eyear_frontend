@@ -31,8 +31,16 @@ const Header = () => {
   };
 
   // 로그인/로그아웃 버튼
-  const LoginLogoutClick = () => {
-    user ? logout(dispatch) : navigate('/login');
+  // const LoginLogoutClick = () => {
+  //   user ? logout(dispatch) : navigate('/login');
+  // };
+
+  const LoginClick = () => {
+    navigate('/login');
+  };
+
+  const LogoutClick = () => {
+    logout(dispatch);
   };
 
   return (
@@ -48,7 +56,9 @@ const Header = () => {
         </Center>
       </Wrap>
       <Right toggle={toggle}>
-        <AuthText onClick={() => LoginLogoutClick()}>{user ? '로그아웃' : '로그인'}</AuthText>
+        <AuthText onClick={() => LogoutClick()}>로그아웃</AuthText>
+        <AuthText onClick={() => LoginClick()}>로그인</AuthText>
+        {/* <AuthText onClick={() => LoginLogoutClick()}>{user ? '로그아웃' : '로그인'}</AuthText> */}
         <Button onClick={useGoPost()}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>

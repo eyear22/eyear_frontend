@@ -28,6 +28,7 @@ export const logout = async (dispatch) => {
     const res = await publicRequest.get('/logout');
     dispatch(logoutSuccess(res.data));
   } catch (err) {
+    console.log(err);
     dispatch(logoutFailure());
   }
 };
