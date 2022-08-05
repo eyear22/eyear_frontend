@@ -110,7 +110,9 @@ const ManagePatients = () => {
   return (
     <ImgLayout title={`${user.user.hos_name} 환자관리`} src={TopImg} width={'100%'}>
       <Wrap>
-        <Input />
+        <InputWrap>
+          <Input placeholder="환자 이름을 입력해주세요" />
+        </InputWrap>
         <TableContainer component={Paper}>
           <Table stickyHeader aria-label="collapsible table">
             <TableHead>
@@ -135,13 +137,22 @@ const ManagePatients = () => {
 };
 
 const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 1200px;
   margin-top: 40px;
 `;
 
+const InputWrap = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Input = styled.input`
   width: 80%;
-  height: 20px;
+  height: 30px;
   border: none;
   margin-bottom: 20px;
   padding: 5px;
