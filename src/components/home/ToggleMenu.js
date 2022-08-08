@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGoManagePatients, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
+import { useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 import { logout } from '../../api/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,11 +14,15 @@ const ToggleMenu = ({ toggle, setToggle }) => {
     user ? logout(dispatch) : navigate('/login');
   };
 
+  const goManagePatient = () => {
+    navigate('/managePatients');
+  };
+
   return (
     <Container toggle={toggle} onClick={() => setToggle(false)}>
       <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
       <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
-      <MenuItem onClick={useGoManagePatients()}>환자관리</MenuItem>
+      {user && user.flag == 1 && <MenuItem onClick={goManagePatient}>환자관리</MenuItem>}
       <MenuItem onClick={useGoNotice()}>공지사항</MenuItem>
       <MenuItem onClick={LoginLogoutClick}>{user ? '로그아웃' : '로그인'}</MenuItem>
       <MenuItem onClick={useGoPost()}>편지쓰기</MenuItem>
