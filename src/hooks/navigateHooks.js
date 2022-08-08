@@ -61,9 +61,3 @@ export const useGoNotice = () => {
   const navigate = useNavigate();
   return useCallback(() => navigate(`/notice`), []);
 };
-
-// 환자관리 페이지로 이동
-export const useGoManagePatients = () => {
-  const navigate = useNavigate();
-  return useCallback(() => navigate(`/managePatients`), []);
-};

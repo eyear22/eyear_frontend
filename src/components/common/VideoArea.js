@@ -7,8 +7,7 @@ const VideoArea = ({ videoId, url }) => {
     <Container>
       <Video controls crossorigin="anonymous">
         <source src={videoId} type="video/mp4" />
-        <track kind="subtitles" src={VTT} srcLang="ko" label="Korean" />
-        없음
+        {/* <track kind="subtitles" src={VTT} srcLang="ko" label="Korean" /> */}
       </Video>
     </Container>
   );

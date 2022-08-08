@@ -10,7 +10,7 @@ import ListButton from '../components/sendDetail/ListButton';
 import ContentLayout from '../components/common/ContentLayout';
 
 // 임의로 추가
-const bucketName = 'https://storage.cloud.google.com/swu_eyear/';
+const bucketName = 'https://storage.cloud.google.com/swu-eyear/';
 
 const SendDetail = () => {
   const { postId } = useParams();
@@ -21,7 +21,7 @@ const SendDetail = () => {
   // 상세 데이터 불러오기
   useEffect(() => {
     const detailRequest = async () => {
-      const res = await publicRequest.get(`/SendDetail/${user.flag}/${postId}`);
+      const res = await publicRequest.get(`/SendDetail/${user.flag}/${postId}`, { withCredentials: true });
       console.log(res.data);
       setData(res.data);
     };

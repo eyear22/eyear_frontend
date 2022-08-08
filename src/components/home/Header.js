@@ -5,14 +5,7 @@ import { Menu } from '@mui/icons-material';
 import { tablet } from '../../utils/responsive';
 import ToggleMenu from './ToggleMenu';
 import { useNavigate } from 'react-router-dom';
-import {
-  useGoHome,
-  useGoManagePatients,
-  useGoNotice,
-  useGoPost,
-  useGoReceive,
-  useGoSend,
-} from '../../hooks/navigateHooks';
+import { useGoHome, useGoNotice, useGoPost, useGoReceive, useGoSend } from '../../hooks/navigateHooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../api/auth';
 
@@ -30,9 +23,21 @@ const Header = () => {
     }, 100);
   };
 
+  const goManagePatient = () => {
+    navigate('/managePatients');
+  };
+
   // 로그인/로그아웃 버튼
-  const LoginLogoutClick = () => {
-    user ? logout(dispatch) : navigate('/login');
+  // const LoginLogoutClick = () => {
+  //   user ? logout(dispatch) : navigate('/login');
+  // };
+
+  const LoginClick = () => {
+    navigate('/login');
+  };
+
+  const LogoutClick = () => {
+    logout(dispatch);
   };
 
   return (
@@ -43,12 +48,14 @@ const Header = () => {
           <MenuItem onClick={goIntroduceSection}>소개</MenuItem>
           <MenuItem onClick={useGoReceive()}>받은편지</MenuItem>
           <MenuItem onClick={useGoSend()}>보낸편지</MenuItem>
-          <MenuItem onClick={useGoManagePatients()}>환자관리</MenuItem>
+          {user && user.flag == 1 && <MenuItem onClick={goManagePatient}>환자관리</MenuItem>}
           <MenuItem onClick={useGoNotice()}>공지사항</MenuItem>
         </Center>
       </Wrap>
       <Right toggle={toggle}>
-        <AuthText onClick={() => LoginLogoutClick()}>{user ? '로그아웃' : '로그인'}</AuthText>
+        <AuthText onClick={() => LogoutClick()}>로그아웃</AuthText>
+        <AuthText onClick={() => LoginClick()}>로그인</AuthText>
+        {/* <AuthText onClick={() => LoginLogoutClick()}>{user ? '로그아웃' : '로그인'}</AuthText> */}
         <Button onClick={useGoPost()}>편지쓰기</Button>
       </Right>
       <Hamburger onClick={() => setToggle(!toggle)}>

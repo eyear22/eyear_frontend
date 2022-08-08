@@ -7,12 +7,14 @@ import {
   logoutSuccess,
   logoutFailure,
 } from '../features/userSlice';
+// credentials: 'include'
 
 // 로그인
-export const login = async (dispatch, user) => {
+export const login = async (dispatch, flag, user) => {
+  const url = flag == 0 ? 'user' : 'hospital';
   dispatch(loginStart());
   try {
-    const res = await publicRequest.post('/login', user);
+    const res = await publicRequest.post(`/login/${url}`, user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
@@ -23,8 +25,10 @@ export const login = async (dispatch, user) => {
 export const logout = async (dispatch) => {
   dispatch(logoutStart());
   try {
-    dispatch(logoutSuccess());
+    const res = await publicRequest.get('/logout');
+    dispatch(logoutSuccess(res.data));
   } catch (err) {
+    console.log(err);
     dispatch(logoutFailure());
   }
 };

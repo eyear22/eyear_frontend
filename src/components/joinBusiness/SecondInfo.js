@@ -23,6 +23,7 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
       try {
         // 아이디 중복 확인
         const res = await publicRequest.get(`/join/business_id_check/${userId.value}`);
+        console.log(res.data);
         if (res.data == 'exit') {
           alert('중복되는 아이디가 있습니다.');
           userId.onChange('');
@@ -62,7 +63,8 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
 
   const checkCode = () => {
     if (code.value == codeInput.value) {
-      checkCodeDone(true);
+      checkCodeDone.onChange(true);
+      alert('인증되었습니다.');
     } else {
       alert('인증번호가 일치하지 않습니다.');
     }
@@ -95,12 +97,11 @@ const SecondInfo = ({ activeIndex, email, userId, password, passwordCheck, join 
   };
 
   const checkNull =
-    !checkId.value ||
-    !checkEmail.value ||
+    email.value == '' ||
     userId.value == '' ||
-    checkCodeDone ||
-    checkEmailDone ||
-    checkIdDone ||
+    !checkCodeDone ||
+    !checkEmailDone ||
+    !checkIdDone ||
     password.value == '' ||
     password.value != passwordCheck.value ||
     errPwd.value != '' ||

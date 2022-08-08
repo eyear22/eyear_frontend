@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import ContentLayout from '../components/common/ContentLayout';
 
 // 임의로 추가
-const bucketName = 'https://storage.cloud.google.com/swu_eyear/';
+const bucketName = 'https://storage.cloud.google.com/swu-eyear/';
 
 const Detail = () => {
   const { postId } = useParams();

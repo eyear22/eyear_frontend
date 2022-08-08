@@ -10,12 +10,9 @@ const ReceiverInput = ({ pat_id, receiver }) => {
   // 현재 사용자
   const user = useSelector((state) => state.user.currentUser);
 
-  // 병원 고유 번호 (임의값)
-  //const hos_id = '6299ee7d86075cdad418286f';
-
   // 환자 데이터 불러오기
   useEffect(() => {
-    user != null && fetchPatients(dispatch, user.user._id, user.flag);
+    user != null && fetchPatients(dispatch, user.flag);
   }, []);
 
   // 환자와 관련된 개인 데이터 불러오기

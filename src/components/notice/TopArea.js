@@ -14,15 +14,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 80px;
 `;
 
-const Title = styled.h2`
-  padding-top: 80px;
-`;
+const Title = styled.h2``;
 
 const Desc = styled.div`
   color: #999999;
   font-size: 14px;
+  margin-bottom: 40px;
 `;
 
 export default TopArea;
