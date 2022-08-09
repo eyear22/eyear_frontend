@@ -17,11 +17,6 @@ const userSelect = [
 const businessSelect = [
   {
     key: 0,
-    value: 'number',
-    text: '환자번호',
-  },
-  {
-    key: 1,
     value: 'name',
     text: '환자이름',
   },
