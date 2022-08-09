@@ -21,9 +21,13 @@ const Receive = () => {
 
   // 받은 편지 불러오기
   useEffect(() => {
-    const id = user.flag == 0 ? user.user._id : '62942b42f6d27bfec6359adc';
-    fetchReceiveLetters(dispatch, user.flag);
+    user.flag == 0 && fetchReceiveLetters(dispatch, user.flag, ' ');
   }, []);
+
+  // 받은 편지 검색
+  const receiveSearch = () => {
+    fetchReceiveLetters(dispatch, user.flag, searchInput.value);
+  };
 
   // 모바일 화면인지 확인
   useEffect(() => {
@@ -37,16 +41,12 @@ const Receive = () => {
   const letters = useSelector((state) => state.letter.receiveLetters);
 
   // 리스트가 null값인지 확인
-  const notNull =
-    user.flag == 1
-      ? letters != null && letters.length != 0 && searchInput.value
-      : letters != null && letters.length != 0;
+  const notNull = letters != null && letters.length != 0;
 
   // 모바일페이지의 테이블 분리
   return (
     <ImgLayout title="받은 편지" src={TopImg} width={900}>
-      {console.log(searchInput.value)}
-      <TopFilter filter={filter} input={searchInput} />
+      <TopFilter filter={filter} input={searchInput} onClick={receiveSearch} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (

@@ -9,6 +9,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
+  blackList: ['letterSlice'],
 };
 
 const rootReducer = combineReducers({ user: userSlice, patient: patientSlice, letter: letterSlice });

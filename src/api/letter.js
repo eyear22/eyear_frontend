@@ -9,13 +9,13 @@ import {
 import { publicRequest } from '../hooks/requestMethods';
 
 // 받은 편지 불러오기
-export const fetchReceiveLetters = async (dispatch, flag) => {
+export const fetchReceiveLetters = async (dispatch, flag, value) => {
   const user = flag == 0 ? 'user' : 'business';
   dispatch(fetchReceiveLetterStart());
   try {
     const res = await publicRequest.get(`${user}/receiveList`);
-    const res1 = await publicRequest.get(`${user}/search?value=최&flag=0`);
-    dispatch(fetchReceiveLetterSuccess(res.data));
+    const res1 = await publicRequest.get(`${user}/search?value=${value}&flag=0`);
+    dispatch(fetchReceiveLetterSuccess(res1.data));
     console.log(res1);
   } catch (err) {
     dispatch(fetchReceiveLetterFailure());
