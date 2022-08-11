@@ -13,10 +13,8 @@ export const fetchReceiveLetters = async (dispatch, flag, value) => {
   const user = flag == 0 ? 'user' : 'business';
   dispatch(fetchReceiveLetterStart());
   try {
-    const res = await publicRequest.get(`${user}/receiveList`);
-    const res1 = await publicRequest.get(`${user}/search?value=${value}&flag=0`);
-    dispatch(fetchReceiveLetterSuccess(res1.data));
-    console.log(res1);
+    const res = await publicRequest.get(`${user}/search?value=${value}&flag=0`);
+    dispatch(fetchReceiveLetterSuccess(res.data));
   } catch (err) {
     dispatch(fetchReceiveLetterFailure());
   }

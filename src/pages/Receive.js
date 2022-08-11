@@ -21,7 +21,7 @@ const Receive = () => {
 
   // 받은 편지 불러오기
   useEffect(() => {
-    user.flag == 0 && fetchReceiveLetters(dispatch, user.flag, ' ');
+    user.flag == 0 ? fetchReceiveLetters(dispatch, user.flag, '') : fetchReceiveLetters(dispatch, user.flag, ' ');
   }, []);
 
   // 받은 편지 검색
