@@ -22,7 +22,7 @@ const Send = () => {
   // 보낸 편지 불러오기
   useEffect(() => {
     const id = user.flag == 0 ? user.user._id : '62942b42f6d27bfec6359adc';
-    fetchSendLetters(dispatch, 0);
+    fetchSendLetters(dispatch, user.flag, '초');
   }, []);
 
   // 모바일 화면인지 확인
@@ -42,7 +42,6 @@ const Send = () => {
   return (
     <ImgLayout title="보낸 편지" src={TopImg} width={900}>
       <TopFilter />
-      {console.log(letters)}
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (

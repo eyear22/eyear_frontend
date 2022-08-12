@@ -15,6 +15,8 @@ const Header = () => {
   const [toggle, setToggle] = useState(false);
 
   const user = useSelector((state) => state.user.currentUser);
+  const logoutError = useSelector((state) => state.user.logoutError);
+  const logoutDone = useSelector((state) => state.user.logoutDone);
 
   const goIntroduceSection = () => {
     navigate('/');
