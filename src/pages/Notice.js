@@ -7,6 +7,7 @@ import useInput from '../utils/useInput';
 import NoticeTable from '../components/notice/NoticeTable';
 import NoticePostButton from '../components/notice/NoticePostButton';
 import Modal from '../components/common/Modal';
+import { Close } from '@mui/icons-material';
 
 const dummy = [
   {
@@ -26,6 +27,7 @@ const dummy = [
 const Notice = () => {
   const input = useInput('');
   const filter = useInput('from');
+  const open = useInput(true);
 
   return (
     <ImgLayout title="공지사항" src={TopImg} width={900}>
@@ -35,7 +37,7 @@ const Notice = () => {
         <NoticeTable list={dummy} isNotNull={true} />
       </Wrap>
       <NoticePostButton />
-      <Modal />
+      {open.value && <Modal open={open} />}
     </ImgLayout>
   );
 };
