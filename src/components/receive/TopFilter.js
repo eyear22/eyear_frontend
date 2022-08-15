@@ -9,7 +9,7 @@ const userSelect = [
   {
     key: 0,
     value: 'name',
-    text: '작성자',
+    text: '환자이름',
   },
 ];
 
@@ -17,8 +17,8 @@ const userSelect = [
 const businessSelect = [
   {
     key: 0,
-    value: 'name',
-    text: '환자이름',
+    value: 'num',
+    text: '환자번호',
   },
 ];
 

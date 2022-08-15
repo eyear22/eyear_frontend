@@ -21,9 +21,13 @@ const Send = () => {
 
   // 보낸 편지 불러오기
   useEffect(() => {
-    const id = user.flag == 0 ? user.user._id : '62942b42f6d27bfec6359adc';
-    fetchSendLetters(dispatch, user.flag, '초');
+    fetchSendLetters(dispatch, user.flag, patientNum.value);
   }, []);
+
+  // 보낸 편지 검색
+  const sendSearch = () => {
+    fetchSendLetters(dispatch, user.flag, patientNum.value);
+  };
 
   // 모바일 화면인지 확인
   useEffect(() => {
@@ -41,16 +45,16 @@ const Send = () => {
 
   return (
     <ImgLayout title="보낸 편지" src={TopImg} width={900}>
-      <TopFilter />
+      <TopFilter filter={filter} input={patientNum} onClick={sendSearch} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (
-        <Section visible={patientNum.value != ''}>
+        <>
           <SendTable list={letters} isNotNull={notNull} />
           <Wrap>
             <StyledPagination count={10} shape="rounded" />
           </Wrap>
-        </Section>
+        </>
       )}
     </ImgLayout>
   );

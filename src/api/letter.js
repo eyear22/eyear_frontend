@@ -11,9 +11,10 @@ import { publicRequest } from '../hooks/requestMethods';
 // 받은 편지 불러오기
 export const fetchReceiveLetters = async (dispatch, flag, value) => {
   const user = flag == 0 ? 'user' : 'business';
+  const url = flag == 0 ? `user/search?value=${value}&flag=0` : `business/receiveList?number=${value}`;
   dispatch(fetchReceiveLetterStart());
   try {
-    const res = await publicRequest.get(`${user}/search?value=${value}&flag=0`);
+    const res = await publicRequest.get(url);
     dispatch(fetchReceiveLetterSuccess(res.data));
   } catch (err) {
     dispatch(fetchReceiveLetterFailure());
@@ -22,10 +23,10 @@ export const fetchReceiveLetters = async (dispatch, flag, value) => {
 
 // 보낸 편지 불러오기
 export const fetchSendLetters = async (dispatch, flag, value) => {
-  const user = flag == 0 ? 'user' : 'business';
+  const url = flag == 0 ? 'user/search?value=123&flag=1' : `business/sendList?number=${value}`;
   dispatch(fetchSendLetterStart());
   try {
-    const res = await publicRequest.get(`${user}/search?value=''&flag=1`);
+    const res = await publicRequest.get(url);
     //const res = await publicRequest.get(`${user}/sendList`);
     console.log(res);
     dispatch(fetchSendLetterSuccess(res.data));
