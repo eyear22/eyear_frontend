@@ -14,19 +14,21 @@ const Send = () => {
   const dispatch = useDispatch();
   const innerWidth = useInput(window.innerWidth);
   const filter = useInput('from');
-  const patientNum = useInput('');
+  const searchInput = useInput('');
 
   // 현재 사용자
   const user = useSelector((state) => state.user.currentUser);
 
   // 보낸 편지 불러오기
   useEffect(() => {
-    fetchSendLetters(dispatch, user.flag, patientNum.value);
+    user.flag == 0
+      ? fetchSendLetters(dispatch, user.flag, '')
+      : fetchSendLetters(dispatch, user.flag, searchInput.value);
   }, []);
 
   // 보낸 편지 검색
   const sendSearch = () => {
-    fetchSendLetters(dispatch, user.flag, patientNum.value);
+    fetchSendLetters(dispatch, user.flag, searchInput.value);
   };
 
   // 모바일 화면인지 확인
@@ -45,7 +47,7 @@ const Send = () => {
 
   return (
     <ImgLayout title="보낸 편지" src={TopImg} width={900}>
-      <TopFilter filter={filter} input={patientNum} onClick={sendSearch} />
+      <TopFilter filter={filter} input={searchInput} onClick={sendSearch} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (
@@ -67,10 +69,5 @@ const Wrap = styled.div`
 `;
 
 const StyledPagination = styled(Pagination)``;
-
-const Section = styled.div`
-  display: ${(props) => (props.visible ? 'block' : 'none')};
-  background-color: aliceblue;
-`;
 
 export default Send;

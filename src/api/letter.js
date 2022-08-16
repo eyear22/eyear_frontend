@@ -10,7 +10,6 @@ import { publicRequest } from '../hooks/requestMethods';
 
 // 받은 편지 불러오기
 export const fetchReceiveLetters = async (dispatch, flag, value) => {
-  const user = flag == 0 ? 'user' : 'business';
   const url = flag == 0 ? `user/search?value=${value}&flag=0` : `business/receiveList?number=${value}`;
   dispatch(fetchReceiveLetterStart());
   try {
@@ -23,7 +22,7 @@ export const fetchReceiveLetters = async (dispatch, flag, value) => {
 
 // 보낸 편지 불러오기
 export const fetchSendLetters = async (dispatch, flag, value) => {
-  const url = flag == 0 ? 'user/search?value=123&flag=1' : `business/sendList?number=${value}`;
+  const url = flag == 0 ? `user/search?value=${value}&flag=1` : `business/sendList?number=${value}`;
   dispatch(fetchSendLetterStart());
   try {
     const res = await publicRequest.get(url);
