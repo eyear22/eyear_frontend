@@ -7,7 +7,7 @@ import useInput from '../utils/useInput';
 import NoticeTable from '../components/notice/NoticeTable';
 import NoticePostButton from '../components/notice/NoticePostButton';
 import Modal from '../components/common/Modal';
-import { Close } from '@mui/icons-material';
+import AddNoticeModal from '../components/notice/AddNoticeModal';
 
 const dummy = [
   {
@@ -37,7 +37,7 @@ const Notice = () => {
         <NoticeTable list={dummy} isNotNull={true} />
       </Wrap>
       <NoticePostButton />
-      {open.value && <Modal open={open} />}
+      {open.value && <AddNoticeModal open={open} />}
     </ImgLayout>
   );
 };
