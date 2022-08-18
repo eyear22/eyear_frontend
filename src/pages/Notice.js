@@ -27,7 +27,9 @@ const dummy = [
 const Notice = () => {
   const input = useInput('');
   const filter = useInput('from');
-  const open = useInput(true);
+  const open = useInput(false);
+
+  const openAddNotice = () => open.onChange(true);
 
   return (
     <ImgLayout title="공지사항" src={TopImg} width={900}>
@@ -36,7 +38,7 @@ const Notice = () => {
         <FilterSelect filter={filter} input={input} />
         <NoticeTable list={dummy} isNotNull={true} />
       </Wrap>
-      <NoticePostButton />
+      <NoticePostButton onClick={openAddNotice} />
       {open.value && <AddNoticeModal open={open} />}
     </ImgLayout>
   );

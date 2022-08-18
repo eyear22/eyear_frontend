@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import Modal from '../common/Modal';
 
-const AddNoticeModal = () => {
+const AddNoticeModal = ({ open }) => {
   return (
-    <Modal>
+    <Modal open={open}>
       <Container>
         <Wrap>
           <Title>제목</Title>
