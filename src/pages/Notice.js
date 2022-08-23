@@ -12,21 +12,6 @@ import { fetchNotice } from '../api/notice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const dummy = [
-  {
-    post_id: 0,
-    title: '7월 식단입니다.',
-    from: '관리자',
-    createdAt: '2022-07-19',
-  },
-  {
-    post_id: 1,
-    title: '7월 일정입니다.',
-    from: '관리자',
-    createdAt: '2022-07-20',
-  },
-];
-
 const Notice = () => {
   const input = useInput('');
   const filter = useInput('from');

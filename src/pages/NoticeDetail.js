@@ -1,12 +1,27 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import TopImg from '../assets/img_notice.png';
 import ImgLayout from '../components/common/ImgLayout';
 import TopArea from '../components/notice/TopArea';
+import { publicRequest } from '../hooks/requestMethods';
 
 const NoticeDetail = () => {
+  const { id } = useParams();
+
+  // 상세 데이터 불러오기
+  useEffect(() => {
+    const detailRequest = async () => {
+      const res = await publicRequest.get(`/notice/detail/${id}`);
+      console.log(res.data);
+    };
+    detailRequest();
+  }, []);
+
   return (
     <ImgLayout title="공지사항" src={TopImg} width={900}>
       <TopArea />
+      {console.log(id)}
       <Wrap>
         <Title>서비스 일시 중지안내(07/21)</Title>
         <HR />

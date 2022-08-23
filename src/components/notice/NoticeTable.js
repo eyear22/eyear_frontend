@@ -24,7 +24,7 @@ const NoticeTable = ({ list, isNotNull }) => {
         {isNotNull ? (
           <TBody>
             {list.map((item, index) => (
-              <Tr key={item.content} onClick={() => onClick(item.post_id)}>
+              <Tr key={item.content} onClick={() => onClick(item.notice_id)}>
                 <Td>{size - index}</Td>
                 <TitleTd>{item.title}</TitleTd>
                 <Td>{item.from}</Td>
