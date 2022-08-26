@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const noticeSlice = createSlice({
   name: 'notice',
   initialState: {
-    notices: null, // 공지사항 리스트
+    notices: [], // 공지사항 리스트
     noticesFetching: false,
     noticesError: false,
   },

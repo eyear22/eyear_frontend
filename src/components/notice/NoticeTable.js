@@ -3,9 +3,6 @@ import EmptyTable from '../common/EmptyTable';
 
 const NoticeTable = ({ list, isNotNull }) => {
   const size = isNotNull && list.length;
-  //   const onClick = (id) => {
-  //     window.location.href = `/send/detail/${id}`;
-  //   };
   const onClick = (id) => {
     window.location.href = `/notice/${id}`;
   };

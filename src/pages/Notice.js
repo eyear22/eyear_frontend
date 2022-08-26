@@ -28,12 +28,14 @@ const Notice = () => {
   // 공지사항 리스트
   const notices = useSelector((state) => state.notice.notices);
 
+  const notNull = notices != null && notices.length != 0;
+
   return (
     <ImgLayout title="공지사항" src={TopImg} width={900}>
       <Wrap>
         <TopArea />
         <FilterSelect filter={filter} input={input} />
-        <NoticeTable list={notices} isNotNull={true} />
+        <NoticeTable list={notices} isNotNull={notNull} />
       </Wrap>
       <NoticePostButton onClick={openAddNotice} />
       {open.value && <AddNoticeModal open={open} />}
