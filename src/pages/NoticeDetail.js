@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,28 +9,31 @@ import { publicRequest } from '../hooks/requestMethods';
 
 const NoticeDetail = () => {
   const { id } = useParams();
+  const [data, setData] = useState([]);
 
   // 상세 데이터 불러오기
   useEffect(() => {
     const detailRequest = async () => {
       const res = await publicRequest.get(`/notice/detail/${id}`);
       console.log(res.data);
+      setData(res.data);
     };
     detailRequest();
   }, []);
 
-  return (
-    <ImgLayout title="공지사항" src={TopImg} width={900}>
-      <TopArea />
-      {console.log(id)}
-      <Wrap>
-        <Title>서비스 일시 중지안내(07/21)</Title>
-        <HR />
-        <Desc>서비스 일시 중지안내 관련 공지사항 입니다.</Desc>
-      </Wrap>
-      <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
-    </ImgLayout>
-  );
+  if (data.length != 0) {
+    return (
+      <ImgLayout title="공지사항" src={TopImg} width={900}>
+        <TopArea />
+        <Wrap>
+          <Title>{data.title}</Title>
+          <HR />
+          <Desc>{data.content}</Desc>
+        </Wrap>
+        <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
+      </ImgLayout>
+    );
+  }
 };
 
 const Wrap = styled.div`
