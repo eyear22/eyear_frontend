@@ -26,7 +26,13 @@ const NoticeDetail = () => {
       <ImgLayout title="공지사항" src={TopImg} width={900}>
         <TopArea />
         <Wrap>
-          <Title>{data.title}</Title>
+          <TitleArea>
+            <Title>{data.title}</Title>
+            <ButtonArea>
+              <button>수정</button>
+              <button>삭제</button>
+            </ButtonArea>
+          </TitleArea>
           <HR />
           <Desc>{data.content}</Desc>
         </Wrap>
@@ -46,6 +52,27 @@ const Title = styled.h1`
 
 const HR = styled.hr`
   margin: 20px 0;
+`;
+
+const TitleArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ButtonArea = styled.div`
+  button {
+    border: none;
+    color: #889287;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px 2px #dfdfdf;
+    padding: 8px;
+    border-radius: 6px;
+    width: 120px;
+    cursor: pointer;
+    &:nth-child(2n + 1) {
+      margin-right: 18px;
+    }
+  }
 `;
 
 const Desc = styled.div``;
