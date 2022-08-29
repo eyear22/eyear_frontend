@@ -1,7 +1,7 @@
 import { Close } from '@mui/icons-material';
 import styled from 'styled-components';
 
-const Modal = ({ open, children }) => {
+const Modal = ({ open, children, title, desc }) => {
   const close = () => {
     open.onChange(false);
   };
@@ -9,8 +9,8 @@ const Modal = ({ open, children }) => {
     <Container>
       <Wrap>
         <CloseButton id="modalCloseBtn" onClick={close} />
-        <Title>공지사항 작성</Title>
-        <Desc>아이어 공지사항을 작성해보세요.</Desc>
+        <Title>{title}</Title>
+        <Desc>{desc}</Desc>
         <Content>{children}</Content>
       </Wrap>
     </Container>

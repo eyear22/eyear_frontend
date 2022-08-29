@@ -23,7 +23,7 @@ const AddNoticeModal = ({ open }) => {
   };
 
   return (
-    <Modal open={open}>
+    <Modal open={open} title="공지사항 작성" desc="아이어 공지사항을 입력해주세요.">
       <Container>
         <Wrap>
           <Title>제목</Title>

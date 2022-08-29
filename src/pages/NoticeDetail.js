@@ -4,12 +4,16 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import TopImg from '../assets/img_notice.png';
 import ImgLayout from '../components/common/ImgLayout';
+import DeleteNoticeModal from '../components/notice/DeleteNoticeModal';
 import TopArea from '../components/notice/TopArea';
 import { publicRequest } from '../hooks/requestMethods';
+import useInput from '../utils/useInput';
 
 const NoticeDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const amendOpen = useInput(false);
+  const deleteOpen = useInput(false);
 
   // 상세 데이터 불러오기
   useEffect(() => {
@@ -30,13 +34,14 @@ const NoticeDetail = () => {
             <Title>{data.title}</Title>
             <ButtonArea>
               <button>수정</button>
-              <button>삭제</button>
+              <button onClick={() => deleteOpen.onChange(true)}>삭제</button>
             </ButtonArea>
           </TitleArea>
           <HR />
           <Desc>{data.content}</Desc>
         </Wrap>
         <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
+        {deleteOpen.value && <DeleteNoticeModal open={deleteOpen} />}
       </ImgLayout>
     );
   }
