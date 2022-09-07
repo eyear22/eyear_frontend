@@ -7,7 +7,7 @@ import SmallMenu from './SmallMenu';
 
 const Input = ({ id, password, flag }) => {
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  // const { isFetching, error } = useSelector((state) => state.user);
 
   // 로그인
   const HandleLogin = (e) => {
@@ -22,7 +22,6 @@ const Input = ({ id, password, flag }) => {
   return (
     <>
       <Wrap>
-        {console.log(error)}
         <MyInput placeholder="아이디" onChange={(e) => id.onChange(e.target.value)} />
         <MyInput placeholder="비밀번호" onChange={(e) => password.onChange(e.target.value)} type="password" />
         <FormGroup>
@@ -34,7 +33,6 @@ const Input = ({ id, password, flag }) => {
         <Button onClick={HandleLogin} disabled={false}>
           로그인
         </Button>
-        {error && <Error>Someting went wrong...</Error>}
         <SmallMenu />
       </Wrap>
       <Line />

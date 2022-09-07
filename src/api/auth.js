@@ -18,6 +18,11 @@ export const login = async (dispatch, flag, user) => {
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
+    if (err.message == 'Request failed with status code 400') {
+      alert('아이디/비밀번호가 일치하지 않습니다.');
+    } else {
+      alert('로그인에 실패하였습니다.');
+    }
   }
 };
 
@@ -28,7 +33,7 @@ export const logout = async (dispatch) => {
     const res = await publicRequest.get('/logout');
     dispatch(logoutSuccess(res.data));
   } catch (err) {
-    console.log(err);
     dispatch(logoutFailure());
+    console.log('로그아웃에 실패하였습니다.');
   }
 };

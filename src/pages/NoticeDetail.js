@@ -1,20 +1,50 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import TopImg from '../assets/img_notice.png';
 import ImgLayout from '../components/common/ImgLayout';
+import DeleteNoticeModal from '../components/notice/DeleteNoticeModal';
 import TopArea from '../components/notice/TopArea';
+import { publicRequest } from '../hooks/requestMethods';
+import useInput from '../utils/useInput';
 
 const NoticeDetail = () => {
-  return (
-    <ImgLayout title="공지사항" src={TopImg} width={900}>
-      <TopArea />
-      <Wrap>
-        <Title>서비스 일시 중지안내(07/21)</Title>
-        <HR />
-        <Desc>서비스 일시 중지안내 관련 공지사항 입니다.</Desc>
-      </Wrap>
-      <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
-    </ImgLayout>
-  );
+  const { id } = useParams();
+  const [data, setData] = useState([]);
+  const amendOpen = useInput(false);
+  const deleteOpen = useInput(false);
+
+  // 상세 데이터 불러오기
+  useEffect(() => {
+    const detailRequest = async () => {
+      const res = await publicRequest.get(`/notice/detail/${id}`);
+      console.log(res.data);
+      setData(res.data);
+    };
+    detailRequest();
+  }, []);
+
+  if (data.length != 0) {
+    return (
+      <ImgLayout title="공지사항" src={TopImg} width={900}>
+        <TopArea />
+        <Wrap>
+          <TitleArea>
+            <Title>{data.title}</Title>
+            <ButtonArea>
+              <button>수정</button>
+              <button onClick={() => deleteOpen.onChange(true)}>삭제</button>
+            </ButtonArea>
+          </TitleArea>
+          <HR />
+          <Desc>{data.content}</Desc>
+        </Wrap>
+        <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
+        {deleteOpen.value && <DeleteNoticeModal open={deleteOpen} />}
+      </ImgLayout>
+    );
+  }
 };
 
 const Wrap = styled.div`
@@ -27,6 +57,27 @@ const Title = styled.h1`
 
 const HR = styled.hr`
   margin: 20px 0;
+`;
+
+const TitleArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ButtonArea = styled.div`
+  button {
+    border: none;
+    color: #889287;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px 2px #dfdfdf;
+    padding: 8px;
+    border-radius: 6px;
+    width: 120px;
+    cursor: pointer;
+    &:nth-child(2n + 1) {
+      margin-right: 18px;
+    }
+  }
 `;
 
 const Desc = styled.div``;

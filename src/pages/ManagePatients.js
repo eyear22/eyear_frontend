@@ -20,6 +20,8 @@ import { useSelector } from 'react-redux';
 import { Search } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import { FormControl, InputAdornment, InputBase, InputLabel, OutlinedInput } from '@mui/material';
+import PatientListSection from '../components/managePatients/PatientListSection';
+import AddPatientSection from '../components/managePatients/AddPatientSection';
 
 const createPatients = (pat_num, pat_name, sex, birth) => ({
   pat_num,
@@ -109,7 +111,7 @@ const ManagePatients = () => {
 
   return (
     <ImgLayout title={`${user.user.hos_name} 환자관리`} src={TopImg} width={'100%'}>
-      <Wrap>
+      {/* <Wrap>
         <InputWrap>
           <Input placeholder="환자 이름을 입력해주세요" />
         </InputWrap>
@@ -131,7 +133,9 @@ const ManagePatients = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Wrap>
+      </Wrap> */}
+      <PatientListSection />
+      <AddPatientSection />
     </ImgLayout>
   );
 };

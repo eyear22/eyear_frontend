@@ -18,6 +18,7 @@ import ReceiveDetail from './pages/ReceiveDetail';
 import SendDetail from './pages/SendDetail';
 import ManagePatients from './pages/ManagePatients';
 import NoticeDetail from './pages/NoticeDetail';
+import useInput from './utils/useInput';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (

@@ -14,16 +14,22 @@ const Send = () => {
   const dispatch = useDispatch();
   const innerWidth = useInput(window.innerWidth);
   const filter = useInput('from');
-  const patientNum = useInput('');
+  const searchInput = useInput('');
 
   // 현재 사용자
   const user = useSelector((state) => state.user.currentUser);
 
   // 보낸 편지 불러오기
   useEffect(() => {
-    const id = user.flag == 0 ? user.user._id : '62942b42f6d27bfec6359adc';
-    fetchSendLetters(dispatch, 0);
+    user.flag == 0
+      ? fetchSendLetters(dispatch, user.flag, '')
+      : fetchSendLetters(dispatch, user.flag, searchInput.value);
   }, []);
+
+  // 보낸 편지 검색
+  const sendSearch = () => {
+    fetchSendLetters(dispatch, user.flag, searchInput.value);
+  };
 
   // 모바일 화면인지 확인
   useEffect(() => {
@@ -41,17 +47,16 @@ const Send = () => {
 
   return (
     <ImgLayout title="보낸 편지" src={TopImg} width={900}>
-      <TopFilter />
-      {console.log(letters)}
+      <TopFilter filter={filter} input={searchInput} onClick={sendSearch} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
       ) : (
-        <Section visible={patientNum.value != ''}>
+        <>
           <SendTable list={letters} isNotNull={notNull} />
           <Wrap>
             <StyledPagination count={10} shape="rounded" />
           </Wrap>
-        </Section>
+        </>
       )}
     </ImgLayout>
   );
@@ -64,10 +69,5 @@ const Wrap = styled.div`
 `;
 
 const StyledPagination = styled(Pagination)``;
-
-const Section = styled.div`
-  display: ${(props) => (props.visible ? 'block' : 'none')};
-  background-color: aliceblue;
-`;
 
 export default Send;

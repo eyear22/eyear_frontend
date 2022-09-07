@@ -3,9 +3,6 @@ import EmptyTable from '../common/EmptyTable';
 
 const NoticeTable = ({ list, isNotNull }) => {
   const size = isNotNull && list.length;
-  //   const onClick = (id) => {
-  //     window.location.href = `/send/detail/${id}`;
-  //   };
   const onClick = (id) => {
     window.location.href = `/notice/${id}`;
   };
@@ -24,7 +21,7 @@ const NoticeTable = ({ list, isNotNull }) => {
         {isNotNull ? (
           <TBody>
             {list.map((item, index) => (
-              <Tr key={item.post_id} onClick={() => onClick(item.post_id)}>
+              <Tr key={item.content} onClick={() => onClick(item.notice_id)}>
                 <Td>{size - index}</Td>
                 <TitleTd>{item.title}</TitleTd>
                 <Td>{item.from}</Td>

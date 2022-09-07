@@ -32,7 +32,7 @@ const userSlice = createSlice({
     },
     logoutFailure: (state, action) => {
       state.logoutLoading = false;
-      state.logoutError = action.error;
+      state.logoutError = true;
     },
   },
 });

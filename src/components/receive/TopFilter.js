@@ -9,7 +9,7 @@ const userSelect = [
   {
     key: 0,
     value: 'name',
-    text: '작성자',
+    text: '환자이름',
   },
 ];
 
@@ -17,17 +17,12 @@ const userSelect = [
 const businessSelect = [
   {
     key: 0,
-    value: 'number',
+    value: 'num',
     text: '환자번호',
-  },
-  {
-    key: 1,
-    value: 'name',
-    text: '환자이름',
   },
 ];
 
-const TopFilter = ({ filter, input }) => {
+const TopFilter = ({ filter, input, onClick }) => {
   // select 배열 개인/기업에 따라 다르게 지정
   const options = useInput([]);
   const user = useSelector((state) => state.user.currentUser);
@@ -60,7 +55,7 @@ const TopFilter = ({ filter, input }) => {
           ))}
         </Select>
         <Input value={handleFilter.value} onChange={handlefilterInput} />
-        <Button onClick={searchClick}>검색</Button>
+        <Button onClick={onClick}>검색</Button>
       </Wrap>
     </Container>
   );
@@ -92,6 +87,7 @@ const Select = styled.select`
 
 const Input = styled.input`
   height: 100%;
+  padding-left: 10px;
   min-width: 460px;
   border: solid 1px #d9d9d9;
   &:focus {
