@@ -24,13 +24,13 @@ const NoticeTable = ({ list, isNotNull }) => {
               <Tr key={item.content} onClick={() => onClick(item.notice_id)}>
                 <Td>{size - index}</Td>
                 <TitleTd>{item.title}</TitleTd>
-                <Td>{item.from}</Td>
+                <Td>아이어</Td>
                 <Td>{item.createdAt}</Td>
               </Tr>
             ))}
           </TBody>
         ) : (
-          <EmptyTable flag={1} />
+          <EmptyTable flag={1} content="공지사항이 존재하지 않습니다." />
         )}
       </Table>
     </>

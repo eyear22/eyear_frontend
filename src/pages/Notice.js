@@ -6,7 +6,6 @@ import FilterSelect from '../components/notice/FilterSelect';
 import useInput from '../utils/useInput';
 import NoticeTable from '../components/notice/NoticeTable';
 import NoticePostButton from '../components/notice/NoticePostButton';
-import Modal from '../components/common/Modal';
 import AddNoticeModal from '../components/notice/AddNoticeModal';
 import { fetchNotice } from '../api/notice';
 import { useEffect } from 'react';
