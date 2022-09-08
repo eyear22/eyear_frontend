@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import TopImg from '../assets/img_receive.png';
 import ImgLayout from '../components/common/ImgLayout';
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
@@ -22,6 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { FormControl, InputAdornment, InputBase, InputLabel, OutlinedInput } from '@mui/material';
 import PatientListSection from '../components/managePatients/PatientListSection';
 import AddPatientSection from '../components/managePatients/AddPatientSection';
+import ManagePatientsContainer from '../components/managePatients/ManagePatientsContainer';
 
 const createPatients = (pat_num, pat_name, sex, birth) => ({
   pat_num,
@@ -134,8 +134,7 @@ const ManagePatients = () => {
           </Table>
         </TableContainer>
       </Wrap> */}
-      <PatientListSection />
-      <AddPatientSection />
+      <ManagePatientsContainer />
     </ImgLayout>
   );
 };

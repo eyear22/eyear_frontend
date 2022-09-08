@@ -30,7 +30,7 @@ const Notice = () => {
   const notNull = notices != null && notices.length != 0;
 
   return (
-    <ImgLayout title="공지사항" src={TopImg} width={900}>
+    <ImgLayout title="공지사항" src={TopImg} width={'900px'}>
       <Wrap>
         <TopArea />
         <FilterSelect filter={filter} input={input} />

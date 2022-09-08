@@ -45,7 +45,7 @@ const Receive = () => {
 
   // 모바일페이지의 테이블 분리
   return (
-    <ImgLayout title="받은 편지" src={TopImg} width={900}>
+    <ImgLayout title="받은 편지" src={TopImg} width={'900px'}>
       <TopFilter filter={filter} input={searchInput} onClick={receiveSearch} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />

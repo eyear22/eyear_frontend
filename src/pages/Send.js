@@ -46,7 +46,7 @@ const Send = () => {
   const notNull = letters != null && letters.length != 0;
 
   return (
-    <ImgLayout title="보낸 편지" src={TopImg} width={900}>
+    <ImgLayout title="보낸 편지" src={TopImg} width={'900px'}>
       <TopFilter filter={filter} input={searchInput} onClick={sendSearch} />
       {innerWidth.value <= 500 ? (
         <MobileTable list={letters} isNotNull={notNull} />
