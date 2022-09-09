@@ -5,7 +5,58 @@ const PatientListSection = () => {
     <>
       <Container>
         <Top>환자리스트</Top>
-        <Content>PatientListSection</Content>
+        <Content>
+          <Header>
+            <div className="area">고유번호</div>
+            <div className="area">이름</div>
+            <div className="area">성별</div>
+            <div className="area">생년월일</div>
+          </Header>
+          <ItemList>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+            <Item>
+              <div className="area">PA1234</div>
+              <div className="area">이필두</div>
+              <div className="area">남성</div>
+              <div className="area">1950-01-01</div>
+            </Item>
+          </ItemList>
+        </Content>
       </Container>
     </>
   );
@@ -13,6 +64,7 @@ const PatientListSection = () => {
 
 const Container = styled.section`
   width: 68%;
+  background-color: #fff;
   margin-right: 2%;
   border: 1px solid #e3e3e3;
   border-radius: 6px;
@@ -42,7 +94,41 @@ const Top = styled.div`
 
 const Content = styled.div`
   padding: 28px 20px 28px 20px;
-  background-color: aliceblue;
+`;
+
+const Header = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  .area {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+  }
+`;
+
+const Item = styled.div`
+  display: flex;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #dadee2;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  .area {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+  }
+`;
+
+const ItemList = styled.div`
+  max-height: 380px;
+  overflow-y: scroll;
 `;
 
 export default PatientListSection;
