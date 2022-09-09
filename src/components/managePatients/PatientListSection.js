@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const PatientListSection = () => {
+const PatientListSection = ({ patientList }) => {
   return (
     <>
       <Container>
@@ -13,48 +13,15 @@ const PatientListSection = () => {
             <div className="area">생년월일</div>
           </Header>
           <ItemList>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
-            <Item>
-              <div className="area">PA1234</div>
-              <div className="area">이필두</div>
-              <div className="area">남성</div>
-              <div className="area">1950-01-01</div>
-            </Item>
+            {patientList &&
+              patientList.map((item, idx) => (
+                <Item key={item.id}>
+                  <div className="area">{item.number}</div>
+                  <div className="area">{item.name}</div>
+                  <div className="area">{item.sex === 'male' ? '남성' : '여성'}</div>
+                  <div className="area">{item.birth}</div>
+                </Item>
+              ))}
           </ItemList>
         </Content>
       </Container>
