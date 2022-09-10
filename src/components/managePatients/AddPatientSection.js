@@ -1,25 +1,38 @@
 import styled from 'styled-components';
 
-const AddPatientSection = () => {
+const AddPatientSection = ({ patNum, patName, patGender, patBirth, addPatient }) => {
   return (
     <>
       <Container>
         <Top>환자추가</Top>
         <Content>
           <Title>환자 고유번호</Title>
-          <Input placeholder="환자고유번호를 입력해주세요." />
+          <Input
+            value={patNum.value}
+            onChange={(e) => patNum.onChange(e.target.value)}
+            placeholder="환자고유번호를 입력해주세요."
+          />
           <Title>환자 이름</Title>
-          <Input placeholder="환자이름을 입력해주세요." />
+          <Input
+            value={patName.value}
+            onChange={(e) => patName.onChange(e.target.value)}
+            placeholder="환자이름을 입력해주세요."
+          />
           <Title>환자 성별</Title>
           <SelectWrap>
-            <div className="selectItem">남</div>
-            <div className="selectItem">여</div>
+            {console.log(typeof patGender.value)}
+            <SelectItem active={!patGender.value} onClick={() => patGender.onChange(0)}>
+              남
+            </SelectItem>
+            <SelectItem active={patGender.value} onClick={() => patGender.onChange(1)}>
+              여
+            </SelectItem>
           </SelectWrap>
           <Title>환자 생년월일</Title>
-          <Input placeholder="2000-02-10" />
+          <Input value={patBirth.value} onChange={(e) => patBirth.onChange(e.target.value)} placeholder="2000-02-10" />
         </Content>
         <ButtonWrap>
-          <Button>등록하기</Button>
+          <Button onClick={addPatient}>등록하기</Button>
         </ButtonWrap>
       </Container>
     </>
@@ -86,20 +99,21 @@ const SelectWrap = styled.div`
   border: 1px solid #dadee2;
   border-radius: 6px;
   width: 100%;
-  padding: 10px;
   box-sizing: border-box;
   margin-bottom: 20px;
-  .selectItem {
-    display: flex;
-    width: 50%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: ${(props) => (props.active ? '#889287' : '#fff')};
-    color: ${(props) => (props.active ? '#fff' : '#black')};
-    font-size: 14px;
-  }
+`;
+
+const SelectItem = styled.div`
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: ${(props) => (props.active ? '#889287' : '#fff')};
+  color: ${(props) => (props.active ? '#fff' : 'black')};
+  border-radius: 6px;
+  font-size: 14px;
 `;
 
 const ButtonWrap = styled.div`
