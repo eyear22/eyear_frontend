@@ -20,7 +20,6 @@ const AddPatientSection = ({ patNum, patName, patGender, patBirth, addPatient })
           />
           <Title>환자 성별</Title>
           <SelectWrap>
-            {console.log(typeof patGender.value)}
             <SelectItem active={!patGender.value} onClick={() => patGender.onChange(0)}>
               남
             </SelectItem>
