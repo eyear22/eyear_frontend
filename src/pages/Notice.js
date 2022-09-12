@@ -6,7 +6,6 @@ import FilterSelect from '../components/notice/FilterSelect';
 import useInput from '../utils/useInput';
 import NoticeTable from '../components/notice/NoticeTable';
 import NoticePostButton from '../components/notice/NoticePostButton';
-import Modal from '../components/common/Modal';
 import AddNoticeModal from '../components/notice/AddNoticeModal';
 import { fetchNotice } from '../api/notice';
 import { useEffect } from 'react';
@@ -31,7 +30,7 @@ const Notice = () => {
   const notNull = notices != null && notices.length != 0;
 
   return (
-    <ImgLayout title="공지사항" src={TopImg} width={900}>
+    <ImgLayout title="공지사항" src={TopImg} width={'900px'}>
       <Wrap>
         <TopArea />
         <FilterSelect filter={filter} input={input} />

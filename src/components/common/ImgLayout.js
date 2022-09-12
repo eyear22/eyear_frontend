@@ -36,7 +36,7 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  width: ${(props) => (props.width || 800) + 'px'};
+  width: ${(props) => props.width || 800 + 'px'};
   ${mobile({ width: '100%' })}
 `;
 

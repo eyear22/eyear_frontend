@@ -4,16 +4,12 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import TopImg from '../assets/img_notice.png';
 import ImgLayout from '../components/common/ImgLayout';
-import DeleteNoticeModal from '../components/notice/DeleteNoticeModal';
 import TopArea from '../components/notice/TopArea';
 import { publicRequest } from '../hooks/requestMethods';
-import useInput from '../utils/useInput';
 
 const NoticeDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
-  const amendOpen = useInput(false);
-  const deleteOpen = useInput(false);
 
   // 상세 데이터 불러오기
   useEffect(() => {
@@ -32,16 +28,12 @@ const NoticeDetail = () => {
         <Wrap>
           <TitleArea>
             <Title>{data.title}</Title>
-            <ButtonArea>
-              <button>수정</button>
-              <button onClick={() => deleteOpen.onChange(true)}>삭제</button>
-            </ButtonArea>
+            <Date>{data.createdAt}</Date>
           </TitleArea>
           <HR />
           <Desc>{data.content}</Desc>
         </Wrap>
         <Button onClick={() => (window.location.href = '/notice')}>목록</Button>
-        {deleteOpen.value && <DeleteNoticeModal open={deleteOpen} />}
       </ImgLayout>
     );
   }
@@ -62,25 +54,18 @@ const HR = styled.hr`
 const TitleArea = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
-const ButtonArea = styled.div`
-  button {
-    border: none;
-    color: #889287;
-    background-color: #fff;
-    box-shadow: 2px 2px 4px 2px #dfdfdf;
-    padding: 8px;
-    border-radius: 6px;
-    width: 120px;
-    cursor: pointer;
-    &:nth-child(2n + 1) {
-      margin-right: 18px;
-    }
-  }
+const Date = styled.div`
+  color: #8b95a1;
 `;
 
-const Desc = styled.div``;
+const Desc = styled.div`
+  align-items: end;
+  justify-content: flex-end;
+  white-space: pre;
+`;
 
 const Button = styled.button`
   background-color: #889287;
@@ -91,6 +76,7 @@ const Button = styled.button`
   border-radius: 6px;
   box-shadow: 2px 2px 4px 2px #dfdfdf;
   cursor: pointer;
+  margin-bottom: 40px;
 `;
 
 export default NoticeDetail;
