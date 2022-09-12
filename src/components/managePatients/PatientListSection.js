@@ -41,6 +41,7 @@ const Container = styled.section`
     border-radius: 0;
     width: 100%;
     height: auto;
+    font-size: 12px;
   }
 `;
 
@@ -74,6 +75,10 @@ const Header = styled.div`
     width: 25%;
     justify-content: center;
   }
+  @media screen and (max-width: 480px) {
+    padding: 0 5px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Item = styled.div`
@@ -90,6 +95,9 @@ const Item = styled.div`
     display: flex;
     width: 25%;
     justify-content: center;
+  }
+  @media screen and (max-width: 480px) {
+    margin-bottom: 10px;
   }
 `;
 

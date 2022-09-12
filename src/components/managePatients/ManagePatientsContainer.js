@@ -61,6 +61,12 @@ const Container = styled.main`
   max-width: 1400px;
   margin: 0 auto;
   margin-top: 40px;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 0 20px 0;
+  }
 `;
 
 export default ManagePatientsContainer;

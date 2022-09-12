@@ -89,6 +89,9 @@ const Input = styled.input`
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 20px;
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 const SelectWrap = styled.div`
@@ -121,6 +124,9 @@ const ButtonWrap = styled.div`
   align-items: flex-end;
   padding: 0 20px;
   margin-top: 20px;
+  @media screen and (max-width: 480px) {
+    margin: 10px 0;
+  }
 `;
 
 const Button = styled.button`
