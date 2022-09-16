@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { mobile } from '../../utils/responsive';
 
-const FindIdTop = () => {
+const FindIdTop = ({ question, desc }) => {
   return (
     <>
       <Container>
-        <Question>아이디가 생각나지 않으세요?</Question>
-        <Desc>등록하신 이름과 이메일 주소를 입력해주세요.</Desc>
+        <Question>{question}</Question>
+        <Desc>{desc}</Desc>
       </Container>
     </>
   );
@@ -13,6 +14,7 @@ const FindIdTop = () => {
 
 const Container = styled.section`
   margin-top: 65px;
+  ${mobile({ marginTop: 40 })}
 `;
 
 const Question = styled.h1`
@@ -23,6 +25,7 @@ const Question = styled.h1`
   line-height: 40px;
   text-align: center;
   color: #1a1a1a;
+  ${mobile({ fontSize: 22 })}
 `;
 
 const Desc = styled.h1`
@@ -30,9 +33,9 @@ const Desc = styled.h1`
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 30px;
   text-align: center;
   color: #5c5c5c;
+  ${mobile({ fontSize: 16 })}
 `;
 
 export default FindIdTop;

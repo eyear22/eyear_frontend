@@ -47,7 +47,7 @@ const HomeRoutes = () => (
     <Route path="/join/user" element={<JoinUser />} />
     <Route path="/join/business" element={<JoinBusiness />} />
     <Route path="/join/done" element={<JoinDone />} />
-    <Route path="/find/id" element={<FindId />} />
+    <Route path="/findId" element={<FindId />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>
 );

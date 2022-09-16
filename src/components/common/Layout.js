@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
 // 일반적인 공통 레이아웃
-const Layout = ({ title, width, children }) => {
+const Layout = ({ title, width, children, bgColor }) => {
   return (
     <>
-      <Container>
+      <Container bgColor={bgColor}>
         <Title width={width}>{title}</Title>
         <Wrap width={width}>{children}</Wrap>
       </Container>
@@ -17,7 +17,7 @@ const Container = styled.div`
   margin-top: 70px;
   padding: 60px 0;
   ${mobile({ padding: '20px 10vw' })}
-  background-color: #f9f9fa;
+  background-color: ${(props) => props.bgColor || '#f9f9fa'};
   display: flex;
   align-items: center;
   flex-direction: column;
