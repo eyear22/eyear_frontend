@@ -13,7 +13,7 @@ const FindIdTop = ({ question, desc }) => {
 };
 
 const Container = styled.section`
-  margin-top: 65px;
+  margin-top: 50px;
   ${mobile({ marginTop: 40 })}
 `;
 

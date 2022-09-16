@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mobile } from '../../utils/responsive';
 
-const FindIdInput = () => {
+const FindIdInput = ({ onClick }) => {
   return (
     <>
       <Container>
@@ -13,7 +13,7 @@ const FindIdInput = () => {
           <p>이메일</p>
           <input placeholder="이메일을 입력해주세요." />
         </Wrap>
-        <Button>확인</Button>
+        <Button onClick={onClick}>확인</Button>
       </Container>
     </>
   );
@@ -48,6 +48,7 @@ const Button = styled.button`
   background: #626a61;
   border: none;
   color: #fff;
+  cursor: pointer;
   margin-top: 20px;
 `;
 

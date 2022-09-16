@@ -18,8 +18,8 @@ import ReceiveDetail from './pages/ReceiveDetail';
 import SendDetail from './pages/SendDetail';
 import ManagePatients from './pages/ManagePatients';
 import NoticeDetail from './pages/NoticeDetail';
-import useInput from './utils/useInput';
 import FindId from './pages/FindId';
+import FindIdSuccess from './pages/FindIdSuccess';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (
@@ -48,6 +48,7 @@ const HomeRoutes = () => (
     <Route path="/join/business" element={<JoinBusiness />} />
     <Route path="/join/done" element={<JoinDone />} />
     <Route path="/findId" element={<FindId />} />
+    <Route path="/findId/success" element={<FindIdSuccess />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>
 );

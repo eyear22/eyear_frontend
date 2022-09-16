@@ -9,7 +9,7 @@ const Login = () => {
   const password = useInput('');
 
   return (
-    <Layout title="로그인">
+    <Layout title="로그인" bgColor="#fff">
       <LoginTabMenu
         idx={activeIndex}
         Component1={<Input id={id} password={password} flag={activeIndex.value} />}

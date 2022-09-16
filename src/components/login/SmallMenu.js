@@ -6,7 +6,7 @@ const SmallMenu = () => {
   return (
     <Container>
       <Text>
-        <StyledLink to="/">아이디 찾기</StyledLink>
+        <StyledLink to="/findId">아이디 찾기</StyledLink>
       </Text>
       <Text>|</Text>
       <Text>
