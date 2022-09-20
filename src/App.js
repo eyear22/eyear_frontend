@@ -21,6 +21,7 @@ import NoticeDetail from './pages/NoticeDetail';
 import FindId from './pages/FindId';
 import FindIdSuccess from './pages/FindIdSuccess';
 import FindPwd from './pages/FindPwd';
+import FindPwdSuccess from './pages/FindPwdSuccess';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (
@@ -51,6 +52,7 @@ const HomeRoutes = () => (
     <Route path="/findId" element={<FindId />} />
     <Route path="/findId/success" element={<FindIdSuccess />} />
     <Route path="/findPwd" element={<FindPwd />} />
+    <Route path="/findPwd/success" element={<FindPwdSuccess />} />
     <Route path="*" element={<Navigate replace to="/" />} />
   </Routes>
 );

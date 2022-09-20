@@ -1,9 +1,9 @@
-import FIndIdSuccessContainer from '../components/findId/FIndIdSuccessContainer';
+import FindIdSuccessContainer from '../components/findId/FIndIdSuccessContainer';
 
 const FindIdSuccess = () => {
   return (
     <>
-      <FIndIdSuccessContainer />
+      <FindIdSuccessContainer />
     </>
   );
 };
