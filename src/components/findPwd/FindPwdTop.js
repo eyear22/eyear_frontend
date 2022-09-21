@@ -35,6 +35,7 @@ const Desc = styled.h1`
   font-size: 20px;
   text-align: center;
   color: #5c5c5c;
+  white-space: pre-line;
   ${mobile({ fontSize: 16 })}
 `;
 

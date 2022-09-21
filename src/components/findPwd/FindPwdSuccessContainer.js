@@ -1,4 +1,5 @@
 import Layout from '../common/Layout';
+import FindPwdResult from './FindPwdResult';
 import FindPwdTop from './FindPwdTop';
 
 const FIndPwdSuccessContainer = () => {
@@ -9,6 +10,7 @@ const FIndPwdSuccessContainer = () => {
           question="비밀번호가 이메일로 발송되었습니다."
           desc={'입력해 주신 이메일 주소로 비밀번호가 발송되었습니다.' + '\n' + ' 이메일에서 비밀번호를 확인해 보세요.'}
         />
+        <FindPwdResult />
       </Layout>
     </>
   );
