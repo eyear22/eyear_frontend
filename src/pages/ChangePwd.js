@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import ChangePwdContainter from '../components/changePwd/ChangePwdContainter';
 
 const ChangePwd = () => {
   return (
     <>
-      <div>ChangePwd</div>
+      <ChangePwdContainter />
     </>
   );
 };
