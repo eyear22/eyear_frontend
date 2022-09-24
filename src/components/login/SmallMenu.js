@@ -10,11 +10,11 @@ const SmallMenu = () => {
       </Text>
       <Text>|</Text>
       <Text>
-        <StyledLink to="/">비밀번호 찾기</StyledLink>
+        <StyledLink to="/findPwd">비밀번호 찾기</StyledLink>
       </Text>
       <Text>|</Text>
       <Text>
-        <StyledLink to="/">비밀번호 변경</StyledLink>
+        <StyledLink to="/changePassword">비밀번호 변경</StyledLink>
       </Text>
     </Container>
   );
