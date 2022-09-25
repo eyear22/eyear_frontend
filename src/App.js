@@ -23,6 +23,7 @@ import FindIdSuccess from './pages/FindIdSuccess';
 import FindPwd from './pages/FindPwd';
 import FindPwdSuccess from './pages/FindPwdSuccess';
 import ChangePwd from './pages/ChangePwd';
+import ChangePwdSuccess from './pages/ChangePwdSuccess';
 
 // 로그인된 경우 접근할 수 있는 url
 const AuthRoutes = () => (
@@ -56,6 +57,7 @@ const HomeRoutes = () => (
     <Route path="/findPwd/success" element={<FindPwdSuccess />} />
     <Route path="*" element={<Navigate replace to="/" />} />
     <Route path="/changePassword" element={<ChangePwd />} />
+    <Route path="/changePassword/success" element={<ChangePwdSuccess />} />
   </Routes>
 );
 
