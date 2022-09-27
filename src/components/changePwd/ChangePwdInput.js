@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LockIcon from '../../assets/icon_lock.png';
 import { mobile } from '../../utils/responsive';
 
-const ChangePwdInput = () => {
+const ChangePwdInput = ({ onClick }) => {
   return (
     <>
       <ImageSection>
@@ -21,7 +21,7 @@ const ChangePwdInput = () => {
           <p>새 비밀번호 확인</p>
           <input placeholder="비밀번호를 입력해주세요." />
         </Wrap>
-        <Button>확인</Button>
+        <Button onClick={onClick}>확인</Button>
       </InputSection>
     </>
   );

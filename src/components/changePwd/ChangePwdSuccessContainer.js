@@ -11,7 +11,9 @@ const ChangePwdSuccessContainer = () => {
         <Wrap>
           <Icon src={DoneIcon} />
           <Title>비밀번호 변경 완료</Title>
+          <Desc>{'비밀번호 변경이 완료되었습니다.' + '\n' + '새로운 비밀번호로 로그인해주세요.'}</Desc>
         </Wrap>
+        <Line />
         <ButtonWrap>
           <button className="leftBtn" onClick={() => navigate('/')}>
             홈으로
@@ -41,6 +43,24 @@ const Icon = styled.img`
 const Title = styled.div`
   font-size: 34px;
   font-weight: bold;
+`;
+
+const Desc = styled.div`
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  color: #5c5c5c;
+  white-space: pre-line;
+  margin: 30px 0;
+`;
+
+const Line = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: #889287;
 `;
 
 const ButtonWrap = styled.div`

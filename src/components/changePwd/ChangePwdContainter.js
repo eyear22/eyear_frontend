@@ -1,12 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../common/Layout';
 import ChangePwdInput from './ChangePwdInput';
 
 const ChangePwdContainter = () => {
+  const navigate = useNavigate();
+  const changePwdClick = () => navigate('/changePassword/success');
   return (
     <>
       <Layout title="비밀번호 변경하기" width={500} bgColor="#fff">
-        <ChangePwdInput />
+        <ChangePwdInput onClick={changePwdClick} />
       </Layout>
       <Desc>
         {'8~30자의 영문 대/소문자, 숫자, 특수기호 조합을 사용할 수 있습니다.' +
